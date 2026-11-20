@@ -1,0 +1,50 @@
+name: "Feature proposal / 功能建议"
+description: "Suggest a course organization, pedagogy or tooling improvement."
+title: "[Feature] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose small, testable improvements. Respect teacher fidelity,
+        one-lesson-one-chapter, originality and privacy.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Learner/teacher problem / 要解决的问题
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Area / 方向
+      options:
+        - Teacher boardwork and evidence fidelity
+        - Lesson readability / study / revision
+        - Discipline-specific pedagogy
+        - Research and exam references
+        - Copyright / privacy review
+        - CLI / automation / quality
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior / 建议行为
+      description: "Explain expected output and what remains private."
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: Acceptance criteria / 验收标准
+      description: "Evaluate with synthetic or authorized material."
+    validations:
+      required: true
+  - type: checkboxes
+    id: permission
+    attributes:
+      label: Permissions / 合规
+      options:
+        - label: "This proposal does not require publishing teacher originals, student information or restricted exams."
+          required: true

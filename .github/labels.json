@@ -1,0 +1,82 @@
+[
+  {
+    "name": "type: bug",
+    "color": "d73a4a",
+    "description": "Confirmed or suspected malfunction / Bug"
+  },
+  {
+    "name": "type: feature",
+    "color": "a2eeef",
+    "description": "Feature proposal / 功能建议"
+  },
+  {
+    "name": "type: documentation",
+    "color": "0075ca",
+    "description": "README, guides, translation / 文档"
+  },
+  {
+    "name": "type: question",
+    "color": "d876e3",
+    "description": "Usage question / 使用疑问"
+  },
+  {
+    "name": "area: skill",
+    "color": "7057ff",
+    "description": "Agent routing and SKILL.md"
+  },
+  {
+    "name": "area: cli",
+    "color": "006b75",
+    "description": "Python metadata CLI"
+  },
+  {
+    "name": "area: pedagogy",
+    "color": "bfd4f2",
+    "description": "Learning science and subject rules"
+  },
+  {
+    "name": "area: research",
+    "color": "5319e7",
+    "description": "Trusted reference and source discovery"
+  },
+  {
+    "name": "area: rights-privacy",
+    "color": "b60205",
+    "description": "Copyright, permission and privacy"
+  },
+  {
+    "name": "area: testing",
+    "color": "0e8a16",
+    "description": "Evaluation, tests and CI"
+  },
+  {
+    "name": "priority: high",
+    "color": "e11d21",
+    "description": "Security, correctness or core blockage"
+  },
+  {
+    "name": "priority: medium",
+    "color": "fbca04",
+    "description": "Important but not urgent"
+  },
+  {
+    "name": "priority: low",
+    "color": "c2e0c6",
+    "description": "Nice-to-have improvement"
+  },
+  {
+    "name": "status: needs-review",
+    "color": "ededed",
+    "description": "Requires maintainer review or external verification"
+  },
+  {
+    "name": "good first issue",
+    "color": "7057ff",
+    "description": "Suitable scoped starter task"
+  },
+  {
+    "name": "help wanted",
+    "color": "008672",
+    "description": "Community contributions welcome"
+  }
+]

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Read the quickstart / 阅读快速开始"
+    url: "https://github.com/Nimenta727/Course-Organization-Skill/blob/main/docs/QUICKSTART.md"
+    about: "Installation, usage and expectations before filing an issue."
+  - name: "Security and private data / 安全与隐私"
+    url: "https://github.com/Nimenta727/Course-Organization-Skill/blob/main/SECURITY.md"
+    about: "Do not include private teacher/student materials in public issues."

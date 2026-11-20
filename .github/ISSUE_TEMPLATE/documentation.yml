@@ -1,0 +1,28 @@
+name: "Documentation or translation / 文档与翻译"
+description: "Improve clarity, accuracy or Chinese-English parity."
+title: "[Docs] "
+body:
+  - type: input
+    id: page
+    attributes:
+      label: File or page / 文档位置
+      placeholder: "README.md, docs/USAGE.md, ..."
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue / 问题
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed correction / 建议修订
+  - type: checkboxes
+    id: sensitive
+    attributes:
+      label: Privacy / 隐私
+      options:
+        - label: "I have not pasted copyright-restricted teaching content or private data."
+          required: true

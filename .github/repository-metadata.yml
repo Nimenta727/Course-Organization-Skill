@@ -1,0 +1,19 @@
+# Proposed repository metadata. This file does not set actual GitHub About/Topics.
+name: Course Organization Skill
+description: "Teacher-led AI Agent Skill for lesson-first course notes, original exercises, research enrichment, and copyright-aware review."
+homepage: "https://github.com/Nimenta727/Course-Organization-Skill"
+version: "v0.2.1"
+status: preview
+topics:
+  - agent-skills
+  - education
+  - edtech
+  - instructional-design
+  - curriculum-design
+  - lesson-planning
+  - study-notes
+  - teacher-tools
+  - learning-science
+  - ai-assisted-learning
+  - open-educational-resources
+  - course-organization
