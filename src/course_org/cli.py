@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from .quality import check_teacher_map, check_resource_registry, query_plan
+from .student_quality import check_student_course, check_review_gate
 
 
 BLOCKED_BINARY_SUFFIXES = {".pdf", ".ppt", ".pptx", ".doc", ".docx",
@@ -254,6 +255,14 @@ def main(argv: list[str] | None = None) -> int:
     p_teacher.add_argument("manifest", type=Path)
     p_resources = sub.add_parser("resource-check", help="Validate researched source registry metadata")
     p_resources.add_argument("registry", type=Path)
+    p_student = sub.add_parser("student-check", help="Strict chapter depth, assignments and solutions check")
+    p_student.add_argument("course", type=Path)
+    p_review = sub.add_parser("review-gate", help="Require seven independent reviews of current lesson hashes")
+    p_review.add_argument("course", type=Path)
+    p_review.add_argument("--report", type=Path, required=True, help="Private independent review report outside Git")
+    p_ready = sub.add_parser("ready", help="Gate course structure + student depth + independent reviews")
+    p_ready.add_argument("course", type=Path)
+    p_ready.add_argument("--report", type=Path, required=True)
     p_plan = sub.add_parser("research-plan", help="Print external-search queries; never performs a search")
     p_plan.add_argument("course", type=Path)
     args = parser.parse_args(argv)
@@ -270,6 +279,12 @@ def main(argv: list[str] | None = None) -> int:
                 issues = check_teacher_map(args.manifest)
         elif args.cmd == "resource-check":
             issues = check_resource_registry(args.registry)
+        elif args.cmd == "student-check":
+            issues = check_student_course(args.course)
+        elif args.cmd == "review-gate":
+            issues = check_review_gate(args.course, args.report)
+        elif args.cmd == "ready":
+            issues = validate(args.course) + check_student_course(args.course) + check_review_gate(args.course, args.report)
         elif args.cmd == "research-plan":
             print(json.dumps(query_plan(load_json(args.course / "course.json")),
                              ensure_ascii=False, indent=2))
