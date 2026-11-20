@@ -12,6 +12,8 @@ Course Organization Skill is an [Agent Skill](https://agentskills.io/specificati
 
 **Scope statement:** this release ships the Skill, modular pedagogy references, templates and a deterministic local metadata checker. It is **not** yet a standalone full-document PDF/PPT ingestion engine or end-to-end automatic course factory.
 
+![CI](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)
+
 ## What makes it different?
 
 A conventional file organizer separates slides, worksheets, notes and exams by format. A generic AI summarizer may miss the actual classroom logic or erase useful error demonstrations. This Skill is lesson-centric and teacher-led:

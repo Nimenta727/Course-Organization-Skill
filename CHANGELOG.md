@@ -13,6 +13,7 @@ Project follows pragmatic SemVer-inspired `0.x` previews. Dates are UTC unless s
 - Added community policy files, contribution templates, metadata declarations, and controlled release preparation.
 - Documented verified vs planned capabilities and the independent CLI / Agent Skill installation paths.
 - Tightened version and publication positioning; continue to block unapproved teacher material.
+- Verified first CI matrix (21 tests each on Python 3.10, 3.11 and 3.12) and successful Issue label synchronization on 2026-11-20; subsequent CI changes require a fresh verification.
 
 ## [0.2.0] — 2026-11-20
 

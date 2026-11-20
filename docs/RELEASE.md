@@ -44,3 +44,7 @@ CLI wheel **不包含整个 Skill 的 references、assets 和模板**；使用 S
 Issue Labels 可通过仓库 `.github/workflows/sync-labels.yml` 的手动入口同步 `.github/labels.json`，需要 Actions 的 issues:write 权限。GitHub Topics / About Description 需要在 Settings / 仓库 About 更新，不会因为文件存在就自动出现。
 
 **English:** Keep v0.2.1 marked Preview/Pre-release. Verify CI and safety gates before release. The manual release workflow runs tests first; if GitHub Actions or metadata permissions are unavailable, maintainers must finish those UI steps. Never ship instructor-owned originals as release assets.
+
+## 已核验的 CI 记录 / Verified CI evidence
+
+2026-11-20 12:08 UTC：[Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44733266710) 在 Python 3.10、3.11、3.12 三个工作项均成功结束，各执行 21 项测试，并确认示例公开发布审核被默认阻断。此记录对应提交 `4d3e78f`；之后若更改 CI 或代码，请重新确认最新提交状态。GitHub Release 尚未创建。

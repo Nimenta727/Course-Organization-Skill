@@ -12,6 +12,8 @@ Course Organization Skill 是面向课程整理与教学资料重建的 [Agent S
 
 **注意：** v0.2.1 主要包含 Skill 规范、教学与版权规则、课程模板及本地元数据校验工具。它**不是**开箱即用的 PDF/PPT 自动全文提取或完整课程自动生成服务器。实际教学内容重建需要具有文件访问权限的 AI Agent，外部检索需要该 Agent 具备相应联网工具。详细说明见[功能状态表](#功能状态)和[限制说明](#当前限制)。
 
+![CI](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)
+
 ## 为什么需要它？
 
 传统资料整理常常以文件格式为中心：一节课的 PPT、课堂笔记、板书、代码、作业和考试知识点被放在不同目录，学习时不断跳转。通用 AI 摘要又容易忽略老师真正强调的内容，省略板书中的推理，甚至误把教师的错误示范当成正确答案。

@@ -38,3 +38,7 @@ Issue 标签定义文件：[`.github/labels.json`](../.github/labels.json)，包
 首次完整整理后的文档版本：`v0.2.1`（**Pre-release**）。参见 [发布流程](RELEASE.md)。不要将 “v1.0 正式版” 用作当前功能状态。
 
 **English:** Repository description/topics are GitHub metadata and require an account-authorized edit, not just a committed file. Issue labels are declared in .github/labels.json and can be created via the manual Sync issue labels workflow when Actions permissions allow it. This project remains a v0.2.1 preview.
+
+## 已验证的 Issue 标签同步 / Verified issue label sync
+
+2026-11-20 12:08 UTC：GitHub Actions 的 Sync issue labels 工作流已成功结束（[运行记录](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44733266726)）。这表示 16 项标签的同步脚本成功执行；仓库 Topics/Description 仍然是单独的仓库元数据，尚未设置。
