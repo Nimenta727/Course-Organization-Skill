@@ -52,6 +52,9 @@ def scan(source: Path, out: Path) -> list[str]:
         return ["INPUT directory does not exist"]
     if out.resolve().is_relative_to(source.resolve()):
         return ["Private inventory output must be OUTSIDE the scanned source directory"]
+    destination = out.resolve().parent
+    if any((ancestor / ".git").exists() for ancestor in (destination, *destination.parents)):
+        return ["Private inventory output must be OUTSIDE every Git worktree"]
     entries = []
     for p in sorted(source.rglob("*")):
         if p.is_symlink() or not p.is_file():

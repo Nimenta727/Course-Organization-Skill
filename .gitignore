@@ -17,3 +17,8 @@ student-records/
 local-source-manifest.json
 *.private.json
 .DS_Store
+
+# Rights evidence and sensitive local metadata must never be versioned
+**/source-manifest.json
+**/private-source-manifest.json
+**/private-index.json

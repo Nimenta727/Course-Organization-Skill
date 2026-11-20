@@ -93,6 +93,17 @@ class TestCourseCLI(unittest.TestCase):
         p.write_text(json.dumps(data))
         self.assertTrue(any("Restricted file type" in e for e in audit(self.root, None)))
 
+    def test_scan_blocks_inventory_inside_git_repository(self):
+        input_dir = Path(self.temp.name) / "private_inputs"
+        input_dir.mkdir()
+        (input_dir / "Lesson01.pdf").write_bytes(b"test-source")
+        worktree = Path(self.temp.name) / "public_repo"
+        (worktree / ".git").mkdir(parents=True)
+        output = worktree / "private-index.json"
+        issues = scan(input_dir, output)
+        self.assertTrue(any("Git worktree" in e for e in issues))
+        self.assertFalse(output.exists())
+
     def test_scan_metadata_only(self):
         input_dir = Path(self.temp.name) / "private_inputs"
         input_dir.mkdir()
