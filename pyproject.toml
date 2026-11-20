@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "course-organization-skill"
+version = "0.1.0"
+description = "Private-first course organization agent skill and deterministic validators"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Nimenta727"}]
+dependencies = []
+
+[project.scripts]
+course-org = "course_org.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

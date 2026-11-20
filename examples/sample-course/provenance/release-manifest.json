@@ -1,0 +1,18 @@
+{
+  "public_release": false,
+  "explicit_publication_approval": false,
+  "reviewed_by": "",
+  "commercial": false,
+  "output_license": "MIT",
+  "artifacts": [
+    {
+      "path": "lessons/L01/lesson.md",
+      "origin": "independently_authored",
+      "sources_used": [],
+      "contains_source_expression": false,
+      "contains_personal_data": false,
+      "originality_reviewed": false,
+      "attribution": ""
+    }
+  ]
+}

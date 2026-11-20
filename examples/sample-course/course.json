@@ -1,0 +1,19 @@
+{
+  "course_id": "intro-computing",
+  "title": "计算思维入门 — 原创示例",
+  "audience": "beginner",
+  "lessons": [
+    {
+      "id": "L01",
+      "path": "lessons/L01/lesson.md",
+      "objectives": [
+        {
+          "id": "LO01",
+          "statement": "Explain the difference between describing an action and describing a repeatable algorithm",
+          "activities": ["ACT01"],
+          "assessments": ["ASM01"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "course_id": "replace-me",
+  "title": "Original Course",
+  "audience": "beginner",
+  "lessons": [
+    {
+      "id": "L01",
+      "path": "lessons/L01/lesson.md",
+      "objectives": [
+        {
+          "id": "LO01",
+          "statement": "Explain one principle using a new example",
+          "activities": ["ACT01"],
+          "assessments": ["ASM01"]
+        }
+      ]
+    }
+  ]
+}
