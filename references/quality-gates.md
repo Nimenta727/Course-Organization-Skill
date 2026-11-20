@@ -51,3 +51,6 @@ This rubric assesses pedagogy only; copyright and privacy are independent veto g
 - ready additionally requires every role from independent child agents or independent humans to PASS on the exact current SHA-256; stale/duplicate/self-review reports BLOCK.
 - These mechanical checks cannot detect filler, wrong reasoning or copied protected expression, which independent reviewers must analyze from actual content.
 - The student's nine sections MUST NOT include internal teacher-intent hypotheses, sources rights ledger or an agent review log. Student readability has priority; evidence stays private.
+
+## Per-item reviewer gates
+Each reviewer must check all required K/Q items according to role-specific review-plan output. Assignment reviewer independently solves all Q before seeing published answers, then compares and records per-question results. Repetitive homework that differs only by numbers can fail the static similarity heuristic. These are metadata/heuristic floors, not a guarantee against filler, hallucination, incorrect mathematics or copyright infringement.

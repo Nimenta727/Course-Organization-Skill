@@ -116,3 +116,6 @@ course-org ready YOUR_COURSE --report /private/independent-review.json
 ~~~
 
 ready 将结构、学生内容密度及七名独立审核角色的最新 SHA-256 合并检查；修改课程后旧的审阅报告自动失效。任何未经过实际审核的内容必须标记 REVIEW_PENDING；通过只说明元数据完整且关联最新文本，不代表版权可以公开发布。详见 references/student-edition.md、assignment-module.md、subagent-review.md。
+
+## v0.2.3 七角色逐题审计
+本地命令依次是 course-org student-check COURSE_DIR、course-org review-plan COURSE_DIR、course-org review-gate COURSE_DIR --report PRIVATE_REPORT.json 和 course-org ready COURSE_DIR --report PRIVATE_REPORT.json。review-plan 只输出检查清单、章节 SHA 和七类角色指令，不会启动子智能体。每个实际独立审阅角色必须核对指定的 K 知识点、Q 作业。作业角色先不看答案独立解题，然后逐题核对，记录 question_checks。文件改动后旧报告失效。无真正子智能体或独立人工审核时必须写 REVIEW_PENDING，不得伪造审核完成。

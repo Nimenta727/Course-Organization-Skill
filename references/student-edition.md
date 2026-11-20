@@ -30,3 +30,6 @@ The student-check CLI checks for nine sections in order, multiple fully explaine
 Defaults: full lesson >= 4000 non-code visible characters; core >= 1100; each K knowledge unit >= 300; worked example >= 420; error diagnosis >= 330; homework section >= 700; each Q >= 120; answers section >= 650; each answer >= 110; deep extension >= 240; revision pocket >= 230; intro >= 120; prerequisites >= 130. These are a FLOOR, not an arbitrary length target. Padding and false facts are rejected by independent semantic reviewers. A short lesson does not waive the requirements; supply deeper intuition, worked cases and practice.
 
 An output is INCOMPLETE until BOTH static student-check and independently verified reviews in subagent-review.md PASS. Copyright publication is a different gate and never automatically passes.
+
+## v0.2.3 anti-repetition gate
+Even if five task blocks meet length floors, near-duplicate tasks made by number-swapping cannot count as meaningful differentiated practice. The CLI checks unusually similar task descriptions; an independent reviewer must examine whether the problems genuinely assess different knowledge and cognitive levels. Never pad paragraphs to pass character counts.

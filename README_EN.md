@@ -6,7 +6,7 @@
 
 [简体中文](README.md) · [Quick start](docs/QUICKSTART.md) · [Installation](docs/INSTALLATION.md) · [User guide](docs/USAGE.md) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
 
-**Version: v0.2.2 Preview** · Optional local CLI: Python 3.10+ · MIT for repository-authored code and documentation only.
+**Version: v0.2.3 Preview** · Optional local CLI: Python 3.10+ · MIT for repository-authored code and documentation only.
 
 Course Organization Skill is an [Agent Skill](https://agentskills.io/specification) that helps an AI agent transform **authorized** course materials into coherent, **one complete lesson per document** study resources. The teacher's evidenced topic order, emphasis, board reasoning and error demonstrations remain the backbone. The agent fills gaps with independently written explanations, alternate representations, original practice, and—when authorized web tools are available—verified authoritative references.
 
@@ -138,7 +138,10 @@ The repository-authored code and documentation are [MIT-licensed](LICENSE). This
 
 Each repository change should be documented in [docs/routine/](docs/routine/) with its date, changes, verification and next actions.
 
-## v0.2.2: no shallow lessons, mandatory independent audit
+## v0.2.3: no shallow lessons, mandatory independent audit
 A student chapter requires substantive explanations for every K knowledge unit, worked reasoning, five complete tiered tasks with checkable criteria and five full solutions, all within one reader-friendly chapter. The deterministic student-check blocks incomplete structure and weak prose density. The separate ready command additionally checks seven distinct independent child-agent or human review declarations tied to current SHA-256. No child-agent execution is built into the CLI; without real independent reviewers, status remains REVIEW_PENDING. The metadata gate cannot prove review truth, correctness or zero copyright risk.
 
 See [student edition standard](references/student-edition.md), [assignment module](references/assignment-module.md), and [independent child-agent review](references/subagent-review.md).
+
+## v0.2.3 per-item independent review
+Run course-org review-plan examples/sample-course for role-specific K/Q checklists. It does NOT launch subagents. Real independent reviewers must cover their assigned topics; homework reviewers blind-solve every Q and then compare authored solutions. Missing checks or stale SHA-256 reports block readiness. If no independent reviews occurred, the status is REVIEW_PENDING.

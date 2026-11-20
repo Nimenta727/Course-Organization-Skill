@@ -51,3 +51,6 @@ Issue Labels 可通过仓库 `.github/workflows/sync-labels.yml` 的手动入口
 
 ## v0.2.2 新增学生质量关卡
 正式预发布应先执行 course-org student-check examples/sample-course；并对真实生成课程进行实际独立的七角色审核。学生内容通过 ready 仅证明结构与独立审批声明具备，不替代版权公开发行审批。无法使用子智能体时由独立人工审核；本地 CLI 不会自动创建子智能体。参见 docs/releases/v0.2.2.md。
+
+## v0.2.3 release checks
+Rerun fresh CI and sample student-check after code/version changes; prior CI does not prove the new version works. review-plan only creates task descriptions; human or genuine authorized subagents must complete the seven reviews. Do not claim independent audit from synthetic CI test fixtures.

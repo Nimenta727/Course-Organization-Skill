@@ -13,6 +13,7 @@ from pathlib import Path
 from course_org.student_quality import (
     REVIEW_ROLES, check_review_gate, check_student_course,
 )
+from course_org.reviewer_tasks import make_review_plan
 from course_org.cli import main
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,15 +33,23 @@ class StudentDepthTests(unittest.TestCase):
 
     def review_report(self):
         sha = hashlib.sha256(self.chapter.read_bytes()).hexdigest()
+        plan = make_review_plan(self.course)["lessons"][0]
+        tasks_by_role = {t["role"]: t for t in plan["tasks"]}
         entries = [{
             "role": role,
             "reviewer_id": "independent-tester-" + str(i),
             "mode": "subagent",
             "status": "PASS",
             "lesson_sha256": sha,
-            "evidence": "Synthetic metadata fixture. Check topic progression, Q tasks, solutions, "
-                        "learning depth and source/rights limitations, not real audit evidence.",
-            "checked_items": ["K01 teaching content", "Q01 homework solution"],
+            "evidence": "Synthetic metadata fixture. The claimed reviewer has independently checked every "
+                        "declared knowledge point and question, including topic progression and solved "
+                        "answers. This is fake test data, not real audit evidence or approval.",
+            "checked_items": tasks_by_role[role]["required_checks"],
+            "question_checks": [{
+                "id": q, "blind_solved": True, "compared_to_solution": True, "status": "PASS",
+                "reasoning": "Synthetic fixture only: pretend-independent reasoning detailed enough "
+                             "to test the mandatory JSON structure, not to prove a real check."
+            } for q in plan["assignment_ids"]] if role == "assignment_integrity" else [],
             "limitations": ["Synthetic fixture; actual reviewers have not been deployed"],
             "blocking_findings": [],
         } for i, role in enumerate(REVIEW_ROLES)]
@@ -113,6 +122,50 @@ class StudentDepthTests(unittest.TestCase):
     def test_unreviewed_course_never_ready(self):
         self.assertNotEqual(main(["ready", str(self.course),
                                   "--report", str(self.base / "not-present.json")]), 0)
+
+    def test_review_plan_is_not_a_real_review(self):
+        plan = make_review_plan(self.course)
+        self.assertFalse(plan["review_executed"])
+        self.assertEqual(plan["review_status"], "REVIEW_PENDING")
+        self.assertEqual(len(plan["lessons"][0]["tasks"]), 7)
+        self.assertEqual(main(["review-plan", str(self.course)]), 0)
+
+    def test_assignment_reviewer_must_check_every_question(self):
+        report = self.review_report()
+        data = json.loads(report.read_text(encoding="utf-8"))
+        reviews = data["lesson_reviews"][0]["reviews"]
+        assignment = next(x for x in reviews if x["role"] == "assignment_integrity")
+        assignment["question_checks"].pop()
+        report.write_text(json.dumps(data), encoding="utf-8")
+        self.assertTrue(any("every assignment" in e for e in check_review_gate(self.course, report)))
+
+    def test_novice_reviewer_must_cover_all_knowledge(self):
+        report = self.review_report()
+        data = json.loads(report.read_text(encoding="utf-8"))
+        novice = next(x for x in data["lesson_reviews"][0]["reviews"] if x["role"] == "novice_readability")
+        novice["checked_items"].remove("K02")
+        report.write_text(json.dumps(data), encoding="utf-8")
+        self.assertTrue(any("incomplete audit coverage" in e for e in check_review_gate(self.course, report)))
+
+    def test_exact_duplicate_assignment_blocks(self):
+        text = self.chapter.read_text(encoding="utf-8")
+        import re
+        a = re.search(r"\*\*任务：\*\*(.*?)(?=\*\*提交内容：\*\*)", text, flags=re.S)
+        first = a.group(1)
+        starts = list(re.finditer(r"\*\*任务：\*\*(.*?)(?=\*\*提交内容：\*\*)", text, flags=re.S))
+        self.assertGreaterEqual(len(starts), 5)
+        second = starts[1]
+        text = text[:second.start(1)] + first + text[second.end(1):]
+        self.chapter.write_text(text, encoding="utf-8")
+        self.assertTrue(any("near-duplicate homework" in e for e in check_student_course(self.course)))
+
+    def test_review_report_inside_other_git_worktree_blocks(self):
+        report = self.review_report()
+        gitroot = self.base / "worktree"
+        (gitroot / ".git").mkdir(parents=True)
+        unsafe = gitroot / "private-review.json"
+        unsafe.write_bytes(report.read_bytes())
+        self.assertTrue(any("Git worktree" in e for e in check_review_gate(self.course, unsafe)))
 
 
 if __name__ == "__main__":

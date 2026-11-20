@@ -54,3 +54,9 @@ v0.2.1 is an instruction-driven skill and deterministic validator, NOT a fully a
 
 ## Important limits
 The v0.2 CLI does not crawl the web, OCR files or independently verify a teacher's class. An online-capable agent can search if permission/tooling is present; every result needs source and rights verification. No zero-infringement promise.
+
+## v0.2.3 reviewer hardening
+- Role-specific review-plan with precise knowledge and homework targets; no fake subagents.
+- Required concrete per-Q blind solution comparison, full K/Q coverage per role and private report path guard.
+- Assignment near-duplicate warning and expanded regression tests.
+- Next: permission-aware child-agent orchestration, external reviewer integrity, teacher-authorized real lesson evaluation.

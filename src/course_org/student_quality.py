@@ -7,7 +7,9 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from difflib import SequenceMatcher
 from pathlib import Path
+from .reviewer_tasks import required_checks
 
 HEADINGS = ("本课导读", "预备知识", "核心知识详解", "例题精讲",
             "易错点与纠正", "分层作业", "深入理解", "复习速览", "答案与解析")
@@ -49,7 +51,7 @@ def _path(root: Path, rel: object) -> Path | None:
 def _prose(text: str) -> int:
     # Remove fenced code before measuring prose; no padding with huge code blocks.
     text = re.sub(r"(?ms)^\s*(?:\x60{3,}|~{3,}).*?^\s*(?:\x60{3,}|~{3,})[^\n]*$", "", text)
-    text = re.sub(r"https?://\S+|(?m)^#{1,6}\s+.*$", "", text) if False else re.sub(r"https?://\S+", "", text)
+    text = re.sub(r"https?://\S+", "", text)
     text = re.sub(r"(?m)^#{1,6}\s+.*$", "", text)
     return len(re.sub(r"[\s\x60*_#>|~\-\[\](){},.:;!?，。；：？！【】“”‘’=+]", "", text))
 
@@ -112,10 +114,20 @@ def check_lesson(path: Path, expected_topics: list[str]) -> list[str]:
     for tier, count in (("基础", 2), ("应用", 2), ("挑战", 1)):
         if sum(1 for _, name in questions if name == tier) < count:
             errors.append(f"Homework tier {tier} requires >= {count} tasks")
+    task_statements = []
     for m, block in homework:
         errors += _required_fields(block, TASK_FIELDS, m.group(1))
         if _prose(block) < 120:
             errors.append(f"{m.group(1)}: underspecified assignment (<120 chars)")
+        statement_match = re.search(r"\*\*任务[：:]\*\*(.*?)(?=\*\*提交内容[：:]\*\*|$)", block, flags=re.S)
+        if statement_match:
+            norm = re.sub(r"[^\w\u4e00-\u9fff]", "", statement_match.group(1)).lower()
+            norm = re.sub(r"\d+", "N", norm)
+            task_statements.append((m.group(1), norm))
+    for i, (a_id, a) in enumerate(task_statements):
+        for b_id, b in task_statements[i+1:]:
+            if min(len(a), len(b)) >= 60 and SequenceMatcher(None, a, b).ratio() > 0.92:
+                errors.append(f"{a_id}/{b_id}: near-duplicate homework statement; number swaps do not count as original variety")
 
     answers = _entries(sections.get("答案与解析", ""), S)
     a_ids = [m.group(1) for m, _ in answers]
@@ -165,6 +177,9 @@ def check_review_gate(root: Path, report: Path) -> list[str]:
         return ["Independent review report missing"]
     if report.resolve().is_relative_to(root.resolve()):
         return ["Private independent review report must be outside course output"]
+    location = report.resolve().parent
+    if any((ancestor / ".git").exists() for ancestor in (location, *location.parents)):
+        return ["Private independent review report must stay OUTSIDE any Git worktree"]
     data = _obj(report)
     author = data.get("author_id")
     if not isinstance(author, str) or not author.strip():
@@ -185,6 +200,9 @@ def check_review_gate(root: Path, report: Path) -> list[str]:
             issues.append(f"{rel}: missing review records")
             continue
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        lesson_topics = [t.get("id") for t in item.get("topics", []) if isinstance(t, dict) and isinstance(t.get("id"), str)]
+        lesson_questions = list(dict.fromkeys(Q.findall(path.read_text(encoding="utf-8")))) 
+        question_ids = [q[0] for q in lesson_questions]
         seen_roles, seen_reviewers = set(), set()
         for r in review["reviews"]:
             if not isinstance(r, dict):
@@ -205,10 +223,30 @@ def check_review_gate(root: Path, report: Path) -> list[str]:
                 issues.append(f"{rel}/{role}: BLOCK / unresolved findings")
             if r.get("lesson_sha256") != digest:
                 issues.append(f"{rel}/{role}: stale lesson digest")
-            if not isinstance(r.get("evidence"), str) or len(r["evidence"].strip()) < 50:
-                issues.append(f"{rel}/{role}: evidence must be concrete >=50 characters")
-            if not isinstance(r.get("checked_items"), list) or len(r["checked_items"]) < 2:
-                issues.append(f"{rel}/{role}: checked_items must list >=2 specific checks")
+            if not isinstance(r.get("evidence"), str) or len(r["evidence"].strip()) < 120:
+                issues.append(f"{rel}/{role}: evidence must contain >=120 characters of concrete review findings")
+            items = r.get("checked_items")
+            if not isinstance(items, list):
+                issues.append(f"{rel}/{role}: checked_items must list explicit review targets")
+                items = []
+            required = set(required_checks(role, lesson_topics, question_ids))
+            missing = required - set(x for x in items if isinstance(x, str))
+            if missing:
+                issues.append(f"{rel}/{role}: incomplete audit coverage, missing {sorted(missing)}")
+            if role == "assignment_integrity":
+                question_checks = r.get("question_checks")
+                if not isinstance(question_checks, list):
+                    issues.append(f"{rel}/{role}: blind independent per-question checks required")
+                else:
+                    by_id = {q.get("id"): q for q in question_checks if isinstance(q, dict)}
+                    if set(by_id) != set(question_ids) or len(by_id) != len(question_checks):
+                        issues.append(f"{rel}/{role}: every assignment must have exactly one independent check")
+                    for qid in question_ids:
+                        q = by_id.get(qid, {})
+                        if (q.get("blind_solved") is not True or q.get("compared_to_solution") is not True
+                                or q.get("status") != "PASS"
+                                or not isinstance(q.get("reasoning"), str) or len(q["reasoning"].strip()) < 60):
+                            issues.append(f"{rel}/{role}/{qid}: missing blind solve, solution comparison, or concrete reasoning")
             if not isinstance(r.get("limitations"), list):
                 issues.append(f"{rel}/{role}: missing limitations list")
         if set(REVIEW_ROLES) != seen_roles:

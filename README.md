@@ -6,7 +6,7 @@
 
 [English](README_EN.md) · [快速开始](docs/QUICKSTART.md) · [安装指南](docs/INSTALLATION.md) · [功能说明](docs/USAGE.md) · [开发路线](docs/roadmap.md) · [参与贡献](CONTRIBUTING.md)
 
-**当前版本：v0.2.2 Preview（预览版）** · Python 3.10+（可选本地工具） · MIT（仅限本仓库原创代码与文档）
+**当前版本：v0.2.3 Preview（预览版）** · Python 3.10+（可选本地工具） · MIT（仅限本仓库原创代码与文档）
 
 Course Organization Skill 是面向课程整理与教学资料重建的 [Agent Skill](https://agentskills.io/specification)。它以真实教师可核验的授课顺序、教学重点、板书思路和错误示范为基础，指导 AI 将有权使用的课程资料组织为**每节课一篇完整、易于阅读的讲义**，同时帮助补全基础解释、拓展学科知识、设计原创练习，并在获得许可且联网工具可用时检索权威参考资源。
 
@@ -162,9 +162,12 @@ course/
 
 **项目维护记录：** 每次 GitHub 代码修改都在 [docs/routine/](docs/routine/) 中留存日期、变更、验证与下一步计划。
 
-## 强制禁止敷衍与子智能体审计（v0.2.2）
+## 强制禁止敷衍与子智能体审计（v0.2.3）
 生成器写完并不等于交付成功。**course-org student-check** 会阻断篇幅空洞、知识点只写一句话、缺完整例题、分层作业不足、答案缺失的课程章节。**course-org ready** 在此基础上，还要求七个互相独立的审核角色（教师覆盖、初学可读性、专业正确性、作业解题、复习有效性、版权隐私、对抗审阅）对当前文件 SHA-256 全部通过。无真实子智能体能力时必须进行独立人工审核，不能把自我复核冒充子智能体。自动字段检查只是下限，人工/独立模型必须检查内容有没有凑字数、事实错误和版权风险。
 
 - [学生讲义强制写作标准](references/student-edition.md)
 - [完整分层作业与答案要求](references/assignment-module.md)
 - [子智能体独立严格审计](references/subagent-review.md)
+
+## v0.2.3 逐项独立审阅
+新增 course-org review-plan examples/sample-course：为每课创建七类角色任务和全部 K/Q 检查目标，但不会自动启动子智能体。review-gate 要求每位实际独立审阅者完成指定内容核查；作业审阅者逐题先独立解答、再核对解析，留下 question_checks。缺项或过期报告阻断验收。没有真正的独立审阅时状态为 REVIEW_PENDING。

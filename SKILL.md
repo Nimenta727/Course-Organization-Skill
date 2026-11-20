@@ -59,6 +59,7 @@ Organize **by lesson, not by file type**. A lesson is the primary readable unit;
 - python -m course_org.cli resource-check RESOURCE_REGISTRY.json
 - python -m course_org.cli research-plan COURSE_DIR  # produces queries, NOT web results
 - python -m course_org.cli student-check COURSE_DIR  # hard depth and homework floor
+- python -m course_org.cli review-plan COURSE_DIR  # generated tasks only, no agents executed
 - python -m course_org.cli review-gate COURSE_DIR --report PRIVATE_INDEPENDENT_REVIEW.json
 - python -m course_org.cli ready COURSE_DIR --report PRIVATE_INDEPENDENT_REVIEW.json
 These are metadata/validation utilities, not file-parsing or plagiarism detection systems. An audit PASS is **not** legal clearance.
@@ -82,3 +83,6 @@ These are metadata/validation utilities, not file-parsing or plagiarism detectio
 
 ## Role-based independent audit / 强制子智能体审计
 The generator cannot sign its own work off. Seven independent contexts review coverage, novice clarity, subject truth, assignment solutions, revision usefulness, rights/privacy and adversarial weaknesses. Use true delegated child agents when supported, otherwise distinct humans. Semantic failures require rewrites regardless of token count. Review reports are private, keyed by SHA-256; content change invalidates old reviews. Never present self-review as subagent verification.
+
+## v0.2.3 per-item independent review
+Run course-org review-plan COURSE_DIR before delegating actual independent subagents. It lists required review target tokens for each K topic and Q assignment, plus current lesson SHA-256. The homework reviewer blind-solves EACH Q, then compares the independent reasoning to draft answers. A missing question/target or stale hash MUST BLOCK. The planner does NOT execute a subagent. Child agent deployment, where supported and authorized, must be genuine; otherwise return REVIEW_PENDING and request independent human reviewers. Copyright rights approval is a separate release veto.

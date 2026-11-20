@@ -35,3 +35,6 @@ Languages: receptive comprehension, contrast, original communication, editing wi
 Engineering/economics: model assumptions, sensitivity, design tradeoffs, test plan and limitations.
 
 Copyright rule: never paste teacher-locked assignments or lightly reword protected exam questions; create genuinely independently structured exercises, optionally linking official question pages when appropriate.
+
+## v0.2.3 independent homework audit
+The assignment_integrity reviewer must submit one question_checks record per Q, stating real independent reasoning (minimum 60 characters), blind_solved, compared_to_solution and status. No omissions or generic praise. The reviewer must examine difficulty progression, completeness, correctness, boundary cases and non-duplication; the author cannot self-approve.

@@ -65,3 +65,6 @@ fi
 - 章节使用九个核心 H2 与 K01、K02 等知识点 ID，作业使用 Q01 等编号且至少 2/2/1 分层；每题有完整答案。
 - 子智能体审阅记录放在仓库之外，绝对不能伪造审核过程；review-gate 只负责元数据和文件摘要一致性，不调用真实子智能体。
 - 教师原件、私有来源证据、版权权限文件和真人学生信息均不得进入 Git 历史。
+
+## v0.2.3 stricter audit implementation
+src/course_org/reviewer_tasks.py generates offline per-lesson, seven-role delegation tasks; no agents are invoked. student_quality.py checks reviewer coverage of every required K/Q, blind solved per-question evidence, stale hashes and private report boundaries. It also flags near-duplicate homework text. Tests use synthetic data, never real reviewer attestations.

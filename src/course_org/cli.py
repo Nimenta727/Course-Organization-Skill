@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 from .quality import check_teacher_map, check_resource_registry, query_plan
 from .student_quality import check_student_course, check_review_gate
+from .reviewer_tasks import make_review_plan
 
 
 BLOCKED_BINARY_SUFFIXES = {".pdf", ".ppt", ".pptx", ".doc", ".docx",
@@ -257,6 +258,8 @@ def main(argv: list[str] | None = None) -> int:
     p_resources.add_argument("registry", type=Path)
     p_student = sub.add_parser("student-check", help="Strict chapter depth, assignments and solutions check")
     p_student.add_argument("course", type=Path)
+    p_review_plan = sub.add_parser("review-plan", help="Generate SEVEN independent reviewer tasks; DOES NOT run subagents")
+    p_review_plan.add_argument("course", type=Path)
     p_review = sub.add_parser("review-gate", help="Require seven independent reviews of current lesson hashes")
     p_review.add_argument("course", type=Path)
     p_review.add_argument("--report", type=Path, required=True, help="Private independent review report outside Git")
@@ -281,6 +284,9 @@ def main(argv: list[str] | None = None) -> int:
             issues = check_resource_registry(args.registry)
         elif args.cmd == "student-check":
             issues = check_student_course(args.course)
+        elif args.cmd == "review-plan":
+            print(json.dumps(make_review_plan(args.course), ensure_ascii=False, indent=2))
+            return 0
         elif args.cmd == "review-gate":
             issues = check_review_gate(args.course, args.report)
         elif args.cmd == "ready":
