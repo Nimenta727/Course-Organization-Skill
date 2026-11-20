@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this repository in a project or teaching workflow, please cite its GitHub source and version."
+type: software
+title: "Course Organization Skill"
+abstract: "A teacher-led, lesson-first Agent Skill for education content organization with subject-specific pedagogy and copyright-aware review."
+authors:
+  - name: "Nimenta727"
+repository-code: "https://github.com/Nimenta727/Course-Organization-Skill"
+url: "https://github.com/Nimenta727/Course-Organization-Skill"
+license: "MIT"
+version: "0.2.1"
+date-released: "2026-11-20"
+keywords:
+  - "agent-skills"
+  - "education"
+  - "instructional-design"
+  - "course-organization"
