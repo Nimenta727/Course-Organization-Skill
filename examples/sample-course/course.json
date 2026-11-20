@@ -10,10 +10,15 @@
         {
           "id": "LO01",
           "statement": "Explain the difference between describing an action and describing a repeatable algorithm",
-          "activities": ["ACT01"],
-          "assessments": ["ASM01"]
+          "activities": [
+            "ACT01"
+          ],
+          "assessments": [
+            "ASM01"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "subject": "computing"
 }

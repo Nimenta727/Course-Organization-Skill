@@ -70,3 +70,58 @@ These JSON formats are intentionally small and readable. All metadata with paths
 - Static gate is a lower bound: reviewers must inspect actual content, not merely set booleans.
 - For CC sources, track exact version, author, title, URL, licence URL, alterations and compatible attribution.
 - For public assets based on unlicensed source expressions, DO NOT mark them "independent" to get a green test.
+
+
+## Private teacher-map.private.json
+Store OUTSIDE every Git worktree. Example is fictitious; location and hypotheses must be verified for real materials.
+~~~json
+{
+  "private": true,
+  "lesson_id": "L01",
+  "segments": [
+    {
+      "id": "E01",
+      "source_id": "S01",
+      "location": "slide 2",
+      "kind": "error_demo",
+      "handling": "original_explanation",
+      "lesson_section": "常见错误",
+      "teacher_intent": {
+        "status": "hypothesized",
+        "reason": "followed by a correction",
+        "alternative": "could be an inadvertent writing slip"
+      },
+      "error_status": "possible_error",
+      "explanation_or_unresolved": "Original trace of wrong idea followed by a correct solution"
+    }
+  ]
+}
+~~~
+Allowed handling: original_explanation, private_only, blocked_rights, unresolved (unresolved blocks completion). Intent: explicit (with evidence), hypothesized (with reason and alternative), unknown. Teacher-specific evidence must remain confidential unless a separate permission exists.
+
+## Research resource-registry.json
+~~~json
+{
+  "resources": [
+    {
+      "id": "R01",
+      "lesson_id": "L01",
+      "objective_ids": ["LO01"],
+      "title": "Official exam scope",
+      "publisher": "Verified exam authority",
+      "relevance": "Question types",
+      "url": "https://example.edu/official-exam",
+      "authority_tier": "official_exam",
+      "usage": "link_only",
+      "verified_at": "2026-11-20",
+      "actual_live_check": true
+    }
+  ]
+}
+~~~
+This illustrative URL is not an actual verified source; NEVER place this example entry in a real registry without a live check. Do not set actual_live_check true based on a generated URL. For adapted reuse document license, license_url, author, rights_evidence, modification_notice, and license_verified. CLI metadata checks do not visit URLs.
+
+## Optional course metadata
+- subject: computing, mathematics, sciences, humanities, languages, economics-engineering, or specific domain.
+- Reader experience: one detailed lesson file with a beginner route and a revision pocket.
+- Research plan output is separate from research registry; planned queries have status NOT_SEARCHED.

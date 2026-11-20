@@ -1,6 +1,13 @@
 # Course Organization Skill
 
-**v0.1.0 — research-informed, privacy-first foundation.** A lesson-centered Agent Skill for rebuilding mixed course materials into an original, coherent teaching and learning project.
+**v0.2.0 — research-informed, privacy-first foundation.** A lesson-centered Agent Skill for rebuilding mixed course materials into an original, coherent teaching and learning project.
+
+## Teacher-led, discipline-aware and research-enriched
+The teacher's verified sequence, emphases, boardwork and observed error demonstrations form the instructional backbone. Missing reasoning is independently reconstructed and the intended teaching purpose is labelled observed, hypothesized with alternatives, or unknown. Never invent teacher quotations or copy protected expression.
+
+Every lesson is ONE substantial, readable Markdown chapter for both beginners and revision: orientation, teacher-led narrative, foundations, alternative explanations, corrected errors, advanced extension, original practice and compact retrieval.
+
+The Skill uses approved live web tools, when available, to research authoritative curricula/exam requirements, universities, evidence-based methods and licensed OER per objective. Official exam questions are link-only by default. No browsing tool means a NOT_SEARCHED query plan, not invented source verification. Distinct disciplines route to dedicated profiles.
 
 ## Design
 - One readable canonical lesson file per lesson, with activities and assessments linked by objective IDs.
@@ -15,6 +22,10 @@ python -m pip install -e .
 course-org scan /private/source/folder --out /private/manifest.json
 course-org validate examples/sample-course
 course-org audit examples/sample-course
+course-org research-plan examples/sample-course
+# Teacher evidence and source audits (private manifests):
+# course-org teacher-check /private/teacher-map.private.json
+# course-org resource-check /private/resource-registry.json
 python -m unittest discover -s tests -v
 ~~~
 
@@ -27,3 +38,10 @@ See [pedagogy](references/pedagogy.md), [copyright rules](references/copyright-g
 
 ## License
 Repository-authored code and documentation: MIT (LICENSE). Teacher or third-party content is never relicensed by this repository.
+
+## Additional references
+- [Teacher fidelity](references/teacher-fidelity.md)
+- [Readability and depth](references/reading-and-depth.md)
+- [Authoritative source research](references/external-discovery.md)
+- [Discipline routing](references/subject-profiles.md)
+- [Design and limitations](docs/teacher-centered-design.md)

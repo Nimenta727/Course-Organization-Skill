@@ -34,3 +34,13 @@
 - Accessibility and learner fit: 15%
 - Source traceability and consistency: 10%
 This rubric assesses pedagogy only; copyright and privacy are independent veto gates.
+
+
+## Teacher-centered & reader-centered hard gates
+- All meaningful teacher source segments have a tracked handling decision, including boardwork, apparent errors, emphasis and missing transitions; no silent omissions.
+- Teacher intention is explicit only with observed evidence; otherwise label a hypothesis with plausible alternatives or unresolved.
+- Each lesson is one substantive standalone chapter with beginner and revision routes, complementary explanations where useful, corrected error cases, advanced extension and quick recall.
+- No micro-file explosion; task orchestration may be granular, but reader output is unified.
+- Each major independent addition is fact-checked and cited as appropriate; current official exam syllabus and source URLs are verified, or NOT_SEARCHED is declared.
+- Link-only official exams are not copied. AI-created practice must be substantively original and independently checked.
+- Teacher-fidelity scoring, subject-specific educational quality and legal permission remain SEPARATE dimensions.

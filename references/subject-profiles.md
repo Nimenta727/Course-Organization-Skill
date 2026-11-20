@@ -1,30 +1,16 @@
-# Subject profiles / 分学科教学策略
+# Subject router / 学科路由入口
 
-Load the appropriate profile only when designing that course; do not load unrelated profiles.
+Read only the subject file that matches the course; do not load every reference into context. Every subject also follows the global teacher fidelity, one-lesson readability, research and copyright requirements.
 
-## Computing / Programming / Data structures
-- Learning arc: concrete problem -> model/invariant -> implementation -> trace -> bug -> repair -> complexity/tradeoffs -> exercise.
-- Include syntax and semantic pitfalls, a minimal runnable example, boundary cases, expected output, time and space complexity when relevant.
-- Beginner: hand traces and misconceptions; intermediate: algorithm proof and testing; advanced: alternative designs and performance.
-- Projects: staged labs with checks and a final integrated authentic task. Never copy teacher's proprietary assignments or code.
+| Course / 课程 | Profile |
+| --- | --- |
+| C programming, Python, algorithms, data structures, computer science | subject-profiles/computing.md |
+| Calculus, algebra, discrete mathematics, statistics, proofs | subject-profiles/mathematics.md |
+| Physics, chemistry, biology, earth science, laboratory courses | subject-profiles/sciences.md |
+| History, literature, politics, philosophy, broader humanities | subject-profiles/humanities.md |
+| Foreign languages, composition, literacy and writing | subject-profiles/languages.md |
+| Economics, management, finance concepts, engineering/design | subject-profiles/economics-engineering.md |
 
-## Mathematics
-- Definitions and prerequisites, conceptual intuition, valid worked steps, counterexamples, proof where appropriate, graduated problem sets.
-- Validate symbols and solutions; distinguish conjecture from theorem.
+Mixed courses: load the dominant profile and only selected sections of a secondary profile. If unsure, infer from lesson objectives; do not invent subject-specific teacher instruction.
 
-## Science
-- When appropriate apply 5E: phenomenon, prediction, exploration, evidence-based explanation, transfer and checks.
-- Clearly mark safety requirements; do not provide unsafe experimental procedures.
-
-## Humanities and social science
-- Source criticism, perspective comparison, argument-evidence structure, context, counterargument, reflection.
-- Never fabricate quotations or source details.
-
-## Languages and writing
-- Comprehensible examples, guided exercises, independent production, explicit correction, spaced review.
-- Avoid reproducing copyrighted passage/lyrics in full.
-
-## Teacher-facing add-ons
-- Instructor-only plan: timing, class prompts, checkpoints, contingency examples, alternative explanations and anticipated misconceptions.
-- Evidence ledger: confirm which aspects are observed teacher approach vs new recommendation.
-- Optional separate student-only package without answer keys.
+Optional separate teacher preparation notes and a student-safe practice/answer-key split are allowed. The single reader-facing complete lesson remains canonical.

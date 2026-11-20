@@ -1,11 +1,20 @@
 # Course Organization Skill / 课程资料智能整理 Skill
 
-**当前版本 v0.1.0 — 研究增强与版权防护的基础实现。** 将课件、讲义、课堂笔记、作业、实验和考试信息组织成“按课次聚合”的完整课程项目。以原创解释和可核验学习目标为核心，并默认保护教师原件与学生隐私。
+**当前版本 v0.2.0 — 研究增强与版权防护的基础实现。** 将课件、讲义、课堂笔记、作业、实验和考试信息组织成“按课次聚合”的完整课程项目。以原创解释和可核验学习目标为核心，并默认保护教师原件与学生隐私。
 
 > This project does NOT guarantee zero copyright risk or automatically authorize any teacher content for redistribution.
 
 ## 为什么做这个项目？
 普通资料整理工具经常只按 PDF/PPT/Word 分类，导致一课的内容散落在多个目录。我们的 Skill 采用 **课程 → 课次 → 学习目标 → 活动 → 评价** 的统一结构；作业、实验、扩展、考试和备课内容通过学习目标与课次关联。
+
+## v0.2 教师主线重建与开放检索
+**教师是课程主线，AI 负责解释、补全和深化。** 逐项审阅教师写过的知识、板书、变量跳步、示例、重点与可能的错误；推测教学意图时必须标为推测并列出替代解释。完整课程以一课一篇讲义呈现，不把一节课拆成十几个碎片。
+
+每课同时服务新手和复习：30 秒速览、教师主线、先修知识、基础推理、多角度讲解、错误诊断、深入延伸、原创练习、考题类型与复习速览，都在同一篇 lesson.md 中。
+
+Skill 在可用且获许可的在线研究环境中，**按每课学习目标主动搜索**官方课程标准、权威考试信息、大学研究和开放教育资源，确认出处、适用范围和授权。官方真题优先提供原站链接，AI 生成新问题而不是复制/换数字改写受保护考题。无联网工具时输出明确的 NOT_SEARCHED 检索计划，绝不虚称完成检索。
+
+不同学科有不同教学策略：编程追踪与调试、数学推导与证明、科学实验与模型、人文证据与论证、语言表达与反馈、经济和工程建模与边界条件。
 
 ## 核心能力
 - **按课次组织：** 一课一篇可独立阅读的 lesson.md，包含概念讲解、原创示例、错误分析、练习和总结。
@@ -25,6 +34,9 @@ python -m pip install -e .
 course-org scan /path/to/private/inputs --out /path/outside/repo/private-index.json
 course-org validate examples/sample-course
 course-org audit examples/sample-course
+course-org research-plan examples/sample-course
+# 使用私有证据台账时：course-org teacher-check /private/teacher-map.private.json
+# 资料经实际在线核验后：course-org resource-check /private/resource-registry.json
 python -m unittest discover -s tests -v
 ~~~
 
@@ -54,3 +66,10 @@ scan 只保存文件名、哈希、大小、粗略课次匹配等元数据，**�
 
 ## Licence
 本仓库原创代码和说明以 MIT 许可证发布（详见 LICENSE）。外部教师资料、学生数据及第三方教材不属于本仓库许可证的授权范围。
+
+## 关键文档入口
+- [教师证据与板书保真](references/teacher-fidelity.md)
+- [初学/复习双路线一课一文](references/reading-and-depth.md)
+- [权威外部资料检索与真题使用规则](references/external-discovery.md)
+- [按学科选择教学 Skill](references/subject-profiles.md)
+- [本轮具体改动与后续规划](docs/routine/2026-11-20-03-teacher-led-open-research-course-depth.md)

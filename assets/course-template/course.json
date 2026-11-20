@@ -10,10 +10,15 @@
         {
           "id": "LO01",
           "statement": "Explain one principle using a new example",
-          "activities": ["ACT01"],
-          "assessments": ["ASM01"]
+          "activities": [
+            "ACT01"
+          ],
+          "assessments": [
+            "ASM01"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "subject": "computing"
 }

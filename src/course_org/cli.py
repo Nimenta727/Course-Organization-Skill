@@ -12,6 +12,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from .quality import check_teacher_map, check_resource_registry, query_plan
 
 
 BLOCKED_BINARY_SUFFIXES = {".pdf", ".ppt", ".pptx", ".doc", ".docx",
@@ -142,7 +143,7 @@ def validate(root: Path) -> list[str]:
     return errors
 
 
-def audit(root: Path, sources_path: Path | None) -> list[str]:
+def audit(root: Path, sources_path: Path | None, teacher_map_path: Path | None = None) -> list[str]:
     errors: list[str] = []
     release_file = root / "provenance" / "release-manifest.json"
     if not release_file.exists():
@@ -226,6 +227,14 @@ def audit(root: Path, sources_path: Path | None) -> list[str]:
                 errors.append(f"{rel}: {sid} SA requires compatible adaptation licence")
             if rights == "CC-BY-NC-SA" and not license_name.startswith("CC-BY-NC-SA"):
                 errors.append(f"{rel}: {sid} NC-SA requires compatible adaptation licence")
+    if release.get("teacher_materials_used") is True:
+        if teacher_map_path is None:
+            errors.append("Teacher materials used: private --teacher-map required")
+        else:
+            errors.extend(check_teacher_map(teacher_map_path))
+    registry = root / "provenance" / "resource-registry.json"
+    if registry.exists():
+        errors.extend(check_resource_registry(registry))
     return errors
 
 
@@ -240,14 +249,33 @@ def main(argv: list[str] | None = None) -> int:
     p_audit = sub.add_parser("audit", help="Conservative pre-publication gate (NOT legal clearance)")
     p_audit.add_argument("course", type=Path)
     p_audit.add_argument("--sources", type=Path, help="Private source rights manifest, kept outside public Git")
+    p_audit.add_argument("--teacher-map", type=Path, help="Private teacher evidence ledger kept outside Git")
+    p_teacher = sub.add_parser("teacher-check", help="Validate private teacher evidence mapping")
+    p_teacher.add_argument("manifest", type=Path)
+    p_resources = sub.add_parser("resource-check", help="Validate researched source registry metadata")
+    p_resources.add_argument("registry", type=Path)
+    p_plan = sub.add_parser("research-plan", help="Print external-search queries; never performs a search")
+    p_plan.add_argument("course", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.cmd == "scan":
             issues = scan(args.input, args.out)
         elif args.cmd == "validate":
             issues = validate(args.course)
+        elif args.cmd == "teacher-check":
+            p = args.manifest.resolve()
+            if any((d / ".git").exists() for d in (p.parent, *p.parents)):
+                issues = ["Teacher evidence map must remain OUTSIDE any Git worktree"]
+            else:
+                issues = check_teacher_map(args.manifest)
+        elif args.cmd == "resource-check":
+            issues = check_resource_registry(args.registry)
+        elif args.cmd == "research-plan":
+            print(json.dumps(query_plan(load_json(args.course / "course.json")),
+                             ensure_ascii=False, indent=2))
+            return 0
         else:
-            issues = audit(args.course, args.sources)
+            issues = audit(args.course, args.sources, args.teacher_map)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         issues = [f"Cannot complete check: {exc}"]
     if issues:

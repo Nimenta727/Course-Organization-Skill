@@ -45,3 +45,15 @@ Only safe, permission-cleared output files. No local inventory, teaching origina
 
 ## GitHub documentation
 Every change includes dated docs/routine entry: timestamp, summary, files and behavioral changes, actual test evidence, risks and next plan. Keep documentation bilingual when serving an international audience.
+
+
+## 7. Teacher-led deep reconstruction / 教师主线深化
+After inventory, make a private coverage ledger of every meaningful teacher item, including apparent mistakes, omissions, boardwork, examples, questions and emphases. Mark intended purpose as explicit, hypothesized with alternatives, or unknown. A board slip may be accidental; never invent instructor intentions. The teacher's evidenced teaching order is the spine; AI originality and subject methods fill missing reasoning rather than replace the course.
+
+Use references/teacher-fidelity.md and references/reading-and-depth.md. Each learner-facing lesson remains one complete chapter with novice and revision paths. Separate evidence ledger, caches, rights review and links are internal metadata.
+
+## 8. Open authoritative enrichment / 权威材料自动补充
+For each objective, formulate targeted official-exam/official-syllabus, university/OER and advanced research queries. If web tools exist and the use is authorized, actually browse and verify publisher/date/URL/relevance/licence, recording links in resource-registry.json. If no tool, create NOT_SEARCHED plan; never pretend to have performed research. Published questions are linked by default; AI-original tasks can mimic general cognitive demand but not protected expression. See references/external-discovery.md.
+
+## 9. Discipline-sensitive rendering / 分学科生成
+Choose one subject reference per lesson. Adapt how proof, debugging, experiment, interpretation, dialogue, or decision modeling is explained. Always retain the single-lesson narrative and review pocket.

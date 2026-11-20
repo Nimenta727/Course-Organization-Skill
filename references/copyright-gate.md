@@ -54,3 +54,11 @@ Take only unprotected facts, topic labels and general pedagogical goals as start
 - CC FAQ on additional rights: https://creativecommons.org/faq/
 
 This is conservative project policy, not legal advice or an assertion that any use is definitely lawful.
+
+
+## Teacher fidelity does not authorize reproduction
+Preserve objective teaching characteristics (evidenced topics, general logic, emphasis and misconceptions) without copying a teacher's original paragraphs, board images, unusual diagrams, proprietary assignments or distinctive expressive sequencing where legally protected. If those elements are necessary for accuracy, keep the source private and obtain explicit rights/consent before publishing any adaptation. Intent hypotheses cannot turn into fabricated teacher quotes.
+
+A released official exam is NOT automatically openly licensed. Link to authorized official pages; no mirroring, close paraphrase, number-swapping of distinctive questions, or publication of teacher-only exam materials. Use independently authored exam-style problems and check their correctness. Apply individual licences to any referenced OER, figures and datasets; no whole-site assumption.
+
+A research registry that passes schema checks is not proof of a web source's truth, access permission, copyright status or a license's compatibility. Human review is a publication veto.

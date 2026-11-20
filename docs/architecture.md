@@ -26,3 +26,11 @@ A static audit PASS means only that declared metadata is consistent with conserv
 
 ## Future work
 Parser adapters (MarkItDown/local PDF/PPTX), structured extraction, cross-course knowledge graph, selective regeneration, exporter adapters and optional UI. None of these are represented as implemented in v0.1.
+
+
+## v0.2 extension: teacher spine and open learning research
+- Private source evidence ledger with required handling for each meaningful teacher element and intentionality labelled explicit/hypothesized/unknown.
+- Canonical rich lesson page for both novice and revision reading; separate resources remain machine data, not dozens of student pages.
+- Discipline router loads only the matching profile and extends pedagogical logic.
+- When an approved web tool exists, agent searches primary/official materials by objective, validates sources and rights, then enriches the same lesson; CLI itself only produces query plans.
+- teacher-check and resource-check validate declarations, not the original classroom documents or reality of URLs.

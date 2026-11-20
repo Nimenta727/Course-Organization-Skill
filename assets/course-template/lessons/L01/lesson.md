@@ -1,22 +1,49 @@
-# Lesson 01 — Original course topic
+# 第 01 课｜课程主题（独立撰写模板）
 
-## 学习目标 / Learning Objectives
-- LO01: Explain the original concept and apply it to a new situation.
+**初学者路线：** 先修知识 → 教师授课主线 → 基础讲解 → 完整示例 → 错误分析 → 练习。
+**复习路线：** 30 秒速览 → 核心结论 → 易错点 → 复习速览 → 考试类型练习。
 
-## 先修知识 / Prerequisites
-List relevant prior knowledge.
+## 学习目标
+- LO01：用自己的语言解释核心知识，并完成一项新的实践任务。
 
-## 知识讲解 / Concept Explanation
-Write a new, independently structured explanation from permitted knowledge, not a slide-by-slide rewording.
+## 30 秒速览
+用 3–6 行说明本课回答什么问题、为什么重要、与前后课的关系。
 
-## 示例 / Worked Example
-Create an independently designed example with reasoning.
+## 先修知识
+说明需要预先了解的基础，并在必要时用独立语言补全。
 
-## 常见错误 / Misconceptions
-Describe a typical mistake and explain its correction.
+## 教师授课主线
+仅记录实际资料中可证实的主题顺序、重点与步骤。若推测教师意图，明确写为“可能意图”，提供其他合理解释。不得编造教师引语或复制无授权的独创表达。
 
-## 课堂练习 / Practice
-Guided task ACT01, then independent assessment ASM01.
+## 知识讲解
+### 从直觉理解
+独立解释核心问题和原因，适用于初学者。
 
-## 复习与总结 / Recap
-Three retrieval prompts, a spaced follow-up, and the next-lesson connection.
+### 严格定义、规则与推演
+补足原材料中省略的中间步骤；解释适用条件和为何成立。
+
+### 另一个视角
+适当加入图示/算法追踪/反例/实际应用等互补解释，而不是机械堆砌。
+
+## 示例
+提供新设计的完整解题或操作过程，包含输入、关键步骤、理由、结果与检验。
+
+## 常见错误
+明确区分“在资料中观察到的错误”和“AI 新设计的教学错误示范”。演示后必须解释错误原因、正确修复和检查方法；未经证实不得称教师故意犯错。
+
+## 深入拓展
+适当增加原理证明、边界条件、效率、学科联系或延伸阅读。把拓展放在相关知识后，避免形成碎片。
+
+## 课堂练习
+- ACT01：给初学者带提示的引导练习。
+- ASM01：全新、可独立完成的考核练习及反馈方向。
+- 官方考试资料如需引用，仅提供已核验的页面链接，默认不复制受保护试题。
+
+## 复习速览与总结
+- 核心知识：概念、定理、公式或不变量
+- 易错点：错误类型、成立条件、修复线索
+- 5 分钟闭卷检索：三个自测问题
+- 下次回顾：隔一段时间复习本课，连到下一课
+
+## 资料与证据说明
+区分实际观察、可能的教学意图和独立扩展。仅公开有权公开的引用与元数据。原始课件、教师意图分析明细及个人信息放在私有证据台账中。
