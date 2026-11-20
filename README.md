@@ -25,7 +25,7 @@ Course Organization Skill 是面向课程整理与教学资料重建的 [Agent S
 ## 关键设计
 
 1. **教师内容为主。** 保存可验证的知识顺序、重点、板书推理和错误类型；推测教学意图时必须标注为假设，而非杜撰教师原话。
-2. **一课一文。** 每课在一个 \`lessons/Lxx/lesson.md\` 中容纳教师主线、基础概念、详细推导、多角度讲解、错误修正、难点拓展、练习和复习速览。
+2. **一课一文。** 每课在一个 `lessons/Lxx/lesson.md` 中容纳教师主线、基础概念、详细推导、多角度讲解、错误修正、难点拓展、练习和复习速览。
 3. **新手与复习双路线。** 同一篇讲义既能连续学习，也能按页内目录快速定位知识结论、易错点和考点。
 4. **学科独立方法。** 编程强调可运行示例、追踪与调试；数学强调推导与证明；科学强调模型与证据；人文强调材料与论证；语言强调表达与纠错；经济和工程强调假设与建模。
 5. **开放但审慎的权威补充。** 可调用 Agent 的联网能力检索官方课程标准、大学资料、开放教材和官方已公开考试要求；**正式真题默认链接到原站，而不是复制或轻改题目。**
@@ -36,7 +36,7 @@ Course Organization Skill 是面向课程整理与教学资料重建的 [Agent S
 
 | 功能 | v0.2.1 状态 | 说明 |
 | --- | --- | --- |
-| Agent Skill 与按需参考规则 | ✅ 已提供 | \`SKILL.md\` + \`references/\` |
+| Agent Skill 与按需参考规则 | ✅ 已提供 | `SKILL.md` + `references/` |
 | 教师证据/错误示范保真流程 | ✅ 规范 + 元数据检查 | 需要真实材料和人工内容复核 |
 | 六类学科差异化策略 | ✅ 已提供 | 按学科路由加载 |
 | 一课一文、初学/复习双通道模板 | ✅ 已提供 | 附原创示例课程 |
@@ -59,7 +59,7 @@ git clone https://github.com/Nimenta727/Course-Organization-Skill.git
 cd Course-Organization-Skill
 ~~~
 
-将这个目录作为 Agent 可读取的 Skill 目录（含 \`SKILL.md\`、\`references/\` 和 \`assets/\`），或在相应 Agent 的 Skills 目录中放入该目录的副本或符号链接。Codex 和 Claude Code 的具体路径及 Windows 说明参见[安装指南](docs/INSTALLATION.md)。
+将这个目录作为 Agent 可读取的 Skill 目录（含 `SKILL.md`、`references/` 和 `assets/`），或在相应 Agent 的 Skills 目录中放入该目录的副本或符号链接。Codex 和 Claude Code 的具体路径及 Windows 说明参见[安装指南](docs/INSTALLATION.md)。
 
 ### 2. 让 Agent 先制定整理计划
 
@@ -101,7 +101,7 @@ course/
     └── release-manifest.json       # 默认不允许公开发布
 ~~~
 
-每篇 \`lesson.md\` 按“30 秒速览 → 先修知识 → 教师主线 → 知识讲解 → 推导/演示 → 常见错误 → 深入拓展 → 练习 → 复习速览”组织。技术上的证据切片可以细分，但人读的课程章节不会被拆散。
+每篇 `lesson.md` 按“30 秒速览 → 先修知识 → 教师主线 → 知识讲解 → 推导/演示 → 常见错误 → 深入拓展 → 练习 → 复习速览”组织。技术上的证据切片可以细分，但人读的课程章节不会被拆散。
 
 阅读[完整原创示例](examples/sample-course/lessons/L01/lesson.md)或[课程模板](assets/course-template/lessons/L01/lesson.md)。
 
@@ -109,12 +109,12 @@ course/
 
 | 命令 | 用途 | 是否联网 |
 | --- | --- | --- |
-| \`course-org scan INPUT --out /private/index.json\` | 扫描文件名、大小、类型和哈希 | 否 |
-| \`course-org validate COURSE_DIR\` | 检查课程路径、讲义章节和目标对齐 | 否 |
-| \`course-org research-plan COURSE_DIR\` | 输出待执行的权威检索查询 | 否 |
-| \`course-org teacher-check /private/teacher-map.private.json\` | 检查私有教师证据台账 | 否 |
-| \`course-org resource-check registry.json\` | 检查外部资源登记声明 | 否 |
-| \`course-org audit COURSE_DIR --sources /private/source-manifest.json --teacher-map /private/teacher-map.private.json\` | 发布前元数据阻断检查 | 否 |
+| `course-org scan INPUT --out /private/index.json` | 扫描文件名、大小、类型和哈希 | 否 |
+| `course-org validate COURSE_DIR` | 检查课程路径、讲义章节和目标对齐 | 否 |
+| `course-org research-plan COURSE_DIR` | 输出待执行的权威检索查询 | 否 |
+| `course-org teacher-check /private/teacher-map.private.json` | 检查私有教师证据台账 | 否 |
+| `course-org resource-check registry.json` | 检查外部资源登记声明 | 否 |
+| `course-org audit COURSE_DIR --sources /private/source-manifest.json --teacher-map /private/teacher-map.private.json` | 发布前元数据阻断检查 | 否 |
 
 **这些命令只验证它们明示的内容，不负责判断复杂法律权利、语义抄袭或课程学术正确性。**
 
@@ -123,7 +123,7 @@ course/
 - 获取教师 PPT、课堂录音、原创试题或学生作业，**不自动获得**上传模型、翻译、改编或公开传播的权利。
 - 保留教师课程**可核验的教学特点**，不默认为其独创文本、插图、编排和受保护习题获得再许可。无法公开的表达可留在私有证据层，公开教材另行独立编写。
 - 官方发布真题也可能限制复制，默认提供可信原站链接，并独立设计新题。
-- 涉及教师材料的公开内容必须通过来源授权、隐私、原创性和人工审核。自动 \`audit\` PASS **不能**保证法律上的零侵权风险。
+- 涉及教师材料的公开内容必须通过来源授权、隐私、原创性和人工审核。自动 `audit` PASS **不能**保证法律上的零侵权风险。
 
 详见[版权门禁](references/copyright-gate.md)、[安全政策](SECURITY.md)和[常见问题](docs/FAQ.md)。
 

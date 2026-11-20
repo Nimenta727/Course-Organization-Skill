@@ -1,24 +1,38 @@
-name: Unit checks
+name: Unit tests and skill checks
 on:
   push:
   pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
-  unittest:
+  verify:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - name: Install editable package
+          python-version: ${{ matrix.python-version }}
+      - name: Install CLI
         run: python -m pip install -e .
-      - name: Run deterministic unit tests
+      - name: Run unit tests and document checks
         run: python -m unittest discover -s tests -v
-      - name: Validate fictional sample course
+      - name: Check sample course structure
         run: course-org validate examples/sample-course
-      - name: Confirm release defaults BLOCK
+      - name: Verify offline search status
+        run: |
+          course-org research-plan examples/sample-course > /tmp/course-org-plan.json
+          python -c 'import json; p=json.load(open("/tmp/course-org-plan.json")); assert p["generated_plan_only"] and all(x["search_status"] == "NOT_SEARCHED" for x in p["plans"])'
+      - name: Sample must BLOCK public release
+        shell: bash
         run: |
           if course-org audit examples/sample-course; then
-            echo "Unexpected audit pass"
+            echo "ERROR: sample was incorrectly approved"
             exit 1
+          else
+            echo "Expected BLOCK confirmed"
           fi

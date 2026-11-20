@@ -4,7 +4,7 @@
 
 目前不是。v0.2.1 提供工作流、模板和工具接口；真实 PPT/PDF 解析及端到端课程生成引擎列在 v0.3/v0.4 路线图。配备文件处理工具的 Agent 可以在有权限时帮助读取和重建内容，但效果取决于工具及输入质量。
 
-### Q: \`research-plan\` 会搜索网上的真题吗？
+### Q: `research-plan` 会搜索网上的真题吗？
 
 不会。它离线生成建议查询并标记 NOT_SEARCHED。只有实际接入具备联网权限的 Agent 才能核验官方考试网页、大学资料等来源。
 
@@ -24,7 +24,7 @@
 
 文件名、讲课时间、板书内容和权限证据可能含敏感信息。即使公开的课程正文是独立创作，私有证据台账也不应默认与它一起上传。
 
-### Q: \`audit\` 显示 PASS 就能放心公开吗？
+### Q: `audit` 显示 PASS 就能放心公开吗？
 
 不能。它不做语义相似度、法律分析、图片版权识别或完整个人信息检测。PASS 仅意味着机器所检查的**声明字段**符合设置的规则。人工审核与显式公开授权仍是必要环节。
 
@@ -42,6 +42,6 @@
 
 ### Q: 能在哪些 AI 平台使用？
 
-凡是能读取 Agent Skills 格式或能直接加载 \`SKILL.md\` 的 Agent 都可尝试。不同平台的安装目录、工具接口和权限可能不同。参考 [安装指南](INSTALLATION.md)，不要将某个客户端的运行结果视为所有平台的保证。
+凡是能读取 Agent Skills 格式或能直接加载 `SKILL.md` 的 Agent 都可尝试。不同平台的安装目录、工具接口和权限可能不同。参考 [安装指南](INSTALLATION.md)，不要将某个客户端的运行结果视为所有平台的保证。
 
 **English:** This is a preview Skill plus metadata CLI, not a turnkey PDF parser/course factory. No live web browsing happens in the CLI; teacher intent must be evidence-qualified; legal clearance cannot be inferred from metadata PASS. See INSTALLATION and USAGE for setup and examples.

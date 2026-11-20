@@ -16,13 +16,13 @@ course-org validate examples/sample-course
 course-org research-plan examples/sample-course
 ~~~
 
-\`validate\` 用于检查示例课程中的章节结构及目标/活动/评价关联；\`research-plan\` 仅生成外部检索查询，不联网。
+`validate` 用于检查示例课程中的章节结构及目标/活动/评价关联；`research-plan` 仅生成外部检索查询，不联网。
 
 ~~~bash
 course-org audit examples/sample-course
 ~~~
 
-**这次审计应返回 BLOCK / exit 1。** 示例发行清单故意将 \`public_release\` 和审批开关设为 \`false\`，防止教学演示被误发布。
+**这次审计应返回 BLOCK / exit 1。** 示例发行清单故意将 `public_release` 和审批开关设为 `false`，防止教学演示被误发布。
 
 ## B. 与 AI Agent 一起整理课程（许可先行）
 
@@ -48,4 +48,4 @@ course-org audit examples/sample-course
 
 阅读 [USAGE.md](USAGE.md) 了解私有清单和具体命令；阅读 [FAQ.md](FAQ.md) 了解为什么 CLI 不会自己搜索网络或读取 PPT 正文。
 
-**English:** Clone the repository, optionally install the Python CLI, run the fictional sample's \`validate\` and \`research-plan\`, and confirm that \`audit\` blocks publication by default. To create new course lessons, attach the Skill to an authorized, file-capable Agent and request a non-destructive plan before generation.
+**English:** Clone the repository, optionally install the Python CLI, run the fictional sample's `validate` and `research-plan`, and confirm that `audit` blocks publication by default. To create new course lessons, attach the Skill to an authorized, file-capable Agent and request a non-destructive plan before generation.

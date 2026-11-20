@@ -15,6 +15,12 @@
 - Teacher evidence and researched resource metadata validators; strict link-only handling for official exam sources.
 - Larger synthetic/independently authored sample, new tests and bilingual documentation.
 
+## Delivered in v0.2.1 Preview (2026-11-20)
+- Comprehensive bilingual README, installation, usage, FAQ, developer and release documentation.
+- Contribution, security, conduct, citation and changelog policies.
+- Declarative GitHub labels and repository metadata, Issue/PR templates and controlled publication workflows.
+- Expanded offline test/version/doc checks. Actual CI status must be verified independently.
+
 ## v0.3: approved document ingestion
 - Local and opt-in parsers for PDF, PPTX, DOCX, images and zip; batch inventories and extraction reports.
 - Source-by-page provenance and ambiguous lesson mapping preview.
@@ -36,7 +42,7 @@
 - LMS/document integration only with proper rights/privacy controls.
 
 ## Do not overclaim
-v0.1 is an instruction-driven skill and deterministic validator, NOT a fully automatic course-authoring service, document parser or legal review solution.
+v0.2.1 is an instruction-driven skill and deterministic validator, NOT a fully automatic course-authoring service, document parser or legal review solution.
 
 ## Important limits
 The v0.2 CLI does not crawl the web, OCR files or independently verify a teacher's class. An online-capable agent can search if permission/tooling is present; every result needs source and rights verification. No zero-infringement promise.

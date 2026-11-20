@@ -23,7 +23,7 @@ The reader gets a full chapter, not dozens of tiny files.
 ## Principles
 
 1. **Teacher fidelity with evidence.** Preserve the demonstrated learning trajectory, concepts, emphases and misconception types. Label hypotheses about intent as hypotheses, never as quotations or facts.
-2. **One lesson, one rich document.** Each \`lessons/Lxx/lesson.md\` carries prerequisites, teaching narrative, beginner explanations, steps, multiple useful viewpoints, corrected errors, deeper extensions, independent practice and recap.
+2. **One lesson, one rich document.** Each `lessons/Lxx/lesson.md` carries prerequisites, teaching narrative, beginner explanations, steps, multiple useful viewpoints, corrected errors, deeper extensions, independent practice and recap.
 3. **Two learning routes on the same page.** New learners can read sequentially; revising learners can skim the overview, key claims, pitfalls and retrieval questions.
 4. **Subject-aware design.** Computing: runtime tracing and debugging. Math: derivation and proof. Science: models and evidence. Humanities: sources and arguments. Language: usage and feedback. Economics/engineering: assumptions and design trade-offs.
 5. **Open, verifiable enrichment.** An equipped and authorized agent may research official syllabi, released exam specifications, reputable universities and licensed OER. Official exam materials are **linked by default**, not copied or superficially rewritten.
@@ -60,7 +60,7 @@ course-org research-plan examples/sample-course
 python -m unittest discover -s tests -v
 ~~~
 
-The CLI is optional; the Skill can be used by giving a suitable agent access to \`SKILL.md\`, \`references/\`, and \`assets/\`. See [installation instructions](docs/INSTALLATION.md) for Codex, Claude Code, general Agent Skills usage and platform notes.
+The CLI is optional; the Skill can be used by giving a suitable agent access to `SKILL.md`, `references/`, and `assets/`. See [installation instructions](docs/INSTALLATION.md) for Codex, Claude Code, general Agent Skills usage and platform notes.
 
 Suggested prompt:
 
@@ -88,20 +88,20 @@ The [complete fictional sample lesson](examples/sample-course/lessons/L01/lesson
 
 | Command | Purpose |
 | --- | --- |
-| \`course-org scan INPUT --out /private/index.json\` | Inventory filenames, extensions, sizes and hashes; no text extraction |
-| \`course-org validate COURSE_DIR\` | Check lesson paths and declared outcome/activity/assessment links |
-| \`course-org research-plan COURSE_DIR\` | Generate queries without browsing the web |
-| \`course-org teacher-check /private/teacher-map.private.json\` | Check private source coverage metadata |
-| \`course-org resource-check registry.json\` | Check declared resource/rights metadata |
-| \`course-org audit COURSE_DIR --sources /private/source-manifest.json --teacher-map /private/teacher-map.private.json\` | Conservative pre-publication metadata gate |
+| `course-org scan INPUT --out /private/index.json` | Inventory filenames, extensions, sizes and hashes; no text extraction |
+| `course-org validate COURSE_DIR` | Check lesson paths and declared outcome/activity/assessment links |
+| `course-org research-plan COURSE_DIR` | Generate queries without browsing the web |
+| `course-org teacher-check /private/teacher-map.private.json` | Check private source coverage metadata |
+| `course-org resource-check registry.json` | Check declared resource/rights metadata |
+| `course-org audit COURSE_DIR --sources /private/source-manifest.json --teacher-map /private/teacher-map.private.json` | Conservative pre-publication metadata gate |
 
-\`course-org audit examples/sample-course\` is **expected to fail**: the sample does not authorize public release.
+`course-org audit examples/sample-course` is **expected to fail**: the sample does not authorize public release.
 
 ## Copyright, privacy and research
 
 Owning, viewing or receiving a lecture slide does **not** automatically permit redistribution, external AI processing, derivative publication or copying protected figures/assignments. Preserve verified *teaching logic*, but independently author public expressions unless specific rights are documented. Published official exam material may still have restricted reuse; link it by default and produce genuinely original practice.
 
-A local \`audit\` PASS checks declared metadata only. It **cannot guarantee zero infringement**, discover hidden personal information, or assess all legal permissions. A real human review of the content and rights is mandatory before any public release.
+A local `audit` PASS checks declared metadata only. It **cannot guarantee zero infringement**, discover hidden personal information, or assess all legal permissions. A real human review of the content and rights is mandatory before any public release.
 
 Read [copyright rules](references/copyright-gate.md), [teacher fidelity](references/teacher-fidelity.md) and [SECURITY.md](SECURITY.md).
 

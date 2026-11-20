@@ -1,6 +1,6 @@
 # Changelog / 版本变更记录
 
-Project follows pragmatic SemVer-inspired \`0.x\` previews. Dates are UTC unless stated otherwise. Details of each repository modification are in [docs/routine/](docs/routine/).
+Project follows pragmatic SemVer-inspired `0.x` previews. Dates are UTC unless stated otherwise. Details of each repository modification are in [docs/routine/](docs/routine/).
 
 ## [Unreleased]
 

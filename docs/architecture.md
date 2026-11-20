@@ -25,7 +25,7 @@ A static audit PASS means only that declared metadata is consistent with conserv
 - Machine audit overconfidence -> explicit reviewer and approval; no claim of legal certification.
 
 ## Future work
-Parser adapters (MarkItDown/local PDF/PPTX), structured extraction, cross-course knowledge graph, selective regeneration, exporter adapters and optional UI. None of these are represented as implemented in v0.1.
+Parser adapters (MarkItDown/local PDF/PPTX), structured extraction, cross-course knowledge graph, selective regeneration, exporter adapters and optional UI. None of these are represented as implemented in v0.2.1.
 
 
 ## v0.2 extension: teacher spine and open learning research

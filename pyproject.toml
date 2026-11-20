@@ -1,16 +1,32 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "course-organization-skill"
-version = "0.2.0"
-description = "Private-first course organization agent skill and deterministic validators"
+version = "0.2.1"
+description = "Teacher-led lesson-first Agent Skill and copyright-aware course metadata CLI"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
+license-files = ["LICENSE"]
 authors = [{name = "Nimenta727"}]
+keywords = ["agent-skills", "education", "instructional-design", "course-organization", "study-notes", "pedagogy"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Education",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Nimenta727/Course-Organization-Skill"
+Documentation = "https://github.com/Nimenta727/Course-Organization-Skill/blob/main/docs/INSTALLATION.md"
+Repository = "https://github.com/Nimenta727/Course-Organization-Skill"
+Issues = "https://github.com/Nimenta727/Course-Organization-Skill/issues"
 
 [project.scripts]
 course-org = "course_org.cli:main"

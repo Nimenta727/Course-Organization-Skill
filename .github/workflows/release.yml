@@ -1,0 +1,68 @@
+name: Publish preview release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version matching package, e.g. v0.2.1"
+        required: true
+        default: "v0.2.1"
+        type: string
+      approval:
+        description: "Type RELEASE after verifying rights, notes and tests"
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  preflight:
+    if: ${{ inputs.approval == 'RELEASE' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate version and release notes
+        env:
+          VERSION: ${{ inputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os, pathlib, tomllib
+          v = os.environ["VERSION"]
+          actual = tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"]
+          assert v == "v" + actual, (v, actual)
+          assert (pathlib.Path("docs/releases") / (v + ".md")).is_file()
+          PY
+      - name: Install CLI and run tests
+        run: |
+          python -m pip install -e .
+          python -m unittest discover -s tests -v
+          course-org validate examples/sample-course
+          course-org research-plan examples/sample-course
+      - name: Sample must not publish
+        shell: bash
+        run: |
+          if course-org audit examples/sample-course; then
+            echo "Unsafe sample publication clearance"
+            exit 1
+          fi
+      - name: Build CLI wheel
+        run: python -m pip wheel . --no-deps --wheel-dir dist
+      - name: Create GitHub prerelease and tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ inputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$VERSION" >/dev/null 2>&1; then
+            echo "Release already exists: $VERSION"
+            exit 1
+          fi
+          gh release create "$VERSION" dist/*.whl \
+            --title "$VERSION · Preview" \
+            --notes-file "docs/releases/$VERSION.md" \
+            --prerelease \
+            --target "$GITHUB_SHA"

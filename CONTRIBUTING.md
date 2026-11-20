@@ -16,9 +16,9 @@
 ## Pull Request 流程
 
 1. Fork 或创建功能分支，小步提交，说明对教师保真、课程结构和版权边界的影响。
-2. 新增/修改行为尽可能配套测试。运行 \`python -m unittest discover -s tests -v\`、\`course-org validate examples/sample-course\`。
-3. 修改 Skill 时核对对应的 \`references/\`、README.md 和 README_EN.md；不把规划功能写成已实现。
-4. 每一次 GitHub 修改都写一篇 \`docs/routine/YYYY-MM-DD-HHMM-summary.md\`：日期、改动文件、行为变化、实际测试、限制、下一步。
+2. 新增/修改行为尽可能配套测试。运行 `python -m unittest discover -s tests -v`、`course-org validate examples/sample-course`。
+3. 修改 Skill 时核对对应的 `references/`、README.md 和 README_EN.md；不把规划功能写成已实现。
+4. 每一次 GitHub 修改都写一篇 `docs/routine/YYYY-MM-DD-HHMM-summary.md`：日期、改动文件、行为变化、实际测试、限制、下一步。
 5. PR 说明风险、验证记录；如果没有实际跑测试必须明示。
 6. 在获得明确授权并经过评审前，不公开发布真实教师素材或将个人信息提交进仓库历史。
 

@@ -1,0 +1,43 @@
+name: Sync issue labels
+on:
+  push:
+    paths:
+      - ".github/labels.json"
+      - ".github/workflows/sync-labels.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  synchronize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate label definitions
+        shell: bash
+        run: |
+          jq -e 'type == "array" and length > 0 and
+            all(.[]; (.name | type == "string" and length > 0) and
+              (.color | test("^[0-9a-fA-F]{6}$")) and
+              (.description | type == "string"))' .github/labels.json
+      - name: Upsert repository issue labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r label; do
+            name=$(jq -r '.name' <<< "$label")
+            color=$(jq -r '.color' <<< "$label")
+            description=$(jq -r '.description' <<< "$label")
+            encoded=$(jq -rn --arg value "$name" '$value | @uri')
+            if gh api "repos/$REPO/labels/$encoded" >/dev/null 2>&1; then
+              gh api -X PATCH "repos/$REPO/labels/$encoded" \
+                -f new_name="$name" -f color="$color" -f description="$description" >/dev/null
+            else
+              gh api -X POST "repos/$REPO/labels" \
+                -f name="$name" -f color="$color" -f description="$description" >/dev/null
+            fi
+          done < <(jq -c '.[]' .github/labels.json)
+          echo "Issue label definitions synchronized"
