@@ -21,6 +21,14 @@
 - Declarative GitHub labels and repository metadata, Issue/PR templates and controlled publication workflows.
 - Expanded offline test/version/doc checks. Actual CI status must be verified independently.
 
+## Delivered in v0.2.2 Preview (2026-11-21)
+- Student-first longform chapters with nine coherent learning sections and knowledge-unit K IDs.
+- Mandatory 2 foundation + 2 application + 1 challenge task set with explanatory paired answers.
+- Strong static non-code prose depth floors; no one-sentence knowledge coverage or fabricated completion.
+- Seven independent reviewer roles and a SHA-256-backed private review report gate; CLI does not spawn child agents.
+- New student-check, review-gate and ready commands plus an independently written substantive example.
+- Source-backed classroom methods kept internal, never republishing user-provided teacher decks.
+
 ## v0.3: approved document ingestion
 - Local and opt-in parsers for PDF, PPTX, DOCX, images and zip; batch inventories and extraction reports.
 - Source-by-page provenance and ambiguous lesson mapping preview.

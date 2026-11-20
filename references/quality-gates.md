@@ -44,3 +44,10 @@ This rubric assesses pedagogy only; copyright and privacy are independent veto g
 - Each major independent addition is fact-checked and cited as appropriate; current official exam syllabus and source URLs are verified, or NOT_SEARCHED is declared.
 - Link-only official exams are not copied. AI-created practice must be substantively original and independently checked.
 - Teacher-fidelity scoring, subject-specific educational quality and legal permission remain SEPARATE dimensions.
+
+
+## Mandatory student-focused acceptance (v0.2.2)
+- student-check passes minimum non-code density, section ordering, knowledge-unit fields, worked example, 2+2+1 assignment levels and all Q answer pairings. Superficial one-liners are blocked.
+- ready additionally requires every role from independent child agents or independent humans to PASS on the exact current SHA-256; stale/duplicate/self-review reports BLOCK.
+- These mechanical checks cannot detect filler, wrong reasoning or copied protected expression, which independent reviewers must analyze from actual content.
+- The student's nine sections MUST NOT include internal teacher-intent hypotheses, sources rights ledger or an agent review log. Student readability has priority; evidence stays private.

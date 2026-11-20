@@ -49,3 +49,11 @@ course-org audit examples/sample-course
 阅读 [USAGE.md](USAGE.md) 了解私有清单和具体命令；阅读 [FAQ.md](FAQ.md) 了解为什么 CLI 不会自己搜索网络或读取 PPT 正文。
 
 **English:** Clone the repository, optionally install the Python CLI, run the fictional sample's `validate` and `research-plan`, and confirm that `audit` blocks publication by default. To create new course lessons, attach the Skill to an authorized, file-capable Agent and request a non-destructive plan before generation.
+
+## v0.2.2 的学生讲义验收
+
+~~~bash
+course-org student-check examples/sample-course
+~~~
+
+新的样例是一课完整的深度讲义，包含三个有逐步推理的知识单元、一个完整的 C 案例、四种常见错误、5 道分层作业和逐题完整解析。不要跳过这一道质量门禁。若无法得到真正的子智能体或独立人工审核，请标记 REVIEW_PENDING，不得宣布已通过严格审计。

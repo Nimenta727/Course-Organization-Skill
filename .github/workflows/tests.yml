@@ -23,6 +23,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Check sample course structure
         run: course-org validate examples/sample-course
+      - name: Force complete student chapter depth and homework
+        run: course-org student-check examples/sample-course
       - name: Verify offline search status
         run: |
           course-org research-plan examples/sample-course > /tmp/course-org-plan.json

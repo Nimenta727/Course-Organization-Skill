@@ -1,24 +1,40 @@
 {
   "course_id": "intro-computing",
-  "title": "计算思维入门 — 原创示例",
+  "title": "计算思维入门 — 原创深度示例",
   "audience": "beginner",
+  "subject": "computing",
   "lessons": [
     {
       "id": "L01",
       "path": "lessons/L01/lesson.md",
+      "topics": [
+        {
+          "id": "K01",
+          "title": "从任务要求走向可执行算法"
+        },
+        {
+          "id": "K02",
+          "title": "初始化和边界条件"
+        },
+        {
+          "id": "K03",
+          "title": "循环不变量与正确性"
+        }
+      ],
       "objectives": [
         {
           "id": "LO01",
-          "statement": "Explain the difference between describing an action and describing a repeatable algorithm",
+          "statement": "Explain an exact maximum-finding algorithm and its invariant",
           "activities": [
-            "ACT01"
+            "ACT01",
+            "ACT02"
           ],
           "assessments": [
-            "ASM01"
+            "ASM01",
+            "ASM02"
           ]
         }
       ]
     }
-  ],
-  "subject": "computing"
+  ]
 }

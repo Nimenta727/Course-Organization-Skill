@@ -125,3 +125,30 @@ This illustrative URL is not an actual verified source; NEVER place this example
 - subject: computing, mathematics, sciences, humanities, languages, economics-engineering, or specific domain.
 - Reader experience: one detailed lesson file with a beginner route and a revision pocket.
 - Research plan output is separate from research registry; planned queries have status NOT_SEARCHED.
+
+
+## Student knowledge topics
+course.json lessons require a topics array for student-check. Each item has id K01/K02 etc and title; the lesson's 核心知识详解 contains matching H3 headings in the same order. No arbitrarily omitting substantive teacher knowledge points from this manifest.
+
+## Independent review report (PRIVATE, outside Git)
+Illustrative structure only; values shown are NOT actual completed reviews:
+~~~json
+{
+  "author_id": "actual-author-agent-identifier",
+  "lesson_reviews": [{
+    "lesson_path": "lessons/L01/lesson.md",
+    "reviews": [{
+      "role": "teacher_coverage",
+      "reviewer_id": "distinct-independent-subagent-or-human",
+      "mode": "subagent",
+      "status": "BLOCK",
+      "lesson_sha256": "actual-current-digest",
+      "evidence": "Concrete comparisons, observations and sources actually checked",
+      "checked_items": ["source segment 1", "lesson K01"],
+      "limitations": ["any unavailable source"],
+      "blocking_findings": ["resolve omitted explanation"]
+    }]
+  }]
+}
+~~~
+Every lesson requires all seven roles: teacher_coverage, novice_readability, subject_accuracy, assignment_integrity, revision_usefulness, rights_privacy, adversarial. All must PASS with no blocking findings and a fresh digest. The CLI verifies report declarations and hash consistency, NOT whether a claimed child agent truly existed or audited honestly.

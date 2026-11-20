@@ -48,3 +48,6 @@ Issue Labels 可通过仓库 `.github/workflows/sync-labels.yml` 的手动入口
 ## 已核验的 CI 记录 / Verified CI evidence
 
 2026-11-20 12:08 UTC：[Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44733266710) 在 Python 3.10、3.11、3.12 三个工作项均成功结束，各执行 21 项测试，并确认示例公开发布审核被默认阻断。此记录对应提交 `4d3e78f`；之后若更改 CI 或代码，请重新确认最新提交状态。GitHub Release 尚未创建。
+
+## v0.2.2 新增学生质量关卡
+正式预发布应先执行 course-org student-check examples/sample-course；并对真实生成课程进行实际独立的七角色审核。学生内容通过 ready 仅证明结构与独立审批声明具备，不替代版权公开发行审批。无法使用子智能体时由独立人工审核；本地 CLI 不会自动创建子智能体。参见 docs/releases/v0.2.2.md。

@@ -22,3 +22,7 @@ local-source-manifest.json
 **/source-manifest.json
 **/private-source-manifest.json
 **/private-index.json
+
+# Private independent audits and teacher evidence
+*independent-review*.json
+*teacher-map.private.json

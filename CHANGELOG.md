@@ -7,6 +7,12 @@ Project follows pragmatic SemVer-inspired `0.x` previews. Dates are UTC unless s
 - Continue testing with explicitly authorized, private course materials.
 - Investigate safe local document extraction, evidence mapping and independent lesson generation.
 
+## [0.2.2] — 2026-11-21 (Preview)
+
+- Student-facing textbooks: force deep foundational explanation, full examples, layered homework and complete solutions in one lesson.
+- Seven independent review roles, review-gate/ready SHA-256 checks and fail-closed REVIEW_PENDING state when genuine reviewers are unavailable.
+- Static prose-density checks and regression tests. This does not launch child agents or certify content correctness/copyright.
+
 ## [0.2.1] — 2026-11-20 (Preview)
 
 - Rebuilt both README files and user/developer/release documentation.

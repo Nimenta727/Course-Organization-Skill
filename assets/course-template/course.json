@@ -2,14 +2,25 @@
   "course_id": "replace-me",
   "title": "Original Course",
   "audience": "beginner",
+  "subject": "computing",
   "lessons": [
     {
       "id": "L01",
       "path": "lessons/L01/lesson.md",
+      "topics": [
+        {
+          "id": "K01",
+          "title": "Core knowledge concept A"
+        },
+        {
+          "id": "K02",
+          "title": "Core knowledge concept B"
+        }
+      ],
       "objectives": [
         {
           "id": "LO01",
-          "statement": "Explain one principle using a new example",
+          "statement": "Explain and apply independently developed course principles",
           "activities": [
             "ACT01"
           ],
@@ -19,6 +30,5 @@
         }
       ]
     }
-  ],
-  "subject": "computing"
+  ]
 }

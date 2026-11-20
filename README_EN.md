@@ -6,7 +6,7 @@
 
 [简体中文](README.md) · [Quick start](docs/QUICKSTART.md) · [Installation](docs/INSTALLATION.md) · [User guide](docs/USAGE.md) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
 
-**Version: v0.2.1 Preview** · Optional local CLI: Python 3.10+ · MIT for repository-authored code and documentation only.
+**Version: v0.2.2 Preview** · Optional local CLI: Python 3.10+ · MIT for repository-authored code and documentation only.
 
 Course Organization Skill is an [Agent Skill](https://agentskills.io/specification) that helps an AI agent transform **authorized** course materials into coherent, **one complete lesson per document** study resources. The teacher's evidenced topic order, emphasis, board reasoning and error demonstrations remain the backbone. The agent fills gaps with independently written explanations, alternate representations, original practice, and—when authorized web tools are available—verified authoritative references.
 
@@ -45,6 +45,9 @@ The reader gets a full chapter, not dozens of tiny files.
 | Rights/release declaration audit | Included; not a legal certification |
 | Teacher-map and research-registry metadata checks | Included; records are not automatically truth-verified |
 | Targeted source query planner | Included; offline only |
+| Student-depth, 5-task homework and full-solution gate | Included; CLI student-check |
+| Seven independent child-agent or human review declarations | Included; report/hash gate, NOT an automated subagent launcher |
+| Combined completion gate | Included; CLI ready, requires actual independent reviewers |
 | Live web research | Conditional on the host agent's authorized tools |
 | PDF/PPTX/DOCX full content extraction | Planned for v0.3 |
 | Fully automated batch course writing | Planned for v0.4 |
@@ -58,6 +61,9 @@ cd Course-Organization-Skill
 python -m pip install -e .
 course-org --help
 course-org validate examples/sample-course
+course-org student-check examples/sample-course
+# Only after genuine independent reviewers approved the current chapter:
+# course-org ready examples/sample-course --report /private/independent-review.json
 course-org research-plan examples/sample-course
 python -m unittest discover -s tests -v
 ~~~
@@ -131,3 +137,8 @@ Contributions are welcome via the [issue templates](.github/ISSUE_TEMPLATE). **N
 The repository-authored code and documentation are [MIT-licensed](LICENSE). This does **not** relicense third-party educational content, private teacher materials or student work.
 
 Each repository change should be documented in [docs/routine/](docs/routine/) with its date, changes, verification and next actions.
+
+## v0.2.2: no shallow lessons, mandatory independent audit
+A student chapter requires substantive explanations for every K knowledge unit, worked reasoning, five complete tiered tasks with checkable criteria and five full solutions, all within one reader-friendly chapter. The deterministic student-check blocks incomplete structure and weak prose density. The separate ready command additionally checks seven distinct independent child-agent or human review declarations tied to current SHA-256. No child-agent execution is built into the CLI; without real independent reviewers, status remains REVIEW_PENDING. The metadata gate cannot prove review truth, correctness or zero copyright risk.
+
+See [student edition standard](references/student-edition.md), [assignment module](references/assignment-module.md), and [independent child-agent review](references/subagent-review.md).

@@ -1,26 +1,19 @@
-# One complete lesson for humans / 一课一篇、双用途深度阅读
+# Student reading and depth / 学生阅读与复习规范
 
-## Canonical output
-One lesson is one rich, continuous lessons/Lxx/lesson.md. Model caches, evidence ledgers and intermediate work may be granular, but the learner-facing chapter must not be split by document type or micro-topic. Cross-lesson labs and assessments can have their own indexes, linked from the lesson.
+The human-facing output is a substantial independent textbook chapter, NOT teacher observations, rights metadata or AI research-process notes. The primary mandatory format and specific thresholds are in [student-edition](student-edition.md); mandatory homework is specified in [assignment-module](assignment-module.md).
 
-## Same page, two reading routes
-- Beginner: prerequisites, teacher's evidenced problem sequence, basic explanation, worked steps, contrasting explanations, corrected errors and guided-to-independent tasks.
-- Revision: overview, core definitions/formulas/invariants, frequent mistakes, five-minute retrieval, exam task types and short advanced connections.
-Both routes are visible within the same page. Do not generate duplicate novice and revision books that drift apart.
+## Beginner path
+Start from what the student already knows. For every main K knowledge unit explain a real motivating problem, intuition, precise rule, fully worked reasoning with intermediate steps, boundaries and an understanding check. Choose teacher-evidenced ordering where permissible. Do not show the real instructor's protected expression or invent the instructor's purpose.
 
-## Mandatory reading sequence
-1. Title, goals, prerequisites and two reading routes.
-2. 30-second lesson orientation (3-6 lines).
-3. Classroom mainline: teacher's starting problem, priorities, concept sequence and transitions; identify any inferred intentions.
-4. Deep teaching body: for each substantive step, question -> intuition -> precise rule -> original worked example/derivation -> misconceptions -> self-check.
-5. Teacher-inspired error review, responsibly labelled; show the correction, not just the wrong result.
-6. Extra perspectives when useful: graph vs algebra; trace vs invariant; experiment vs model; counterargument vs evidence. Explain limitations of analogies.
-7. Genuine advanced extension: why it works, edge cases, proof, performance, or connections across lessons, chosen by discipline.
-8. Guided and original independent exercises; official-exam references as links where appropriate.
-9. Review pocket: one-page-equivalent concise summary, key traps, retrieval practice and spaced-review prompts.
-10. Relevant verified reference links and publication-safe rights notes.
+## Revision path
+The same chapter contains compact 必会, 易错, 自测, 联系 cues and staged tasks. Students should be able to close the document, retrieve the answer and explain why a distractor fails. Do not create a separate sparse recap that requires dozens of navigation jumps.
 
-## Depth and readability
-Provide enough intermediate explanation for a newcomer to follow without other files. For hard/abstract concepts use at least two complementary explanations if pedagogically helpful; never force meaningless modalities. Use precise notation, code outputs, readable paragraph spacing, a few well-named sections and original examples with expected answers. Deep means correct and connected, not arbitrary word count. Mark teacher evidence vs hypotheses vs independent AI expansion at chapter or section level without cluttering every sentence.
+## Quality gates
+- Nine specific student H2 headings in order; cohesive narrative and no micro-files.
+- Each knowledge unit must be in prose, not just formulas, code snippets or bullet terms.
+- An independently authored complete example has a reasoned trace and checks.
+- Q01–Q05 homework is substantial, tiered and accompanied by full explanations after the problems.
+- Explanations are tested for factual correctness and fit to discipline; word count is only a static floor.
+- Real subagents or independent humans review content; the author cannot self-approve.
 
-No copied teacher passages, graphs or exam prompts in public chapters absent verified specific rights.
+Keep full internal evidence, teacher-intent hypotheses, source licences and agent audit reports outside student chapters. Public use still requires rights review.

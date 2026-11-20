@@ -5,7 +5,7 @@ on:
       version:
         description: "Release version matching package, e.g. v0.2.1"
         required: true
-        default: "v0.2.1"
+        default: "v0.2.2"
         type: string
       approval:
         description: "Type RELEASE after verifying rights, notes and tests"
@@ -40,6 +40,7 @@ jobs:
           python -m pip install -e .
           python -m unittest discover -s tests -v
           course-org validate examples/sample-course
+          course-org student-check examples/sample-course
           course-org research-plan examples/sample-course
       - name: Sample must not publish
         shell: bash

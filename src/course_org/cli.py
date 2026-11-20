@@ -115,10 +115,10 @@ def validate(root: Path) -> list[str]:
             content = file.read_text(encoding="utf-8")
             sections = [
                 ("learning objectives", ("学习目标", "Learning Objectives")),
-                ("explanation", ("知识讲解", "Concept Explanation", "原理讲解")),
-                ("examples", ("示例", "Worked Example", "课堂演示")),
-                ("misconceptions", ("常见错误", "Misconceptions")),
-                ("practice", ("课堂练习", "Practice", "随堂练习")),
+                ("explanation", ("核心知识详解", "知识讲解", "Concept Explanation", "原理讲解")),
+                ("examples", ("例题精讲", "示例", "Worked Example", "课堂演示")),
+                ("misconceptions", ("易错点与纠正", "常见错误", "Misconceptions")),
+                ("practice", ("分层作业", "课堂练习", "Practice", "随堂练习")),
                 ("review", ("总结", "Recap", "复习")),
             ]
             for label, choices in sections:

@@ -58,3 +58,10 @@ fi
 依次考虑离线抽取器（PDF/PPTX/DOCX，严格本地授权）、逐段来源识别和哈希、增量依赖图、课程目标覆盖自动评估、原创新题独立求解、结构化引用登记、人工审核界面。每一步先证明权限、可追溯性与可维护性。
 
 **English:** Keep the Skill instructions, deterministic CLI, examples and public docs in sync. Run unittest and sample checks, record every GitHub modification under docs/routine/, preserve privacy and copyright vetoes, and do not claim functionality or verification not actually observed.
+
+## 学生内容与独立审阅 CI
+
+- 任何修改学生讲义模板、样例或生成规范的 PR，必须通过 student-check 和 tests/test_student_quality.py。
+- 章节使用九个核心 H2 与 K01、K02 等知识点 ID，作业使用 Q01 等编号且至少 2/2/1 分层；每题有完整答案。
+- 子智能体审阅记录放在仓库之外，绝对不能伪造审核过程；review-gate 只负责元数据和文件摘要一致性，不调用真实子智能体。
+- 教师原件、私有来源证据、版权权限文件和真人学生信息均不得进入 Git 历史。

@@ -101,3 +101,18 @@ course-org audit /path/to/course \
 - 修改官方真题的几个数字就发布 → **不合格**；应原创设计新问题。
 
 **English summary:** Keep a private source/evidence map, design complete lesson-based content, use separate subject-specific pedagogies, run web research only with real authorized tools, and retain human legal/quality review. CLI commands only check metadata and layout; they neither ingest teacher documents nor establish copyright clearance.
+
+## v0.2.2 强制学生讲义与子智能体审核
+
+旧版示例中的“教师授课主线”“教师可能想表达什么”等是内部生产规则，**不可作为学生讲义的章节标题**。学生正文统一采用九个标准标题：本课导读、预备知识、核心知识详解、例题精讲、易错点与纠正、分层作业、深入理解、复习速览、答案与解析。核心知识每个 K 编号均需完整动机、直观、准确规则、逐步推演与检查理解。作业最低两基础、两应用、一挑战，均有任务、验收、提示和详细配对答案。
+
+运行：
+
+~~~bash
+course-org student-check examples/sample-course
+# 以下命令必须提供由真正独立的子智能体/人工审阅者填写的私有报告，不能伪造：
+course-org review-gate YOUR_COURSE --report /private/independent-review.json
+course-org ready YOUR_COURSE --report /private/independent-review.json
+~~~
+
+ready 将结构、学生内容密度及七名独立审核角色的最新 SHA-256 合并检查；修改课程后旧的审阅报告自动失效。任何未经过实际审核的内容必须标记 REVIEW_PENDING；通过只说明元数据完整且关联最新文本，不代表版权可以公开发布。详见 references/student-edition.md、assignment-module.md、subagent-review.md。

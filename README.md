@@ -6,7 +6,7 @@
 
 [English](README_EN.md) · [快速开始](docs/QUICKSTART.md) · [安装指南](docs/INSTALLATION.md) · [功能说明](docs/USAGE.md) · [开发路线](docs/roadmap.md) · [参与贡献](CONTRIBUTING.md)
 
-**当前版本：v0.2.1 Preview（预览版）** · Python 3.10+（可选本地工具） · MIT（仅限本仓库原创代码与文档）
+**当前版本：v0.2.2 Preview（预览版）** · Python 3.10+（可选本地工具） · MIT（仅限本仓库原创代码与文档）
 
 Course Organization Skill 是面向课程整理与教学资料重建的 [Agent Skill](https://agentskills.io/specification)。它以真实教师可核验的授课顺序、教学重点、板书思路和错误示范为基础，指导 AI 将有权使用的课程资料组织为**每节课一篇完整、易于阅读的讲义**，同时帮助补全基础解释、拓展学科知识、设计原创练习，并在获得许可且联网工具可用时检索权威参考资源。
 
@@ -47,6 +47,9 @@ Course Organization Skill 是面向课程整理与教学资料重建的 [Agent S
 | 版权/隐私发布清单检查 | ✅ 已提供 | 严格阻断缺省发布；不等于法律意见 |
 | 教师证据台账和资料登记校验 | ✅ 已提供 | 校验元数据，不校验实际网页真实性 |
 | 按目标生成检索查询 | ✅ 已提供 | **离线计划，不执行网络搜索** |
+| 学生讲义深度与分层作业强制检测 | ✅ 已提供 | 九大章节、K 知识点、Q 题目与逐题解析，需达到有意义的内容密度 |
+| 七角色独立子智能体 / 人工审核 | ✅ 审核规范 + 报告门禁 | 必须由实际独立审阅者执行；本 CLI 不会自行启动子智能体 |
+| 完成交付总门禁 | ✅ 已提供 | ready 检查课程结构、学生质量和独立审核的当前文件哈希 |
 | 联网检索权威资料 | ◐ 依赖 Agent 能力 | 工具与授权齐备时遵循检索规范 |
 | 自动解析 PPT/PDF/DOCX 正文和图片 | ⏳ 规划中 | v0.3 |
 | 端到端批量生成整门课程 | ⏳ 规划中 | v0.4 |
@@ -75,6 +78,9 @@ cd Course-Organization-Skill
 python -m pip install -e .
 course-org --help
 course-org validate examples/sample-course
+course-org student-check examples/sample-course
+# 只有真正具备七名独立审核者、且报告在仓库外时才可：
+# course-org ready examples/sample-course --report /private/independent-review.json
 course-org research-plan examples/sample-course
 python -m unittest discover -s tests -v
 ~~~
@@ -103,7 +109,7 @@ course/
     └── release-manifest.json       # 默认不允许公开发布
 ~~~
 
-每篇 `lesson.md` 按“30 秒速览 → 先修知识 → 教师主线 → 知识讲解 → 推导/演示 → 常见错误 → 深入拓展 → 练习 → 复习速览”组织。技术上的证据切片可以细分，但人读的课程章节不会被拆散。
+每篇 `lesson.md` 按“本课导读 → 预备知识 → 核心知识详解 → 例题精讲 → 易错点与纠正 → 分层作业 → 深入理解 → 复习速览 → 答案与解析”组织。每个核心知识点必须充分解释为什么、直觉、准确规则、完整推演及自检，不能只给一句定义。作业至少包含 2 基础 + 2 应用 + 1 挑战，逐题具备验收标准和详尽答案。学生章节不显示教师意图分析、版权台账和 AI 审计过程。技术上的证据切片可以细分，但人读的课程章节不会被拆散。
 
 阅读[完整原创示例](examples/sample-course/lessons/L01/lesson.md)或[课程模板](assets/course-template/lessons/L01/lesson.md)。
 
@@ -155,3 +161,10 @@ course/
 本仓库由项目作者原创的代码与文档按 [MIT License](LICENSE) 发布；第三方教育项目、教师课件和学生资料**不受此授权覆盖**。引用或借鉴其他开源项目的思想不等于复制其代码或授课材料。
 
 **项目维护记录：** 每次 GitHub 代码修改都在 [docs/routine/](docs/routine/) 中留存日期、变更、验证与下一步计划。
+
+## 强制禁止敷衍与子智能体审计（v0.2.2）
+生成器写完并不等于交付成功。**course-org student-check** 会阻断篇幅空洞、知识点只写一句话、缺完整例题、分层作业不足、答案缺失的课程章节。**course-org ready** 在此基础上，还要求七个互相独立的审核角色（教师覆盖、初学可读性、专业正确性、作业解题、复习有效性、版权隐私、对抗审阅）对当前文件 SHA-256 全部通过。无真实子智能体能力时必须进行独立人工审核，不能把自我复核冒充子智能体。自动字段检查只是下限，人工/独立模型必须检查内容有没有凑字数、事实错误和版权风险。
+
+- [学生讲义强制写作标准](references/student-edition.md)
+- [完整分层作业与答案要求](references/assignment-module.md)
+- [子智能体独立严格审计](references/subagent-review.md)

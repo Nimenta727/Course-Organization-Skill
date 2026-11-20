@@ -57,3 +57,8 @@ For each objective, formulate targeted official-exam/official-syllabus, universi
 
 ## 9. Discipline-sensitive rendering / 分学科生成
 Choose one subject reference per lesson. Adapt how proof, debugging, experiment, interpretation, dialogue, or decision modeling is explained. Always retain the single-lesson narrative and review pocket.
+
+
+## Mandatory student chapter and independent audit (v0.2.2)
+After internal mapping and topic selection, author full student chapters per student-edition.md, one lesson per file with K-ID detailed teaching and five tiered original homework tasks + paired full solutions. A teacher source item that needs explanation becomes natural student prose rather than a producer-facing section.
+Run student-check; rewrite every shallow/underfilled concept or homework item. Delegate distinct review roles under subagent-review.md; re-review after ANY substantive edit; ready is only PASS when independent reports match current SHA-256. Rights/public-release audit remains separate.
