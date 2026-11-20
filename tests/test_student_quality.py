@@ -159,6 +159,17 @@ class StudentDepthTests(unittest.TestCase):
         self.chapter.write_text(text, encoding="utf-8")
         self.assertTrue(any("near-duplicate homework" in e for e in check_student_course(self.course)))
 
+    def test_number_swap_duplicate_assignment_blocks(self):
+        import re
+        text = self.chapter.read_text(encoding="utf-8")
+        statements = list(re.finditer(r"\*\*任务：\*\*(.*?)(?=\*\*提交内容：\*\*)", text, flags=re.S))
+        self.assertGreaterEqual(len(statements), 5)
+        first = statements[0].group(1)
+        superficial_variant = re.sub(r"\d+", "13", first)
+        second = statements[1]
+        text = text[:second.start(1)] + superficial_variant + text[second.end(1):]
+        self.chapter.write_text(text, encoding="utf-8")
+        self.assertTrue(any("near-duplicate homework" in e for e in check_student_course(self.course)))
     def test_review_report_inside_other_git_worktree_blocks(self):
         report = self.review_report()
         gitroot = self.base / "worktree"

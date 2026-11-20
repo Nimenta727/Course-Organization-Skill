@@ -126,7 +126,7 @@ def check_lesson(path: Path, expected_topics: list[str]) -> list[str]:
             task_statements.append((m.group(1), norm))
     for i, (a_id, a) in enumerate(task_statements):
         for b_id, b in task_statements[i+1:]:
-            if min(len(a), len(b)) >= 60 and SequenceMatcher(None, a, b).ratio() > 0.92:
+            if min(len(a), len(b)) >= 35 and SequenceMatcher(None, a, b).ratio() > 0.92:
                 errors.append(f"{a_id}/{b_id}: near-duplicate homework statement; number swaps do not count as original variety")
 
     answers = _entries(sections.get("答案与解析", ""), S)
