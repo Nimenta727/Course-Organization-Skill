@@ -45,3 +45,5 @@ docs/                         当前文档；routine 为长期开发审计记录
 ```
 
 **English:** This is the canonical documentation index for v0.2.5 Preview. Historical drafts are preserved by Git history instead of a parallel legacy folder. The Skill creates reader-facing lessons; private source/provenance and review data remain separate. The offline CLI cannot browse, parse full PPT/PDF content or run subagents.
+
+**实际发行状态 / Release verified:** [v0.2.5 Pre-release](https://github.com/Nimenta727/Course-Organization-Skill/releases/tag/v0.2.5) · [三版本 CI 成功](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291167) · [发布工作流成功](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291143)。

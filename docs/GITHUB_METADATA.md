@@ -28,3 +28,7 @@
 描述和 Topics 已实际设置，**但版本 Release 是否成功必须另行核验**。以后修改仓库 About 时应同步对应元数据文件，不要写成“尚未生效”的过期状态。
 
 **English:** Repository description and all 12 Topics are confirmed set. Issue labels use a separate workflow. A GitHub release requires its own successful workflow and an actual tag/release object.
+
+## v0.2.5 发行状态
+
+已通过 GitHub API 核验：[v0.2.5 预发布](https://github.com/Nimenta727/Course-Organization-Skill/releases/tag/v0.2.5) 实际存在，包含完整 Skill ZIP、CLI wheel 和 SHA256SUMS；[发行 Actions](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291143) 与[三版本测试](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291167) 均成功。v0.2.4 保留为既有历史发行标签，没有被强制改写。

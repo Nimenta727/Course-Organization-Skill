@@ -83,3 +83,5 @@ Instructor materials and third-party education documents must not be uploaded, r
 [Docs index](docs/INDEX.md) · [Quick start](docs/QUICKSTART.md) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md) · [Development](docs/DEVELOPMENT.md) · [Architecture](docs/architecture.md) · [Roadmap](docs/roadmap.md) · [Release procedure](docs/RELEASE.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
 The repository's original software/docs are MIT-licensed; teacher works, student data, and other third-party content are not relicensed. Each GitHub change is recorded in [docs/routine/](docs/routine/); superseded documents are retained via Git history, not redundant legacy directories.
+
+**Verified publication:** The [v0.2.5 GitHub Pre-release](https://github.com/Nimenta727/Course-Organization-Skill/releases/tag/v0.2.5) includes the full Skill ZIP, CLI wheel and SHA256SUMS; [CI across Python 3.10/3.11/3.12](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291167) passed, with 42 tests / OK reported on Python 3.11.

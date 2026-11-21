@@ -60,3 +60,11 @@ sha256sum dist/*.zip dist/*.whl
 检查 GitHub tag/Release URL 与对应提交、ZIP/wheel 名称、校验和、Releases 标题/Pre-release 状态、下载包内部目录以及 README 版本。将真实结果补充到 `docs/routine/` 的新记录；若失败修复后应使用新的提交，不能仅凭发布脚本“理论可运行”汇报发行成功。
 
 **English:** v0.2.5 Preview includes a complete Skill ZIP, separate CLI wheel and checksums. Automated release must run tests and keep user-owned course material private. Do not claim publication until a GitHub release/tag actually exists.
+
+## v0.2.5 实际发行结果（2026-11-21）
+
+- GitHub 已确实创建 [v0.2.5 Pre-release](https://github.com/Nimenta727/Course-Organization-Skill/releases/tag/v0.2.5)，不是 draft，属于 prerelease。Tag 指向 c9be0334f8f1689ce8cc291892686320117d125e。
+- [发行工作流 44864291143](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291143) 实际为 success，经过版本核对、全部测试、版权样例默认 BLOCK、ZIP/wheel 打包及隐私允许列表检查。
+- [CI 44864291167](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291167) 实际为 success；Python 3.10、3.11、3.12 均通过单元测试、Skill ZIP 和 wheel 构建；Python 3.11 记录为 Ran 42 tests / OK。
+- GitHub API 已确认实际发行资产：course-organization-skill-v0.2.5.zip、course_organization_skill-0.2.5-py3-none-any.whl、SHA256SUMS.txt。
+- 这并不等于七个真实独立子智能体已经审完课程，也不是法律上的版权零风险保证。

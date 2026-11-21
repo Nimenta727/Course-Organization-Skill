@@ -115,3 +115,5 @@ course/
 [完整文档索引](docs/INDEX.md) · [CLI 使用指南](docs/USAGE.md) · [FAQ](docs/FAQ.md) · [开发指南](docs/DEVELOPMENT.md) · [项目架构](docs/architecture.md) · [发布说明](docs/releases/v0.2.5.md) · [发布流程](docs/RELEASE.md) · [贡献指南](CONTRIBUTING.md) · [更新记录](CHANGELOG.md)
 
 仓库遵守 [MIT License](LICENSE)，仅对本仓库原创代码/文档生效，不覆盖教师或第三方教材。每次仓库代码修改都会在 [docs/routine/](docs/routine/) 留下时间、变更、验证、风险和下一步。旧版内容由 Git 历史保留，当前树不设冗余 legacy 目录。
+
+**已核实发行成功：** [v0.2.5 Preview](https://github.com/Nimenta727/Course-Organization-Skill/releases/tag/v0.2.5) 可下载完整 Skill ZIP、独立 CLI wheel 和 SHA256SUMS；[Python 3.10/3.11/3.12 CI](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44864291167) 全部成功，Python 3.11 测试日志为 42 tests / OK。

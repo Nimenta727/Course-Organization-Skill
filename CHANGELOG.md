@@ -11,7 +11,7 @@
 
 - Corrected escaped Markdown inline-code markers throughout the active user and reference documentation, improving readability in GitHub and packaged Skill README files.
 - Added an automated formatting regression test to prevent escaped inline-code delimiters from reappearing in active docs.
-- Rebuilt the standalone complete Skill ZIP and independent Python CLI wheel as an immutable patch release, preserving v0.2.4 in its existing GitHub tag and Git history.
+- Published [v0.2.5 GitHub Pre-release](https://github.com/Nimenta727/Course-Organization-Skill/releases/tag/v0.2.5) with a rebuilt full Skill ZIP, separate CLI wheel and SHA256SUMS; preserved v0.2.4 in its existing GitHub tag and history. Python 3.10/3.11/3.12 CI passed (42 tests on Python 3.11).
 
 ## [0.2.4] — 2026-11-21 (Preview)
 
