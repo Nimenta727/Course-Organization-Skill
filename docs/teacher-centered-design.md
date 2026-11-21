@@ -1,22 +1,27 @@
-# Teacher-led, research-enriched course architecture / 教师主线深度重建
+# 教师主线与学生教材 / Teacher-led, student-first
 
-## Goal
-The course must be recognizable as the teacher's evidenced pedagogical journey while readable from scratch and useful for revision. AI does not substitute a generic textbook. It reconstructs reasoning, fills gaps, checks misconceptions, deepens explanations, creates independently authored exercises and cites vetted supplementary sources.
+## 目标
 
-## Private evidence layer
-A non-public per-item teacher ledger tracks all meaningful teacher writing, boardwork, errors, examples, concept links, emphasis, questions and transitions. Each maps to a chapter section, private-only rights restriction or explicit unresolved flag. Intent is an interpretation with evidence and alternatives, never automatically a fact.
+**忠实于老师实际讲过的知识重点、顺序、推导和误区；学生看到的却应是一篇真正完整的教材，而不是“教学意图报告”。**
 
-## One reader-facing document per lesson
-The canonical artifact is lessons/Lxx/lesson.md. Within that page: two reading routes, 30-second overview, detailed teacher-driven progression, missing-step explanations, multiple learning angles, error demonstration/correction, advanced context, graded practice and review pocket. Do not split a lesson into many tiny Markdown files to make model orchestration easier.
+研究与生产分两层：
+- **私有证据层**：对授权资料逐项记录实际知识点、板书跳步、错误示范、重复强调、出处、可能的教学意图和公开许可。事实与推测必须分开。不得上传不允许传输的教师/学生资料。
+- **学生阅读层**：从学习问题开场，循序讲概念与步骤，示例预测与验证，分析错误，安排分层原创作业、答案解析、深化学习和复习速览。禁止显示“老师可能在想什么”“版权审核”和“内部审计”章节。
 
-## Open source and authoritative supplementation
-With appropriate tools, actively search sources by learning objective. Prefer official curricula/exam descriptions, universities, professional bodies and peer-reviewed/open educational resources. Verify actual source URLs, date, relevance and rights. Reference published official exam questions via links unless reuse permission is explicitly verified; make original exam-style exercises. If research not performed, return a NOT_SEARCHED plan.
+## 两种学习路径，只有一篇课文
 
-## Discipline routing
-See references/subject-profiles.md: dedicated profiles for computing, mathematics, sciences, humanities, language arts and economics/engineering. Every subject shares copyright/teacher-fidelity principles but uses its own proof, explanation, exercises and review patterns.
+**新手：** 导读 → 预备知识 → 教师知识主线对应的核心详解 → 完整例题 → 错误分析 → 作业 → 深入理解。
 
-## Guardrails
-Distinguish permission to consult privately from permission to transmit, adapt or publish. Fidelity of teaching goals does not authorize copied expressive arrangements or professor's proprietary questions and illustrations. Machine checks validate declared metadata; legal review and original-content inspection still require people.
+**复习：** 从复习速览回忆必会结论和易错点；闭卷完成自测，核对文末解析，再回跳到自己不懂的核心知识。不能只做一份术语表，也不能拆成大量分散小文件。
 
-## Version status
-v0.2 implements the instruction workflow, new subject references, a richer lesson example, teacher evidence and source registry schema checks, and offline research-query planning. It does NOT yet parse PDF/PPTX into real teacher evidence or run live web searches from the CLI. Agent-driven browsing is conditional on tools and authorization.
+知识点需要写透：为什么学、直觉、准确条件、完整推演、如何自查。每课至少 2 基础 + 2 应用 + 1 挑战的**原创**任务，全部有任务描述、提交物、验收标准、提示和推理型答案。代码类强调预测输出、逐行追踪、编译/测试环境与边界条件；其他学科采用各自专业方法。
+
+## 开放补充与版权
+
+在授权且 Agent 具备工具时，按知识目标检索官方课程规范、大学/科研机构和许可明确的 OER；提供真实来源和日期。官方已公开真题默认使用原始链接，不因“用于教育”就复制受保护试卷或教师专有题。未知权益不公开；内部证据的保留不等于公开使用的授权。
+
+## 双审计：机器底线 + 真正独立审阅
+
+`student-check` 负责章节、知识点密度、作业梯度、答案和重复题型的确定性底线。`review-plan` 只生成七个角色的任务清单，**不会实际启动智能体**；真实独立的审阅者必须逐项检查教师保真、新手理解、学科事实、作业盲解、复习效果、权限隐私及对抗性漏洞。报告 SHA 必须对应当前章节。版权公开审核是额外关卡，不因通过学生质量审查而自动放行。
+
+**English:** The teacher's observed pedagogical logic guides content; the student sees a standalone rich chapter, not private educator intent or provenance. True independent reviews are mandatory for a claim of completed review, and public redistribution requires distinct rights approval.

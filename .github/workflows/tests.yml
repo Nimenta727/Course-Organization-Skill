@@ -29,6 +29,8 @@ jobs:
         run: |
           course-org research-plan examples/sample-course > /tmp/course-org-plan.json
           python -c 'import json; p=json.load(open("/tmp/course-org-plan.json")); assert p["generated_plan_only"] and all(x["search_status"] == "NOT_SEARCHED" for x in p["plans"])'
+      - name: Build complete allowlisted Skill ZIP
+        run: python scripts/package_skill.py
       - name: Build distributable CLI wheel
         run: python -m pip wheel . --no-deps --wheel-dir dist
       - name: Sample must BLOCK public release

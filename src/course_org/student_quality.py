@@ -9,7 +9,7 @@ import json
 import re
 from difflib import SequenceMatcher
 from pathlib import Path
-from .reviewer_tasks import required_checks
+from .reviewer_tasks import ROLES as REVIEW_ROLES, required_checks
 
 HEADINGS = ("本课导读", "预备知识", "核心知识详解", "例题精讲",
             "易错点与纠正", "分层作业", "深入理解", "复习速览", "答案与解析")
@@ -23,8 +23,6 @@ EXAMPLE_FIELDS = ("题目", "思路", "逐步推演", "结果", "验证", "变�
 TASK_FIELDS = ("学习目标", "任务", "提交内容", "验收标准", "提示")
 ANSWER_FIELDS = ("结论", "推理", "错误辨析")
 REVISION_FIELDS = ("必会", "易错", "自测", "联系")
-REVIEW_ROLES = ("teacher_coverage", "novice_readability", "subject_accuracy",
-                "assignment_integrity", "revision_usefulness", "rights_privacy", "adversarial")
 PRIVATE_HEADINGS = ("教师授课主线", "老师可能在想什么", "版权审核",
                     "证据台账", "来源映射", "审计报告", "内部生产流程")
 PLACEHOLDERS = ("TODO", "TBD", "待补充", "此处填写", "示例占位", "稍后补充")
@@ -80,7 +78,7 @@ def check_lesson(path: Path, expected_topics: list[str]) -> list[str]:
     source = path.read_text(encoding="utf-8")
     heading_order, sections = _sections(source)
     errors = []
-    if [name for name in heading_order if name in HEADINGS] != list(HEADINGS):
+    if heading_order != list(HEADINGS):
         errors.append("Nine canonical student H2 sections required once and in order")
     for heading, floor in FLOORS.items():
         if _prose(sections.get(heading, "")) < floor:
@@ -168,6 +166,8 @@ def check_student_course(root: Path) -> list[str]:
                 errors.append(str(path) + ": invalid topic id/title")
             else:
                 topic_ids.append(t["id"])
+        if len(topic_ids) != len(set(topic_ids)):
+            errors.append(str(path) + ": duplicate declared K topic IDs")
         errors.extend(check_lesson(path, topic_ids))
     return errors
 

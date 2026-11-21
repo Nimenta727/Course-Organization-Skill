@@ -1,69 +1,98 @@
-name: Publish preview release
+name: Publish v0.2.4 Preview
 on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/releases/v0.2.4.md"
   workflow_dispatch:
     inputs:
-      version:
-        description: "Release version matching package, e.g. v0.2.1"
-        required: true
-        default: "v0.2.3"
-        type: string
       approval:
-        description: "Type RELEASE after verifying rights, notes and tests"
+        description: "Type RELEASE after checking code, educational rights and notes"
         required: true
         type: string
 permissions:
   contents: write
+concurrency:
+  group: preview-release-v0.2.4
+  cancel-in-progress: false
 jobs:
-  preflight:
-    if: ${{ inputs.approval == 'RELEASE' }}
+  publish:
+    if: ${{ github.event_name == 'push' || inputs.approval == 'RELEASE' }}
     runs-on: ubuntu-latest
+    env:
+      VERSION: v0.2.4
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Validate version and release notes
-        env:
-          VERSION: ${{ inputs.version }}
+      - name: Verify version and current Skill notes
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           import os, pathlib, tomllib
-          v = os.environ["VERSION"]
+          version = os.environ["VERSION"]
           actual = tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"]
-          assert v == "v" + actual, (v, actual)
-          assert (pathlib.Path("docs/releases") / (v + ".md")).is_file()
+          assert version == "v" + actual, (version, actual)
+          assert (pathlib.Path("docs/releases") / (version + ".md")).is_file()
+          for readme in ("README.md", "README_EN.md"):
+              assert version in pathlib.Path(readme).read_text(encoding="utf-8")
+          assert pathlib.Path("SKILL.md").is_file()
           PY
-      - name: Install CLI and run tests
+      - name: Run complete tests and required checks
+        shell: bash
         run: |
+          set -euo pipefail
           python -m pip install -e .
           python -m unittest discover -s tests -v
           course-org validate examples/sample-course
           course-org student-check examples/sample-course
           course-org research-plan examples/sample-course
-      - name: Sample must not publish
+          course-org review-plan examples/sample-course
+      - name: Confirm fictional sample public release is BLOCKED
         shell: bash
         run: |
+          set -euo pipefail
           if course-org audit examples/sample-course; then
-            echo "Unsafe sample publication clearance"
+            echo "ERROR: example had unexpected release approval"
             exit 1
           fi
-      - name: Build CLI wheel
-        run: python -m pip wheel . --no-deps --wheel-dir dist
-      - name: Create GitHub prerelease and tag
+          echo "Expected copyright/public-release BLOCK confirmed"
+      - name: Build complete Skill ZIP, CLI wheel and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/package_skill.py --output "dist/course-organization-skill-$VERSION.zip"
+          python -m pip wheel . --no-deps --wheel-dir dist
+          cd dist
+          sha256sum *.zip *.whl > SHA256SUMS.txt
+          test -s SHA256SUMS.txt
+      - name: Verify zip contents and privacy exclusions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import pathlib, zipfile, os
+          p = pathlib.Path("dist") / ("course-organization-skill-" + os.environ["VERSION"] + ".zip")
+          with zipfile.ZipFile(p) as z:
+              names = z.namelist()
+              assert "course-organization/SKILL.md" in names
+              assert "course-organization/references/student-edition.md" in names
+              assert "course-organization/assets/course-template/course.json" in names
+              assert not any("/docs/routine/" in n or "/tests/" in n or "/private/" in n for n in names)
+          PY
+      - name: Create GitHub tag and Preview Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ inputs.version }}
         shell: bash
         run: |
           set -euo pipefail
           if gh release view "$VERSION" >/dev/null 2>&1; then
-            echo "Release already exists: $VERSION"
-            exit 1
+            echo "Already published: $VERSION"
+            exit 0
           fi
-          gh release create "$VERSION" dist/*.whl \
-            --title "$VERSION · Preview" \
+          gh release create "$VERSION" dist/*.zip dist/*.whl dist/SHA256SUMS.txt \
+            --title "Course Organization Skill $VERSION · Preview" \
             --notes-file "docs/releases/$VERSION.md" \
             --prerelease \
             --target "$GITHUB_SHA"

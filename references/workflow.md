@@ -1,64 +1,41 @@
-# Workflow and artifacts / 工作流程
+# 课程制作流程 / Authoring workflow
 
-## 0. Input boundary
-Use a dedicated local-only directory for teacher originals, class recordings, student work and copyrighted third-party files. Before any external model/connector upload, identify that provider's data handling and ask for permission where appropriate. Never push these inputs into public repos, including as Git history, PR attachments or build artifacts.
+## 阶段 0 — 权利和数据范围
 
-## 1. Inventory and evidence
-Generate a local inventory with SHA-256, extension, size, candidate lesson, and extraction status. For PDFs/PPTX/DOCX prefer approved local parsers (a converter such as MarkItDown can be evaluated, but is not installed or called by this skill). Record per claim:
-- source ID and optional local page/slide reference when **actually observed**
-- evidence class: A directly observed; B independently corroborated; C original educational expansion; D unresolved
-- confidence and conflict notes
+确认四种不同许可：私有读取/分析、传输至外部 AI 提供方、改编表达内容、公开传播。教师原件和学生数据放在授权的私有目录，不复制到公开 Git。无法确认许可时**不能推定可以上传或公开**。
 
-Do not infer the full content of inaccessible slides from filenames.
+## 阶段 1 — 私有清单与教师证据映射
 
-## 2. Planning output
-Produce:
-1. Course profile: audience, learning goals, duration, academic integrity requirements.
-2. Per-lesson outline: lesson ID, title, goals, associated materials, gaps, source evidence grades.
-3. Prerequisite graph, outcomes-to-assessments matrix and proposed workflow.
-4. Privacy/licence status of each source; explicit publication blockers.
-5. Preview of new, modified, untouched files and plan checkpoints.
+先记录文件格式、大小、SHA-256、课次编号与能否读取正文。只有真正看过页面/图片、完成文件抽取，才能写具体内容或页码；仅有文件名不足以声称理解课件。
 
-Require plan acceptance before a destructive bulk rewrite. If approval is unavailable, create a non-destructive proposed folder or patch.
+依次核对每个有意义的课堂内容：知识点、板书步骤、概念顺序、例题、老师反复强调的条件、错误示范、作业及转场。私有证据中标明直接观察、推测及未知，不断核实是否有漏项。**不要把这些内部映射原样搬进学生讲义**。
 
-## 3. Lesson authoring
-Single canonical lesson content first; avoid repetitive AI boilerplate. Use:
-- lesson rationale, prior knowledge, measurable objectives
-- thought-provoking prompt / problem
-- explanation with original prose and bounded examples
-- a worked solution or demonstration, including common error and repair
-- scaffolded practice then independently assessed practice
-- concept check with explanations
-- retrieval prompts and link to next lesson
-- optional teacher notes, accessibility alternatives, extensions
+## 阶段 2 — 课程计划与预览
 
-A full lesson should be useful standalone. Preserve course sequence while reorganizing only when pedagogically justified, not mechanically following source slide order. Separate factual teacher evidence from independently proposed teaching choices.
+列出课次、K 知识点、LO 学习目标、ACT 课堂活动、ASM 评价任务和先修关系；解释哪些知识确实来自老师实际资料，哪些是独立拓展，并确认权属。先给用户展示生成目录、重要补全点和拟改动文件。未经确认不做破坏性批量覆盖。
 
-## 4. Assessment alignment
-For each objective LO: at least one teaching activity ACT and assessment item A. Vary complexity, formative and summative balance; avoid simply changing numbers in copied teacher exam questions. Answer keys must be independently solved/checked and stored separately from student-facing material.
+## 阶段 3 — 分学科深度制作
 
-## 5. Validation and revision
-Review source provenance, factual claims, alignment, code compilation where appropriate, UDL/accessibility, licence conditions, meaningful transformation and originality; report UNKNOWN rather than fabricated PASS. Run deterministic validators and create a review report. Limit rework to touched lessons plus dependencies.
+阅读 [学科路由](subject-profiles.md) 后仅加载相关学科 profile。以老师已经证实的教学逻辑作为正文推进方式；为新手补全基础知识、遗漏推理和完整例题，纠正错误。遵守 [学生讲义规范](student-edition.md) 和 [作业规范](assignment-module.md)：**一课一文，九段详解，2+2+1 起步的原创完整作业及全部答案**。
 
-## 6. Public repository release
-Only safe, permission-cleared output files. No local inventory, teaching originals, private answer keys, class lists, facial images, email addresses or other personal data. A public-facing note states the output is independently written and distinguishes AI additions from teacher-sourced facts; no statement implies endorsement by an instructor.
+编程课可使用预测 → 模型 → 逐行/内存状态追踪 → 验证 → 纠错 → 迁移，但不能对其他学科生搬硬套。深度不是篇幅堆砌，需要不断回答“为什么、什么时候不成立、怎么检查”。
 
-## GitHub documentation
-Every change includes dated docs/routine entry: timestamp, summary, files and behavioral changes, actual test evidence, risks and next plan. Keep documentation bilingual when serving an international audience.
+## 阶段 4 — 权威外部资料补充
 
+若 Agent 有授权的真实联网工具，按 K/LO 查询官方考试课程标准、大学及科研机构、公开教材、同行评审研究，核对日期、原始网页和引用/改编许可。将有用的新解释放在对应知识点旁边，而不是新建一堆碎片。官方真题默认只引用原站链接，用**独立新问题**练相似能力。若没有实际搜索能力，仅输出带 \`NOT_SEARCHED\` 的计划，不能虚构已核实来源。
 
-## 7. Teacher-led deep reconstruction / 教师主线深化
-After inventory, make a private coverage ledger of every meaningful teacher item, including apparent mistakes, omissions, boardwork, examples, questions and emphases. Mark intended purpose as explicit, hypothesized with alternatives, or unknown. A board slip may be accidental; never invent instructor intentions. The teacher's evidenced teaching order is the spine; AI originality and subject methods fill missing reasoning rather than replace the course.
+## 阶段 5 — 静态质量门禁
 
-Use references/teacher-fidelity.md and references/reading-and-depth.md. Each learner-facing lesson remains one complete chapter with novice and revision paths. Separate evidence ledger, caches, rights review and links are internal metadata.
+\`course-org validate\` 核对目录与学习目标；\`course-org student-check\` 检查九段顺序、知识点展开、例题、任务梯度、详细解析及重复题。任何不满足要求的点必须返工，不能插入无意义重复句凑字数。代码与数学应由实际可用工具或专门学科审核者验证，无法执行则写明 NOT_RUN。
 
-## 8. Open authoritative enrichment / 权威材料自动补充
-For each objective, formulate targeted official-exam/official-syllabus, university/OER and advanced research queries. If web tools exist and the use is authorized, actually browse and verify publisher/date/URL/relevance/licence, recording links in resource-registry.json. If no tool, create NOT_SEARCHED plan; never pretend to have performed research. Published questions are linked by default; AI-original tasks can mimic general cognitive demand but not protected expression. See references/external-discovery.md.
+## 阶段 6 — 七角色真正独立审阅
 
-## 9. Discipline-sensitive rendering / 分学科生成
-Choose one subject reference per lesson. Adapt how proof, debugging, experiment, interpretation, dialogue, or decision modeling is explained. Always retain the single-lesson narrative and review pocket.
+\`course-org review-plan\` 输出每课 SHA 和各角色必须看的 K/Q 列表，**不实际启动任何子智能体**。由具备相应授权的真实独立 Agent/人审查：老师覆盖、新手视角、学科准确性、作业盲解及答案、复习效果、权利隐私、对抗性缺陷。报告必须列具体检查依据，章节修改后旧报告失效。
 
+\`course-org review-gate\` 和 \`ready\` 只能核对报告字段与内容摘要。若没有独立审核条件，交付内容和审阅任务，但明确标记 \`REVIEW_PENDING\`，绝不能造假“七模型通过”。
 
-## Mandatory student chapter and independent audit (v0.2.2)
-After internal mapping and topic selection, author full student chapters per student-edition.md, one lesson per file with K-ID detailed teaching and five tiered original homework tasks + paired full solutions. A teacher source item that needs explanation becomes natural student prose rather than a producer-facing section.
-Run student-check; rewrite every shallow/underfilled concept or homework item. Delegate distinct review roles under subagent-review.md; re-review after ANY substantive edit; ready is only PASS when independent reports match current SHA-256. Rights/public-release audit remains separate.
+## 阶段 7 — 可交付、可发布、可维护
+
+学生可读的课程项目与公开发布是两个独立决策。公开用途需要人工核对实际文字/图表/题目、许可兼容与隐私，并接受独立的 \`audit\` 元数据门禁。任何自动 PASS 都不代表法律无风险。经授权后才考虑发布，尽量增量更新受影响课次并附差异预览。
+
+每次修改 **GitHub 项目本身**，在 \`docs/routine/YYYY-MM-DD-HHMM-brief.md\` 写明时间、改动、实际测试、未完成事项和下一步。旧文档保留在 Git 历史，而不是另建 legacy/archives。

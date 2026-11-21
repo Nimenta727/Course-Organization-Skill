@@ -68,6 +68,14 @@ class RepositoryConsistencyTests(unittest.TestCase):
             self.assertRegex(item["color"], r"^[0-9a-fA-F]{6}$")
             self.assertTrue(item["description"])
 
+    def test_only_current_release_notes(self):
+        notes = sorted(p.name for p in (ROOT / "docs/releases").glob("*.md"))
+        self.assertEqual(notes, ["v0.2.4.md"])
+
+    def test_skill_packager_and_docs_index_exist(self):
+        self.assertTrue((ROOT / "scripts/package_skill.py").is_file())
+        self.assertTrue((ROOT / "docs/INDEX.md").is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

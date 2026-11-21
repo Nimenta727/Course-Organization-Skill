@@ -1,40 +1,51 @@
-# Mandatory layered homework / 强制作业与完整解析
+# 分层作业与完整答案 / Mandatory homework module
 
-All lessons include a rich 分层作业 INSIDE their single chapter, followed by 答案与解析 after the revision pocket. The cross-lesson assignments index is optional and does not replace the in-lesson module.
+**作业是每节课讲义的内建部分，不是可选附录。** 一课至少 5 道独立原创任务，且全部配备能帮助学生理解的完整答案。跨课 \`assignments/\` 索引不能替代 \`lesson.md\` 内的作业。
 
-## Minimum task progression
-Q01 and Q02: 基础 — understand and reproduce basics, trace a simple case and explain the rule.
-Q03 and Q04: 应用 — solve a new nontrivial case, modify assumptions, debug or compare methods.
-Q05: 挑战 — integrate at least two concepts, justify a design, prove an invariant, test boundary conditions, or complete a realistic independent task.
-More original tasks must be added whenever five cannot assess all objectives. Do not inflate task count with repeated wordings or mere changed numbers.
+## 层次和数量
 
-## Required format per task
-### Q01【基础】A complete, descriptive task title
-**学习目标：** precise outcome and relation to the knowledge point.
-**任务：** sufficient context, input, problem statement, assumptions, any constraints and explicit questions.
-**提交内容：** what the student must produce: trace, explanation, calculation, code, data table, design, critique or proof.
-**验收标准：** what makes it correct, including checks, edge cases or objective rubric.
-**提示：** starter reasoning that does NOT spoil the answer.
+- **Q01、Q02【基础】**：理解规则、追踪基本过程、识别典型错误；题目不得只考死记一句术语。
+- **Q03、Q04【应用】**：把原理迁移到新问题、诊断陌生错误、处理边界或对比方案。
+- **Q05【挑战】**：结合至少两个知识点完成完整设计、证明、改进或具有真实意义的迁移任务。
+- 如果五道题无法覆盖老师实际讲授的重点，就**增加题目**；不许为了凑满数量而反复只改几个数字。CLI 的高相似度检测是保守启发式，真正的题意重复需独立审阅。
 
-Every task must be substantial (at least 120 readable prose characters), feasible with the preceding teaching, and relevant to the teacher-derived course. Never use vague "complete the homework" or "look up more information" in place of a real task.
+## 每题必须写完整，而非一句话
 
-## Mandatory separated solutions inside the same chapter
+\`\`\`markdown
+### Q01【基础】清楚具体的题目名称
+**学习目标：** 对应 K/LO 的具体能力
+**任务：** 给足背景、输入、约束、明确问题和边界条件
+**提交内容：** 学生应交什么：表格、推导、程序、短文、设计等
+**验收标准：** 什么算正确，是否需要测试、单位、步骤、论据
+**提示：** 提供思路起点，不泄露最后答案
+\`\`\`
+
+每个任务的实质性非代码文本至少满足校验器的最低阈值，且必须真正具备可解决性、可检查性和课程关联。不能用“自行上网找题”“写一个程序”“复习这些知识点”这样的空话代替作业。
+
+## 答案与解析必须在文章末尾
+
+\`\`\`markdown
 ### Q01 解析
-**结论：** explicit answer/output/result.
-**推理：** intermediate steps and why they are valid.
-**错误辨析：** plausible wrong method, its consequence and repair.
-Optional 自检建议 should suggest a new case and feedback route.
-Each answer at least 110 non-code prose characters. For code tasks independently run tests where tools are available, including invalid/boundary inputs. Otherwise label NOT_RUN; no invented execution report.
+**结论：** 完整正确答案、输出、论点或设计结果
+**推理：** 逐步说明采用的方法、条件和关键中间计算
+**错误辨析：** 为什么一种合理但错误的做法会失败，以及如何发现/修正
+\`\`\`
 
-## Discipline adaptation
-Computing: code reading, state trace, debugging, implementation, original project extension and meaningful tests.
-Mathematics: computation, proof, interpretation, counterexample, mixed modeling and full derivation.
-Sciences: phenomena, charts/units, evidence, uncertainty, safe conceptual experiments.
-Humanities: primary-source critique, thesis, comparison, counterargument, synthesis.
-Languages: receptive comprehension, contrast, original communication, editing with feedback.
-Engineering/economics: model assumptions, sensitivity, design tradeoffs, test plan and limitations.
+学生应先独立作答；发布答案时不能只给数值或一段无解释的代码。答案应能核对题目的每项验收标准，指出边界和常见错误。没有运行实际代码时不能编造编译或测试结论。
 
-Copyright rule: never paste teacher-locked assignments or lightly reword protected exam questions; create genuinely independently structured exercises, optionally linking official question pages when appropriate.
+## 不同学科的作业类型
 
-## v0.2.3 independent homework audit
-The assignment_integrity reviewer must submit one question_checks record per Q, stating real independent reasoning (minimum 60 characters), blind_solved, compared_to_solution and status. No omissions or generic praise. The reviewer must examine difficulty progression, completeness, correctness, boundary cases and non-duplication; the author cannot self-approve.
+| 学科 | 有意义的题型 |
+| --- | --- |
+| 编程与数据结构 | 输出预测、逐行状态追踪、调试、独立实现、测试与项目扩展 |
+| 数学 | 分步计算、证明、反例、模型和错误步骤辨析 |
+| 物理/化学/生物 | 现象预测、数据与图表解读、证据、单位、模型和安全的概念实验 |
+| 历史/文学/人文 | 资料来源评价、证据论证、不同观点比较、原创新问题 |
+| 语言与写作 | 理解、表达、修改、反馈、自检 |
+| 经济与工程 | 变量假设、限制条件、模型、敏感性分析与设计权衡 |
+
+以官方公开考试大纲了解能力要求是允许的研究方式，但不得默认复制受保护真题。新题要真正独立设计，而非仅换数字。
+
+## 必须进行的独立盲解
+
+\`assignment_integrity\` 审阅者在**不看作者答案**时先解决每道 Q，再查看答案并核对；必须为每题填写 \`question_checks\`：\`id\`、真实的 \`blind_solved\`、\`compared_to_solution\`、\`status\` 和至少 60 字符的具体 \`reasoning\`。缺一题或只有赞美语即不合格。真正是否独立完成需审阅人和管理者核实；CLI 只能核对声明字段。

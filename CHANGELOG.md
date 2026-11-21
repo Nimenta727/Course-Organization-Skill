@@ -1,41 +1,28 @@
-# Changelog / 版本变更记录
+# Changelog / 更新记录
 
-Project follows pragmatic SemVer-inspired `0.x` previews. Dates are UTC unless stated otherwise. Details of each repository modification are in [docs/routine/](docs/routine/).
+本项目使用 \`0.x\` 预览版本号。旧的 README、未正式发布的版本说明草案、源文件的每次变更都可在 Git 历史中检索；完整开发审计轨迹保留在 [docs/routine/](docs/routine/)。
 
 ## [Unreleased]
 
-- Continue testing with explicitly authorized, private course materials.
-- Investigate safe local document extraction, evidence mapping and independent lesson generation.
+- Real-world pilot on permission-cleared teaching materials.
+- Secure optional document ingestion and actual independent agent/human review orchestration.
 
-## [0.2.3] — 2026-11-21 (Preview)
-- Generated seven role-specific review task checklists without executing child agents.
-- Enforced per-K/per-Q review coverage, assignment blind-solving and comparison evidence, report Git isolation and chapter SHA freshness.
-- Flagged near-duplicate homework instructions; expanded regression tests.
-- Kept independent audit and legal clearance claims distinct from metadata passes.
+## [0.2.4] — 2026-11-21 (Preview)
 
-## [0.2.2] — 2026-11-21 (Preview)
+- Unified the entry Skill and student-first course-design contract, removing redundant version-appendix instructions.
+- Rewrote bilingual READMEs and user/developer/docs hub to reflect **current implemented functionality**, not old previews.
+- Added an allowlist-only, reproducible **complete Agent Skill ZIP** builder and corresponding packaging tests, alongside the existing separate Python CLI wheel.
+- Strengthened nine-section student chapter enforcement, K topic uniqueness and existing deep-homework quality checks.
+- Removed superseded *draft* release-note files from the current tree; Git history still retains their exact content.
+- Refreshed release process, current-version documentation, copyright/privacy constraints and repository metadata status.
+- Prepared controlled v0.2.4 GitHub Pre-release with tests and artifact checks; actual release status must be verified on GitHub.
 
-- Student-facing textbooks: force deep foundational explanation, full examples, layered homework and complete solutions in one lesson.
-- Seven independent review roles, review-gate/ready SHA-256 checks and fail-closed REVIEW_PENDING state when genuine reviewers are unavailable.
-- Static prose-density checks and regression tests. This does not launch child agents or certify content correctness/copyright.
+## Previous development milestones (not separate GitHub Releases)
 
-## [0.2.1] — 2026-11-20 (Preview)
+- **0.2.3:** Strict role-specific K/Q audit planning, blind-solve homework declarations and duplicate-question regression tests.
+- **0.2.2:** Deep single-lesson student chapter template, 2+2+1 homework, answer checks and seven-role independent review report format.
+- **0.2.1:** Bilingual docs, GitHub issue templates, Topics/labels, CI and packaging groundwork.
+- **0.2.0:** Teacher fidelity, differentiated subject teaching, safe authoritative research workflow.
+- **0.1.0:** Initial Agent Skill, private source rights and metadata-only CLI.
 
-- Rebuilt both README files and user/developer/release documentation.
-- Added community policy files, contribution templates, metadata declarations, and controlled release preparation.
-- Documented verified vs planned capabilities and the independent CLI / Agent Skill installation paths.
-- Tightened version and publication positioning; continue to block unapproved teacher material.
-- Verified first CI matrix (21 tests each on Python 3.10, 3.11 and 3.12) and successful Issue label synchronization on 2026-11-20; subsequent CI changes require a fresh verification.
-
-## [0.2.0] — 2026-11-20
-
-- Teacher-fidelity guidance, dual-route one-lesson chapters and six discipline profiles.
-- Authoritative source research workflow, original exam-style practice policy and metadata checks.
-- Expanded fictional sample and private teacher-evidence rules.
-
-## [0.1.0] — 2026-11-20
-
-- Initial Skill workflow, pedagogy, source/data contracts, copyright gate, template, CLI validators and tests.
-- Bilingual repository baseline and date-based development journal.
-
-**No automated legal copyright certification is claimed at any version.**
+Earlier patch text is accessible through Git history; the current docs focus on v0.2.4 rather than maintaining parallel archives. **Machine validation is not independent reviewer execution or copyright clearance.**

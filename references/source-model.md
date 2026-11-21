@@ -153,5 +153,5 @@ Illustrative structure only; values shown are NOT actual completed reviews:
 ~~~
 Every lesson requires all seven roles: teacher_coverage, novice_readability, subject_accuracy, assignment_integrity, revision_usefulness, rights_privacy, adversarial. All must PASS with no blocking findings and a fresh digest. The CLI verifies report declarations and hash consistency, NOT whether a claimed child agent truly existed or audited honestly.
 
-## v0.2.3 review report additions
+## Independent review report integrity
 Call course-org review-plan to obtain the required_checks per role. Every reviewer must list those literal strings in checked_items. An assignment_integrity report additionally requires question_checks for each Q task, with id, blind_solved, compared_to_solution, status and substantive reasoning. For example, Q01 must be independently answered before solution comparison. Report a true status, not fabricated approvals; keep source and review records private. A valid schema alone cannot attest independent work.

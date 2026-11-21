@@ -1,147 +1,85 @@
 # Course Organization Skill
 
-> **Keep the teacher's evidence-based instructional sequence; use AI to clarify, extend, verify and support revision.**
->
-> Teacher-led · Lesson-first · Research-enriched · Copyright-aware
+[![Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Preview](https://img.shields.io/badge/release-v0.2.4%20Preview-orange)
 
-[简体中文](README.md) · [Quick start](docs/QUICKSTART.md) · [Installation](docs/INSTALLATION.md) · [User guide](docs/USAGE.md) · [Roadmap](docs/roadmap.md) · [Contributing](CONTRIBUTING.md)
+**Teacher-led, student-first course organization. One complete, substantial lesson chapter for both first-time learning and revision.**
 
-**Version: v0.2.3 Preview** · Optional local CLI: Python 3.10+ · MIT for repository-authored code and documentation only.
+[中文](README.md) · [Docs hub](docs/INDEX.md) · [Quick start](docs/QUICKSTART.md) · [Install](docs/INSTALLATION.md) · [Guide](docs/USAGE.md) · [Release notes](docs/releases/v0.2.4.md)
 
-Course Organization Skill is an [Agent Skill](https://agentskills.io/specification) that helps an AI agent transform **authorized** course materials into coherent, **one complete lesson per document** study resources. The teacher's evidenced topic order, emphasis, board reasoning and error demonstrations remain the backbone. The agent fills gaps with independently written explanations, alternate representations, original practice, and—when authorized web tools are available—verified authoritative references.
+**Current: v0.2.4 Preview.** This is a portable Agent Skill, plus an optional *offline* Python 3.10+ metadata/quality CLI. It is **not** a standalone PPT/PDF parser, autonomous course-writing server, browser, copyright-certification service, or subagent executor.
 
-**Scope statement:** this release ships the Skill, modular pedagogy references, templates and a deterministic local metadata checker. It is **not** yet a standalone full-document PDF/PPT ingestion engine or end-to-end automatic course factory.
+## Why lesson-first?
 
-![CI](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)
+Traditional file sorters separate lectures, boardwork, worksheets and revision by file type. This project uses the instructor's **actually evidenced** learning sequence, emphasis, missing steps and misconception types as the *internal* planning source, while students receive an independently written, continuous course chapter that explains, demonstrates, corrects, practices and reviews.
 
-## What makes it different?
+Private teacher-intent speculation, original files, source-rights records and reviewer metadata are **not** student headings. Never invent instructor quotations or assume permission to upload or republish supplied materials.
 
-A conventional file organizer separates slides, worksheets, notes and exams by format. A generic AI summarizer may miss the actual classroom logic or erase useful error demonstrations. This Skill is lesson-centric and teacher-led:
+## Student chapter contract: one lesson, one readable file
 
-**Observed teacher structure → evidence & gaps → original teaching narrative → subject-specific instruction → vetted enrichment → practice/revision → review.**
-
-The reader gets a full chapter, not dozens of tiny files.
-
-## Principles
-
-1. **Teacher fidelity with evidence.** Preserve the demonstrated learning trajectory, concepts, emphases and misconception types. Label hypotheses about intent as hypotheses, never as quotations or facts.
-2. **One lesson, one rich document.** Each `lessons/Lxx/lesson.md` carries prerequisites, teaching narrative, beginner explanations, steps, multiple useful viewpoints, corrected errors, deeper extensions, independent practice and recap.
-3. **Two learning routes on the same page.** New learners can read sequentially; revising learners can skim the overview, key claims, pitfalls and retrieval questions.
-4. **Subject-aware design.** Computing: runtime tracing and debugging. Math: derivation and proof. Science: models and evidence. Humanities: sources and arguments. Language: usage and feedback. Economics/engineering: assumptions and design trade-offs.
-5. **Open, verifiable enrichment.** An equipped and authorized agent may research official syllabi, released exam specifications, reputable universities and licensed OER. Official exam materials are **linked by default**, not copied or superficially rewritten.
-6. **Copyright and privacy veto.** Teacher originals, student data and rights manifests remain private. Public release is independent, explicitly reviewed and never presumed lawful from attribution alone.
-7. **Progressive loading.** The entry skill points to references loaded by task, reducing irrelevant context. Automated dependency-driven regeneration is future work.
-
-## Capability matrix
-
-| Capability | State in v0.2.1 |
+| Section | Required educational value |
 | --- | --- |
-| SKILL.md and progressive references | Included |
-| Teacher-evidence and error-analysis protocol | Documented + metadata checker; human review required |
-| Six discipline-specific profiles | Included |
-| Single-chapter beginner/revision template | Included |
-| Metadata-only local input scan | Included |
-| Objective/activity/assessment structural checker | Included |
-| Rights/release declaration audit | Included; not a legal certification |
-| Teacher-map and research-registry metadata checks | Included; records are not automatically truth-verified |
-| Targeted source query planner | Included; offline only |
-| Student-depth, 5-task homework and full-solution gate | Included; CLI student-check |
-| Seven independent child-agent or human review declarations | Included; report/hash gate, NOT an automated subagent launcher |
-| Combined completion gate | Included; CLI ready, requires actual independent reviewers |
-| Live web research | Conditional on the host agent's authorized tools |
-| PDF/PPTX/DOCX full content extraction | Planned for v0.3 |
-| Fully automated batch course writing | Planned for v0.4 |
-| Visual dashboard and dependency-aware update engine | Future roadmap |
+| 本课导读 / Overview | Real motivating question, why this lesson matters |
+| 预备知识 / Prerequisites | Refresh unexplained terms and novice foundations |
+| 核心知识详解 / Deep explanations | For every K topic: **why → intuition → exact rule → worked reasoning → understanding check** |
+| 例题精讲 / Worked example | Complete original problem, method, reasoning, result, verification and variant |
+| 易错点与纠正 / Misconceptions | Error symptoms, cause, correction and prevention |
+| 分层作业 / Tiered homework | At least **2 foundation + 2 application + 1 challenge** with full tasks, deliverables, acceptance criteria and hints |
+| 深入理解 / Deepening | Proof, limits, edge cases, transfers or subject-appropriate connections |
+| 复习速览 / Revision pocket | Key ideas, error cues, retrieval questions and links between concepts |
+| 答案与解析 / Fully worked answers | Separate answers at the end, with reasoning and common wrong approaches for EVERY task |
 
-## Get started
+Substantive explanations are mandatory: one-liners, padding, number-swapped duplicate questions or unexplained answers must be rewritten. The Python quality checker enforces a *minimum static floor*, not factual truth or real instructional depth. [Student standard](references/student-edition.md) · [Homework standard](references/assignment-module.md).
+
+Subject-specific profiles cover **computing, mathematics, natural sciences, humanities, languages, and economics/engineering**. Programming uses predict → trace state → verify behavior → repair errors, whereas math uses stepwise proof, sciences use evidence and models, and humanities use source-based arguments. [Subject router](references/subject-profiles.md).
+
+## Actual capabilities
+
+| Capability | v0.2.4 |
+| --- | --- |
+| Full Agent Skill and selectively loaded pedagogy references | Included |
+| Private teacher-evidence workflow and rights rules | Documented; structural metadata validation available |
+| Dense single-chapter student output and example | Contract, template and fictional sample |
+| Structural / lesson-depth / homework validation | Offline CLI included; cannot validate meaning |
+| Seven-role independent-review plan | Offline role-specific K/Q checklist; **does NOT run reviewers** |
+| Reviewer report validation and hash staleness checks | Included; cannot attest reviewer identity or work actually done |
+| Private-first publication metadata audit | Included; not legal clearance |
+| Curriculum and authoritative source search query plan | Included; \`NOT_SEARCHED\`, no internet access |
+| Full PDF/PPTX/DOCX parsing, actual web research, full course generation | Require external authorized agent tools or future platform implementation |
+| Built-in real subagent orchestration | Not implemented |
+
+## Install: complete Skill versus CLI
+
+**Agent Skill package:** Download the full \`course-organization-skill-v0.2.4.zip\` from [GitHub Releases](https://github.com/Nimenta727/Course-Organization-Skill/releases) if published, or clone the repository. The ZIP contains \`SKILL.md\`, \`references/\`, \`assets/\`, LICENSE and bilingual READMEs. Point a compatible agent to the extracted Skill directory.
+
+**Optional Python CLI:** Install from the repository:
 
 ~~~bash
 git clone https://github.com/Nimenta727/Course-Organization-Skill.git
 cd Course-Organization-Skill
 python -m pip install -e .
-course-org --help
 course-org validate examples/sample-course
 course-org student-check examples/sample-course
-# Only after genuine independent reviewers approved the current chapter:
-# course-org ready examples/sample-course --report /private/independent-review.json
 course-org research-plan examples/sample-course
+course-org review-plan examples/sample-course
 python -m unittest discover -s tests -v
 ~~~
 
-The CLI is optional; the Skill can be used by giving a suitable agent access to `SKILL.md`, `references/`, and `assets/`. See [installation instructions](docs/INSTALLATION.md) for Codex, Claude Code, general Agent Skills usage and platform notes.
+The wheel Release asset contains the CLI **only**, not the complete Skill. For installation paths and Windows setup see [INSTALLATION.md](docs/INSTALLATION.md).
 
-Suggested prompt:
+\`research-plan\` does not browse; \`review-plan\` does not execute child agents. The fictional example intentionally fails the public-release audit and cannot pass a real independent-review gate without authentic reviewers.
 
-> Read Course Organization Skill. Begin by mapping the authorized teacher materials, lesson sequence, key boardwork and possible error demonstrations. Draft a non-destructive plan, provenance decisions and content preview first. Create rich single-document lessons with beginner explanations and a revision pocket. Research external authoritative references only using tools and rights I have authorized. Do not publish or upload original instructor files.
+## Suggested agent prompt
 
-## Example output
+> Read the Course Organization Skill, then map authorized teacher materials privately, including observed sequence, omitted boardwork steps and possible error demonstrations. Show a non-destructive lesson plan first. Write one rich student chapter per class with novice-friendly explanations, carefully reasoned examples, at least five tiered original tasks, fully explained answers and a compact revision pocket. Use only licensed/authorized external research tools and actually verified references; link restricted official exam material instead of copying it. Run structural/depth checks; delegate genuinely independent reviewers if supported, otherwise report REVIEW_PENDING. Never publish instructor originals or student data.
 
-~~~text
-my-course/
-├── course.json
-├── README.md
-├── lessons/
-│   ├── L01/lesson.md
-│   └── L02/lesson.md
-├── assignments/          # optional linked multi-lesson tasks
-├── labs/                 # optional
-├── assessments/          # optional
-└── provenance/
-    └── release-manifest.json   # defaults to no public release
-~~~
+## Strict review, source rights and publication
 
-The [complete fictional sample lesson](examples/sample-course/lessons/L01/lesson.md) is independently authored for demonstration and is not derived from any real instructor materials. The [lesson template](assets/course-template/lessons/L01/lesson.md) shows the recommended sections.
+Seven distinct independent reviewers (genuine child agents or humans) assess instructor coverage, novice learning, factual claims, blind-solved homework, revision, privacy/rights and adversarial weaknesses. They must cover every assigned K/Q ID with concrete evidence, match the latest lesson digest and be distinct from the author. **A generated checklist or passing metadata report is not proof of completed review.**
 
-## CLI commands
+Instructor materials and third-party education documents must not be uploaded, rewritten closely or published without the applicable rights. Official exam questions are linked rather than copied by default. Model and deterministic checks **cannot guarantee zero infringement**. Public distribution needs a separate human rights/privacy review. See [copyright gate](references/copyright-gate.md) and [security policy](SECURITY.md).
 
-| Command | Purpose |
-| --- | --- |
-| `course-org scan INPUT --out /private/index.json` | Inventory filenames, extensions, sizes and hashes; no text extraction |
-| `course-org validate COURSE_DIR` | Check lesson paths and declared outcome/activity/assessment links |
-| `course-org research-plan COURSE_DIR` | Generate queries without browsing the web |
-| `course-org teacher-check /private/teacher-map.private.json` | Check private source coverage metadata |
-| `course-org resource-check registry.json` | Check declared resource/rights metadata |
-| `course-org audit COURSE_DIR --sources /private/source-manifest.json --teacher-map /private/teacher-map.private.json` | Conservative pre-publication metadata gate |
+## Project documentation and community
 
-`course-org audit examples/sample-course` is **expected to fail**: the sample does not authorize public release.
+[Docs index](docs/INDEX.md) · [Quick start](docs/QUICKSTART.md) · [Installation](docs/INSTALLATION.md) · [Usage](docs/USAGE.md) · [Development](docs/DEVELOPMENT.md) · [Architecture](docs/architecture.md) · [Roadmap](docs/roadmap.md) · [Release procedure](docs/RELEASE.md) · [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
 
-## Copyright, privacy and research
-
-Owning, viewing or receiving a lecture slide does **not** automatically permit redistribution, external AI processing, derivative publication or copying protected figures/assignments. Preserve verified *teaching logic*, but independently author public expressions unless specific rights are documented. Published official exam material may still have restricted reuse; link it by default and produce genuinely original practice.
-
-A local `audit` PASS checks declared metadata only. It **cannot guarantee zero infringement**, discover hidden personal information, or assess all legal permissions. A real human review of the content and rights is mandatory before any public release.
-
-Read [copyright rules](references/copyright-gate.md), [teacher fidelity](references/teacher-fidelity.md) and [SECURITY.md](SECURITY.md).
-
-## Documentation
-
-| Topic | Document |
-| --- | --- |
-| First session | [Quick start](docs/QUICKSTART.md) |
-| Platform setup | [Installation](docs/INSTALLATION.md) |
-| Detailed workflows and commands | [User guide](docs/USAGE.md) |
-| Teacher evidence | [Teacher fidelity](references/teacher-fidelity.md) |
-| Dual-use course documents | [Readability and depth](references/reading-and-depth.md) |
-| Research/exams | [External discovery](references/external-discovery.md) |
-| Discipline routing | [Subject profiles](references/subject-profiles.md) |
-| Pedagogy and review | [Pedagogy](references/pedagogy.md), [Quality gates](references/quality-gates.md) |
-| Schemas and architecture | [Source model](references/source-model.md), [Architecture](docs/architecture.md) |
-| Developer work | [Development](docs/DEVELOPMENT.md), [Contributing](CONTRIBUTING.md) |
-| Limitations and next steps | [FAQ](docs/FAQ.md), [Roadmap](docs/roadmap.md) |
-| Release record | [Release notes](docs/releases/v0.2.1.md), [Changelog](CHANGELOG.md) |
-
-## Contributions, safety and license
-
-Contributions are welcome via the [issue templates](.github/ISSUE_TEMPLATE). **Never attach private student records, copyrighted instructor course packs or unreleased examination papers to public issues.** Follow [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
-
-The repository-authored code and documentation are [MIT-licensed](LICENSE). This does **not** relicense third-party educational content, private teacher materials or student work.
-
-Each repository change should be documented in [docs/routine/](docs/routine/) with its date, changes, verification and next actions.
-
-## v0.2.3: no shallow lessons, mandatory independent audit
-A student chapter requires substantive explanations for every K knowledge unit, worked reasoning, five complete tiered tasks with checkable criteria and five full solutions, all within one reader-friendly chapter. The deterministic student-check blocks incomplete structure and weak prose density. The separate ready command additionally checks seven distinct independent child-agent or human review declarations tied to current SHA-256. No child-agent execution is built into the CLI; without real independent reviewers, status remains REVIEW_PENDING. The metadata gate cannot prove review truth, correctness or zero copyright risk.
-
-See [student edition standard](references/student-edition.md), [assignment module](references/assignment-module.md), and [independent child-agent review](references/subagent-review.md).
-
-## v0.2.3 per-item independent review
-Run course-org review-plan examples/sample-course for role-specific K/Q checklists. It does NOT launch subagents. Real independent reviewers must cover their assigned topics; homework reviewers blind-solve every Q and then compare authored solutions. Missing checks or stale SHA-256 reports block readiness. If no independent reviews occurred, the status is REVIEW_PENDING.
+The repository's original software/docs are MIT-licensed; teacher works, student data, and other third-party content are not relicensed. Each GitHub change is recorded in [docs/routine/](docs/routine/); superseded documents are retained via Git history, not redundant legacy directories.

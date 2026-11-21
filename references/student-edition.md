@@ -1,35 +1,50 @@
-# Student-first deep lesson standard / 学生讲义高密度规范
+# 学生讲义强制规范 / Student-first lesson contract
 
-This is the canonical reader-facing contract. Private teacher-evidence analysis, intent hypotheses, source-rights ledgers, reviewer logs and agent workflow belong in internal metadata, never in a student's textbook.
+**写给学生，不是写给课程设计者。** 老师原始材料、来源页码、教学意图推测、版权与子智能体日志都保存在私有证据层。学生只看到逻辑完整、准确、详细的教学内容。
 
-## One lesson, one complete chapter
-Use one lessons/Lxx/lesson.md for every class. The student must be able to start from zero, read explanations in order, practice without external files, and revise from a compact pocket inside this SAME chapter. Extra teacher guides and multi-lesson indexes are optional, not a substitute.
+## 一课一篇、初学和复习兼容
 
-## Exact nine H2 headings, in order
-1. 本课导读: a motivating concrete problem, why it matters, and study route; substantial introductory prose, not slogans.
-2. 预备知识: explain prerequisite terms, symbols and assumptions with a small example for beginners.
-3. 核心知识详解: every meaningful topic has an H3 in the form K01 · meaningful title, registered in course.json. Each K topic MUST have the labelled paragraphs **为什么要学：**, **直观理解：**, **准确规则：**, **逐步推演：**, **检查理解：** and substantive reasoning. Preserve the teacher's actually evidenced concept progression; add independent explanations instead of copying unlicensed text.
-4. 例题精讲: original worked cases labelled **题目：**, **思路：**, **逐步推演：**, **结果：**, **验证：**, **变式：**; demonstrate the reasoning line by line, test edge cases and name assumptions.
-5. 易错点与纠正: mistake, consequence, mechanism, corrected method and prevention. An observed wrong classroom example must be analyzed, never silently deleted; invented teacher intentions must not be asserted.
-6. 分层作业: five or more meaningful original Q tasks; at least two 基础, two 应用 and one 挑战, each with 学习目标, 任务, 提交内容, 验收标准 and 提示. See assignment-module.md.
-7. 深入理解: proof, invariants, limits, transfer, cross-lesson links or alternative method; discipline-specific rather than disconnected trivia.
-8. 复习速览: compact headings 必会, 易错, 自测, 联系; questions are retrieval cues, not copied explanations.
-9. 答案与解析: only after the tasks; Q01 etc each have 结论, 推理 and 错误辨析, with actual reasoning and verification.
+每节课的唯一主阅读文件是 \`lessons/Lxx/lesson.md\`。跨课实验或课程项目可以另建索引，但不能把一节课的知识、错误示范、作业和答案拆成很多碎片。初学者从前往后学习；复习者先看速览、闭卷自测、再回到不熟的知识点。
 
-## Hard editorial constraints
-- A definition sentence is NOT enough. A knowledge point must explain why it is introduced, concrete intuition, exact conditions, intermediate steps, failure modes and how to apply it.
-- No one-line knowledge explanations. No placeholder content, empty promises to expand later, circular answers or word-count padding.
-- No premature answer spoilers before students attempt the homework.
-- Student headings must NOT include 教师授课主线, 老师可能在想什么, 版权审核, 证据台账, 来源映射, 审计报告 or 内部生产流程. Real teacher insights may become naturally written examples and classroom tips without revealing private teacher evidence or claiming imagined intent.
-- Real programming claims must distinguish C standard guarantees from implementation/platform behavior, plus compiler/options if relevant. Do not claim tests were run unless they were.
-- Dense material should still be readable: paragraphs around explanations, expressive code comments, tables for true comparisons, optional ASCII diagrams, headings that reflect real concepts, not dozens of tiny files.
+### 必须按顺序包含的九个 H2 主标题
 
-## Conservative static quality floor
-The student-check CLI checks for nine sections in order, multiple fully explained knowledge units, worked-case labels, correct homework tiers and answer pairs, no placeholders/internal prose, and sizable NON-CODE explanations.
+1. **本课导读**：具体的实际问题、学习价值、如何阅读，不能是一句口号。
+2. **预备知识**：逐步解释新手不熟悉的术语和先修条件，给一个精炼例子。
+3. **核心知识详解**：按实际老师可核验的知识逻辑排列 K01/K02/... 的 H3，小标题写实质主题。每个 K 都有且**真正展开**：\`**为什么要学：**\`、\`**直观理解：**\`、\`**准确规则：**\`、\`**逐步推演：**\`、\`**检查理解：**\`。解释动机、条件、步骤和边界，不能只有结论。
+4. **例题精讲**：有\`**题目：**\`、\`**思路：**\`、\`**逐步推演：**\`、\`**结果：**\`、\`**验证：**\`、\`**变式：**\`，每个中间环节解释为什么。
+5. **易错点与纠正**：错误 → 具体现象/结果 → 根本原因 → 正确方法 → 如何自检。老师的真实错误可当教学素材，但老师是否故意写错没有证据就不推断。
+6. **分层作业**：至少 Q01/Q02【基础】、Q03/Q04【应用】、Q05【挑战】；每题有学习目标、清晰任务、提交内容、验收标准及可执行提示。题目必须独立原创、不同认知要求。
+7. **深入理解**：从本课知识延伸到原理、证明、反例、局限、性能或跨课连接；不堆无关的“拓展”废话。
+8. **复习速览**：用\`**必会：**\`、\`**易错：**\`、\`**自测：**\`、\`**联系：**\`组织主动回忆和考前速查。
+9. **答案与解析**：每题独立对应 \`### Q01 解析\` 等；每题至少有 \`**结论：**\`、\`**推理：**\`、\`**错误辨析：**\`。放在末尾，学生应先尝试再核对。
 
-Defaults: full lesson >= 4000 non-code visible characters; core >= 1100; each K knowledge unit >= 300; worked example >= 420; error diagnosis >= 330; homework section >= 700; each Q >= 120; answers section >= 650; each answer >= 110; deep extension >= 240; revision pocket >= 230; intro >= 120; prerequisites >= 130. These are a FLOOR, not an arbitrary length target. Padding and false facts are rejected by independent semantic reviewers. A short lesson does not waive the requirements; supply deeper intuition, worked cases and practice.
+严格要求**九个 H2 标题恰好出现一次且顺序一致**；单一知识点只给一句定义、把公式扔给学生自行推、或所有题只报最后数字都不合格。
 
-An output is INCOMPLETE until BOTH static student-check and independently verified reviews in subagent-review.md PASS. Copyright publication is a different gate and never automatically passes.
+## 强制密度底线：不是字数竞赛
 
-## v0.2.3 anti-repetition gate
-Even if five task blocks meet length floors, near-duplicate tasks made by number-swapping cannot count as meaningful differentiated practice. The CLI checks unusually similar task descriptions; an independent reviewer must examine whether the problems genuinely assess different knowledge and cognitive levels. Never pad paragraphs to pass character counts.
+\`student-check\` 排除围栏代码后，以非空非标点字符数做保守检查：
+
+| 范围 | 最低可读内容量 |
+| --- | ---: |
+| 一课完整正文 | 4,000 |
+| 本课导读 / 预备知识 | 120 / 130 |
+| 核心知识详解 | 1,100 |
+| 每个 K 知识点 | 300 |
+| 例题精讲 / 易错点与纠正 | 420 / 330 |
+| 作业模块 / 每题 | 700 / 120 |
+| 深入理解 / 复习速览 | 240 / 230 |
+| 答案与解析 / 每题 | 650 / 110 |
+
+这是**机器能检查到的最低写作结构**，不代表达标文章就必然有高教学质量。填充同义句、重复改数字的作业、不真实的测试结果、没有中间推理的内容均应由独立审核者阻断。模型遇到门槛不足必须补全**真实教学解释**，不能用重复句刷长度。
+
+## 学科和教师内容的处理
+
+不同学科仍采用各自的讲法：编程强调预测、变量/内存追踪、边界及调试；数学强调条件、完整证明；科学强调模型与证据；人文强调来源与论证；语言强调表达和纠错。**九段式是学生导航的一致标准，不是强迫所有学科使用编程式的案例。**
+
+老师实际讲过的核心知识点、板书跳步和错误类型必须在内部来源台账中得到处理；若无法公开复制受保护表达，重新独立设计讲解与例子。学生文章不应有“老师可能在想什么”“教师授课主线”“证据台账”“版权审核”“审计报告”等生产者标题，也不能编造老师引语和课堂事实。
+
+对 C 语言等技术知识，请区分语言标准保证、实现/平台差异、未定义行为和真正运行过的实验结果，注明环境前提。不要把针对特定机器观察到的情况当成语言普遍规律。
+
+## 正式验收
+
+先运行 \`validate\`、\`student-check\`，再由真正独立的审阅者按 \`review-plan\` 检查知识点、例题、作业和复习效果。\`ready\` 通过仅说明报告字段和课程规则一致；人类仍需要确认真实审核证据。公开分享受版权与隐私审批单独约束。

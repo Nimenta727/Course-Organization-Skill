@@ -1,56 +1,42 @@
-# Quality gates / 质量验收标准
+# 教学、事实与发布质量门禁 / Quality gates
 
-## Structural
-- Lesson documents consolidated by lesson, not scattered by file type.
-- Course directory has valid course.json, each referenced lesson file exists.
-- Each objective states observable learning and maps to at least one activity and one assessment.
-- A teacher can teach, and a learner can study, from each lesson.md without chasing fragments.
-- Examples, practice and answers are internally coherent; run code and assertions whenever appropriate.
+## 一、学生正文（必须）
 
-## Educational
-- Backward-design alignment checked at objective level.
-- Content starts from prior knowledge and provides original explanations, scaffolded practice, misconception repair, feedback and retrieval.
-- Use correct discipline-specific pedagogy instead of copying the same generic format.
-- Distinguish curriculum claims supported by teacher evidence (A/B) from AI expansions (C) and uncertain claims (D).
-- Provide accessible text equivalents for meaningful images, navigable headings and alternative practice modes where possible.
+- 每节课只交付一篇完整可读的 \`lessons/Lxx/lesson.md\`；不能把概念、板书推演、作业和答案拆成大量分散文件。
+- 九个主标题恰好出现一次、顺序准确；每个 K 知识点对应 \`course.json\`，包含为什么、直觉、规则、推演和自检。
+- 正文达到 [student-edition](student-edition.md) 规定的保守**非代码密度**底线，并由实际审阅者判断内容是否真的充实。不能靠重复句充字数。
+- 至少 2 基础、2 应用、1 挑战的**完整原创作业**，每题有题意、交付、验收、提示及文末逐题答案和错误辨析。高相似度题干提示是启发式，不代替语义审查。
+- 新手能独立跟上中间步骤；复习速览能支持主动检索并指出典型误区，不是一段空泛的重复总结。
 
-## Factual and ethical
-- No invented teacher quotations, page numbers, lessons, standards, citations, grade requirements or classroom events.
-- No secret student assessment answers in publicly visible student handouts.
-- Separate copyrighted/private originals from output.
-- No copied figures, code, diagrams, teacher-specific distinctive prose or exam questions without rights.
+## 二、教师与来源保真（私有审核）
 
-## Publish: hard gates
-- Correct source/release manifest, required human reviewer and explicit release intent.
-- Unknown/restricted/ND rights never pass for adapted content; NC/commercial conflict never passes; SA licence conflicts never pass.
-- All referenced assets have attribution/permission and privacy review; raw source expression in public content is blocked by default.
-- Text similarity, complex rights and jurisdictional edge cases require manual review even when static checks pass.
-- No auto-publication based solely on a machine PASS.
+- 实际可观察的课次顺序、强调、关键板书步骤、错误示范和教学缺口有来源记录与对应处理；不可把猜测的老师意图写成事实。
+- 不可声称浏览了未打开的权威网页、看到了未成功提取的课件页码、运行了没有实际执行的代码。
+- 教师的独创表达、受保护考题、图片和学生信息不应因 AI 改写而自动发布；未知权利阻断公开使用。
+- 学科正确性优先：数学符号和条件、编程语言规范及实现差异、科学数据与因果、人文证据、语言上下文均需各自核验。
 
-## Suggested scoring for author review (not automatic legal status)
-- Coverage and accuracy: 30%
-- Goal/activity/assessment alignment: 25%
-- Worked examples/feedback/exercise quality: 20%
-- Accessibility and learner fit: 15%
-- Source traceability and consistency: 10%
-This rubric assesses pedagogy only; copyright and privacy are independent veto gates.
+## 三、确定性命令和实际能力
 
+| 命令 | 检查底线 | 永远不能据此宣称 |
+| --- | --- | --- |
+| \`validate\` | 路径和 LO 活动/评价声明 | 真实学习对齐效果 |
+| \`student-check\` | 学生九段结构、K/Q 深度与答案、重复题 | 语义准确无误 |
+| \`teacher-check\` | 私有来源记录字段 | 老师的真实意图 |
+| \`resource-check\` | 资源登记字段 | URL 实际访问、真实许可 |
+| \`research-plan\` | 查询建议 | 已经联网检索 |
+| \`review-plan\` | 七角色 K/Q 清单与 SHA | 已经执行子智能体 |
+| \`review-gate\` / \`ready\` | 七角色声明、覆盖、哈希与学生质量 | 真正独立审核发生 |
+| \`audit\` | 公开权限的保守声明门禁 | 法律上的零侵权风险 |
 
-## Teacher-centered & reader-centered hard gates
-- All meaningful teacher source segments have a tracked handling decision, including boardwork, apparent errors, emphasis and missing transitions; no silent omissions.
-- Teacher intention is explicit only with observed evidence; otherwise label a hypothesis with plausible alternatives or unresolved.
-- Each lesson is one substantive standalone chapter with beginner and revision routes, complementary explanations where useful, corrected error cases, advanced extension and quick recall.
-- No micro-file explosion; task orchestration may be granular, but reader output is unified.
-- Each major independent addition is fact-checked and cited as appropriate; current official exam syllabus and source URLs are verified, or NOT_SEARCHED is declared.
-- Link-only official exams are not copied. AI-created practice must be substantively original and independently checked.
-- Teacher-fidelity scoring, subject-specific educational quality and legal permission remain SEPARATE dimensions.
+## 四、独立审阅 veto
 
+实际独立审阅者必须分别从教师覆盖、新手可读、学科事实、作业盲解、复习效果、版权隐私及对抗性问题检查。报告缺身份、证据、指定 K/Q、逐题盲解记录，或 SHA 不匹配，一律 BLOCK。修复任何学生内容后旧报告失效。
 
-## Mandatory student-focused acceptance (v0.2.2)
-- student-check passes minimum non-code density, section ordering, knowledge-unit fields, worked example, 2+2+1 assignment levels and all Q answer pairings. Superficial one-liners are blocked.
-- ready additionally requires every role from independent child agents or independent humans to PASS on the exact current SHA-256; stale/duplicate/self-review reports BLOCK.
-- These mechanical checks cannot detect filler, wrong reasoning or copied protected expression, which independent reviewers must analyze from actual content.
-- The student's nine sections MUST NOT include internal teacher-intent hypotheses, sources rights ledger or an agent review log. Student readability has priority; evidence stays private.
+即使机器全部 PASS，只要事实错误、作业过于简单、逻辑缺口、真实资料授权不明或学生难以读懂，仍必须返工。**写作方不能自签七角色 PASS。**
 
-## Per-item reviewer gates
-Each reviewer must check all required K/Q items according to role-specific review-plan output. Assignment reviewer independently solves all Q before seeing published answers, then compares and records per-question results. Repetitive homework that differs only by numbers can fail the static similarity heuristic. These are metadata/heuristic floors, not a guarantee against filler, hallucination, incorrect mathematics or copyright infringement.
+## 五、发布门禁（独立）
+
+- 未明确获得可公开发布的权限，默认 BLOCK。
+- 教师/第三方受限内容、密钥、学生资料不可进入发行包；公开课程内容须重新人工审阅实际表达和附件。
+- 版权、隐私、有效许可和必要署名不能被模型声称“保证无问题”。
+- 课程面向学生的可用性审核与公开许可证审批是**不同的两条门禁**。

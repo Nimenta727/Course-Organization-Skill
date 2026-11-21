@@ -1,44 +1,30 @@
-# GitHub 元数据、Topics 与 Issue Labels
+# GitHub 项目资料 / Repository metadata
 
-## 仓库 Description
+## 已生效的仓库设置
 
-复制以下英文简介进入 GitHub 仓库右上角 About 编辑入口：
+已通过 GitHub API 核对到以下 Description：
 
 > Teacher-led AI Agent Skill for lesson-first course notes, original exercises, research enrichment, and copyright-aware review.
 
-## Topics
+已生效的 12 个 GitHub Topics：
 
-在仓库 About → 设置齿轮图标（或相应的编辑入口）中设置以下 12 个 GitHub Topics：
+\`agent-skills\` · \`ai-assisted-learning\` · \`course-organization\` · \`curriculum-design\` · \`edtech\` · \`education\` · \`instructional-design\` · \`learning-science\` · \`lesson-planning\` · \`open-educational-resources\` · \`study-notes\` · \`teacher-tools\`.
 
-- `agent-skills`
-- `education`
-- `edtech`
-- `instructional-design`
-- `curriculum-design`
-- `lesson-planning`
-- `study-notes`
-- `teacher-tools`
-- `learning-science`
-- `ai-assisted-learning`
-- `open-educational-resources`
-- `course-organization`
+**GitHub Topics 是仓库发现标签；Issue labels 是问题分类标签，两者独立。**
 
-这些是建议的分类标签；**仓库 metadata 是否已生效必须通过 GitHub 页面确认**。
+## Issue labels 和模板
 
-## Issue Labels
+\`.github/labels.json\` 定义 16 个 Issue 分类标签，\`.github/workflows/sync-labels.yml\` 负责在 GitHub Actions 权限允许时同步。仓库还提供 Bug、功能、文档 Issue Forms 和 PR 检查清单。此前标签同步已有 [Actions 成功记录](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44733266726)。
 
-Issue 标签定义文件：[`.github/labels.json`](../.github/labels.json)，包含类型（bug/feature/docs）、负责模块（Skill/CLI/教学/版权/外部研究/测试）、优先级、状态及社区协作标签。
+## 发行与检验链接
 
-手动同步方法：进入 GitHub Actions → **Sync issue labels** → Run workflow。该流程使用仓库的 `GITHUB_TOKEN` 和 `issues: write`；如果 Actions 被关闭或令牌权限受限，请维护者在 GitHub Issues → Labels 页面手动创建。
+- [项目主页](https://github.com/Nimenta727/Course-Organization-Skill)
+- [Releases](https://github.com/Nimenta727/Course-Organization-Skill/releases)
+- [Unit tests Actions](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml)
+- [Preview release Actions](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/release.yml)
+- [当前发行说明](releases/v0.2.4.md)
+- [发行流程](RELEASE.md)
 
-注意：GitHub 的 **Topics** 是仓库发现标签，**Issue labels** 是问题/任务分类，两者不是同一系统。单纯提交 JSON 和工作流并不代表 GitHub 已设置。
+描述和 Topics 已实际设置，**但版本 Release 是否成功必须另行核验**。以后修改仓库 About 时应同步对应元数据文件，不要写成“尚未生效”的过期状态。
 
-## 推荐发布版本
-
-首次完整整理后的文档版本：`v0.2.1`（**Pre-release**）。参见 [发布流程](RELEASE.md)。不要将 “v1.0 正式版” 用作当前功能状态。
-
-**English:** Repository description/topics are GitHub metadata and require an account-authorized edit, not just a committed file. Issue labels are declared in .github/labels.json and can be created via the manual Sync issue labels workflow when Actions permissions allow it. This project remains a v0.2.1 preview.
-
-## 已验证的 Issue 标签同步 / Verified issue label sync
-
-2026-11-20 12:08 UTC：GitHub Actions 的 Sync issue labels 工作流已成功结束（[运行记录](https://github.com/Nimenta727/Course-Organization-Skill/actions/runs/44733266726)）。这表示 16 项标签的同步脚本成功执行；仓库 Topics/Description 仍然是单独的仓库元数据，尚未设置。
+**English:** Repository description and all 12 Topics are confirmed set. Issue labels use a separate workflow. A GitHub release requires its own successful workflow and an actual tag/release object.

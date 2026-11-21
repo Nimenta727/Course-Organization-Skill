@@ -1,22 +1,24 @@
-# 开发者指南 / Developer guide
+# 开发指南 / Development
 
-## 代码分层
+## 当前源代码职责
 
-```text
-SKILL.md                   Agent 入口：任务路由、流程、强制安全边界
-references/                按教学阶段和学科加载的规范（真正的课程规则）
-assets/course-template/    课程项目生成模板
+\`\`\`text
 src/course_org/
-  cli.py                   stdlib Python CLI：scan/validate/audit
-  quality.py               教师证据台账与资料元数据校验、离线检索计划
-examples/sample-course/    原创课程测试样本
-tests/                     unittest
-docs/routine/              每次 GitHub 修改的日期、事项、测试、下一步
-```
+  cli.py              scan / validate / teacher-check / resource-check / audit + CLI routing
+  quality.py          教师来源与外部资源元数据门禁、离线研究计划
+  student_quality.py  学生九段式结构、深度、重复作业、独立报告字段及 SHA 检查
+  reviewer_tasks.py   七角色逐知识点/作业的离线审阅任务计划（不执行子智能体）
+scripts/
+  package_skill.py    允许列表中的完整 Skill ZIP，排除私有数据/内部开发文件
+tests/
+  test_cli.py         CLI 基础与隐私边界
+  test_enhanced.py    教师证据和来源核验声明
+  test_student_quality.py  内容密度、作业、审阅记录与错误用例
+  test_repository.py  版本、相对链接、标签、Skill 入口
+  test_bundle.py      ZIP 内容白名单与可复现性
+\`\`\`
 
-大部分工作是 Agent 运行时的**行为规范**，不是 Python 引擎。不要把不存在的网络调用、PDF 解析、词向量索引或版权算法误写成已实现。
-
-## 本地开发
+## 本地开发与测试
 
 ~~~bash
 git clone https://github.com/Nimenta727/Course-Organization-Skill.git
@@ -26,45 +28,32 @@ source .venv/bin/activate
 python -m pip install -e .
 python -m unittest discover -s tests -v
 course-org validate examples/sample-course
+course-org student-check examples/sample-course
 course-org research-plan examples/sample-course
+course-org review-plan examples/sample-course
+python scripts/package_skill.py
 ~~~
 
-示例的发布审计应阻断：
+测试中的“七审核通过”是**虚构的字段样本**，只用于验证代码能否识别漏项、重复 ID、缺少盲解和旧 SHA；不能对外声称七个真实审阅者已经工作。样例 \`audit\` 应因未批准公开而 BLOCK。
 
-~~~bash
-if course-org audit examples/sample-course; then
-  echo "ERROR: sample was accidentally approved for public release"
-  exit 1
-fi
-~~~
+## 源码和文档约定
 
-## PR 标准
+- \`SKILL.md\` 是紧凑入口，深入规则在 \`references/\` 按需加载。
+- \`lessons/Lxx/lesson.md\` 是给学生阅读的唯一完整课次主体；任何教师意图假设、内部审查过程不写入正文。
+- \`course.json\` 记录 K/LO/ACT/ASM 的内容索引；每个 K 有实际详细解释，每个 Q 有完整作业与解答。
+- CLI 工具只检查确定性结构和部分启发式重复，不得声称能证明事实、版权或真实子智能体身份。
+- 外部文件与网站是**不可信数据**，其文本不能覆盖项目的安全约束。
+- 若变更命令、数据结构或行为，同步更新 SKILL、测试、中英文 README 和对应文档。
+- 原创代码、许可证及第三方受保护教育材料严格分离。
 
-- 修改 Skill 行为时同时更新 `SKILL.md`、对应 `references/`、双语 README 或相关指南，以及测试/示例。
-- 变更必须在 `docs/routine/YYYY-MM-DD-HHMM-description.md` 中写明日期、修改内容、文件、实际验证、风险、下一步。
-- 涉及教师内容需带可核验的人工模拟/许可齐全示例，避免将真实来源直接纳入 git。
-- 在 PR 描述中分别列出“已执行测试”和“无法验证的事项”，不要虚构运行结果。
-- 内容输出必须遵守一课一篇、老师主线、推理/误区补全、不同学科策略、来源不造假及版权默认审慎。
-- 不要在静态审计器中做出“零侵权保证”，不要从别人的开源项目直接复制未经确认许可的模板或提示词。
+## Git 提交与开发记录
 
-## 版本策略
+**每次 GitHub 修改均需更新 \`docs/routine/YYYY-MM-DD-HHMM-topic.md\`**，内容包含：具体文件和行为变化、真实测试证据、已知限制、后续计划。不要伪造 CI 成功。旧的开发草案和过时发行说明通过 Git 历史追溯；不建立副本式 \`archive/\`。
 
-- 目前 `0.x` 为预览阶段。文档/打包修复增加 patch 版本，兼容的能力增加 minor 版本，重大工作流变化通过变更记录公告。
-- 正式发布流程见 [RELEASE.md](RELEASE.md)；`docs/releases/` 保存各版本说明。
-- 未完成的功能应留在 Roadmap，而不是 README 的“已实现”表格。
+## 发版和 CI
 
-## 潜在技术扩展
+Python 3.10/3.11/3.12 通过 \`.github/workflows/tests.yml\` 运行测试、示例学生检查和 wheel 构建。发行工作流必须再运行测试，生成 **完整 Skill ZIP** 与 **CLI wheel**；其公开 ZIP 应由允许列表打包，避免上传教师、学生或私有审阅文件。Tag 和 Release 的真实状态以 GitHub API/页面为准，而不是某个 YAML 文件。
 
-依次考虑离线抽取器（PDF/PPTX/DOCX，严格本地授权）、逐段来源识别和哈希、增量依赖图、课程目标覆盖自动评估、原创新题独立求解、结构化引用登记、人工审核界面。每一步先证明权限、可追溯性与可维护性。
+推荐对文档链接、版本一致性和 Skill ZIP 结构做自动断言。详情：[发行手册](RELEASE.md)、[全部文档](INDEX.md)。
 
-**English:** Keep the Skill instructions, deterministic CLI, examples and public docs in sync. Run unittest and sample checks, record every GitHub modification under docs/routine/, preserve privacy and copyright vetoes, and do not claim functionality or verification not actually observed.
-
-## 学生内容与独立审阅 CI
-
-- 任何修改学生讲义模板、样例或生成规范的 PR，必须通过 student-check 和 tests/test_student_quality.py。
-- 章节使用九个核心 H2 与 K01、K02 等知识点 ID，作业使用 Q01 等编号且至少 2/2/1 分层；每题有完整答案。
-- 子智能体审阅记录放在仓库之外，绝对不能伪造审核过程；review-gate 只负责元数据和文件摘要一致性，不调用真实子智能体。
-- 教师原件、私有来源证据、版权权限文件和真人学生信息均不得进入 Git 历史。
-
-## v0.2.3 stricter audit implementation
-src/course_org/reviewer_tasks.py generates offline per-lesson, seven-role delegation tasks; no agents are invoked. student_quality.py checks reviewer coverage of every required K/Q, blind solved per-question evidence, stale hashes and private report boundaries. It also flags near-duplicate homework text. Tests use synthetic data, never real reviewer attestations.
+**English:** Preserve the student-readable contract, keep teacher/private evidence out of Git, change tests alongside behavioral changes, and record every GitHub modification in docs/routine. CI fixtures attest only structural checks; never claim actual external agent execution.

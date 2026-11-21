@@ -1,29 +1,35 @@
-# Mandatory independent child-agent reviews / 强制严格审计
+# 七角色独立严格审阅 / Independent subagent or human review
 
-The authoring agent may draft and self-diagnose but CANNOT approve its own student lesson. When the host supports child agents, DELEGATE seven isolated roles to actual independent child/subagents, ideally using different contexts and blind problem-solving. Where delegation is unavailable, human reviewers may fill those roles; serial prompts run by the same authoring agent are NOT independent approval. Never fake child-agent runs, permissions, tool use, or evidence.
+**写作智能体不能批准自己的作品。** 只有宿主实际支持子智能体委派并获得适当资料访问权限时，才能执行独立 Agent 审阅；否则需要七项独立人工审阅职责，并将状态保留为 \`REVIEW_PENDING\`，直至真实报告完成。一个模型依次声称扮演七个身份，不算七次独立审核。
 
-## Seven distinct roles and instructions
-1. teacher_coverage: privately compare authorized source ledger with the lesson for every meaningful topic, board jump, demonstration, error, emphasis and transition; report omissions and uncertain teacher-intent claims. Do not send private materials to unapproved providers.
-2. novice_readability: inspect only the student lesson (and stated prerequisites), attempt the basic problems before reading solutions; detect unexplained jargon, leaps, shallow one-liners and overloaded sections.
-3. subject_accuracy: independently check definitions, equations, computations, programming semantics, edge cases, limitations and references. Actually compile/run when available; otherwise explicitly NOT_RUN.
-4. assignment_integrity: solve every Q task independently before consulting the answers; check progression, ambiguity, difficulty labels, originality, scoring and comprehensive solution explanations.
-5. revision_usefulness: using only the revision pocket, reconstruct essential concepts and attempt retrieval; ensure it is short, navigable and correct.
-6. rights_privacy: review permissions, teacher-protected expression, exam reuse, licensing, copied images, personal information and sharing restrictions; block public release on unresolved rights, even with excellent pedagogy.
-7. adversarial: deliberately search for superficial padding, copied paragraphs, hallucinated teacher intent, fake sources, unsupported exam claims, missing cases, contradicting explanations, stale tests and other hidden defects.
+## 七种审阅职责
 
-## Reviewer output and compulsory gate
-The PRIVATE JSON report contains author_id, lesson_path, reviews with seven roles and a UNIQUE reviewer_id per role. Each must have mode subagent or human, status PASS or BLOCK, current lesson_sha256, concrete evidence, checked_items, limitations and blocking_findings. A PASS must have no blocking findings. A self-authored report, repeated reviewer, missing role, stale hash, vague evidence, or any BLOCK means REWRITE / REVIEW_PENDING.
+| role ID | 必须核实的内容 |
+| --- | --- |
+| \`teacher_coverage\` | 在合法私有环境比较老师材料中每项重要内容、板书跳步、强调、错误示范和 K 知识点；不臆造教师意图 |
+| \`novice_readability\` | 以新手视角从正文学习，指出跳步、术语和薄弱解释；不看答案尝试 Q01、Q02 |
+| \`subject_accuracy\` | 逐 K、逐 Q 检查学科事实、边界、例题和逻辑；能执行代码则实际测试，否则标记 NOT_RUN |
+| \`assignment_integrity\` | **先盲解每道 Q，再逐题与作者答案比对**；检查题意、验收条件、难度梯度和重复性 |
+| \`revision_usefulness\` | 只看复习速览尝试回忆关键知识，检查是否能定位学习弱点 |
+| \`rights_privacy\` | 分别核验教师表达、私人资料、图片、第三方许可和正式考试题目是否能公开使用 |
+| \`adversarial\` | 刻意寻找灌水、编造、缺失推导、错误反例、学科自相矛盾和伪造的工具/来源记录 |
 
-After ANY modification to the chapter, all previous review hashes are invalid and independent reviewers must review again. A reviewer must see the current version and specify the evidence checked.
+## 真正的审阅顺序
 
-CLI:
-- course-org student-check COURSE_DIR: deterministic chapter density and homework gates, NOT semantic proof.
-- course-org review-gate COURSE_DIR --report /private/independent-review.json: independent-review declaration and hash gate (still does not verify that reviewers truly executed their tasks).
-- course-org ready COURSE_DIR --report /private/independent-review.json: combines structure, student content quality and independent review status; required before calling a lesson strictly reviewed.
+1. 创作方完成 \`validate\`、\`student-check\`。所有内容密度或题目缺陷先修改。
+2. \`course-org review-plan COURSE_DIR\` 为每课列出当前 SHA-256、K/Q 标识与七角色 \`required_checks\`。**这是任务清单，不启动子智能体；返回 \`review_executed=false\`、\`REVIEW_PENDING\`。**
+3. 按真实授权边界向**不同的独立审阅者**分配任务。尤其教师和版权职责不能将受保护原件发给未经批准的外部提供方。
+4. 角色须报告具体 \`checked_items\`（包含所有任务清单要求的 token）、至少 120 字符真实具体证据、\`limitations\` 与 \`blocking_findings\`。审核角色的身份必须不同于作者，也不能重复充当其他七角色。
+5. 作业审阅者逐 Q 形成 \`question_checks\`，记录先盲解、后比对和推理结果，不能缺题。
+6. 所有阻断项修改后，必须按新章节 SHA-256 **重新独立审阅**；过期报告一律作废。
+7. \`course-org review-gate ... --report PRIVATE.json\` 检查字段、覆盖、角色、盲解声明、路径和哈希。\`course-org ready\` 还叠加课程结构和学生深度检查。
 
-If independent agents are not actually available, do static checks, produce a review task pack and mark REVIEW_PENDING rather than claim "seven subagents approved". Permission-checked human reviewers are acceptable; the main generating agent cannot substitute for them.
+## 报告的真实局限
 
-PUBLIC release separately requires the copyright/rights audit and explicit human authorization. High student quality does not license redistribution of teacher expression. Never promise zero copyright risk.
+\`review-gate\` 验证的是私有 JSON 里的**声明**，不能核实一个 \`reviewer_id\` 真实存在、没有看过答案、真实运行代码，或课堂资料真的授权。不能把合成测试数据包装为生产审阅报告；必须由真正独立的审阅者/管理者检查材料和证据。
 
-## v0.2.3 mandatory per-target checklist
-Use course-org review-plan COURSE_DIR for seven distinct role-specific review tasks. Reports must include every required_checks token in checked_items; concrete evidence must be at least 120 characters. The assignment_integrity reviewer provides one question_checks entry for EACH Q: id, blind_solved=true ONLY when solved without author answers, compared_to_solution=true ONLY when actually compared, status=PASS only if correct, and reasoning with at least 60 characters. Omission BLOCKS. Subject reviewer covers all K/Q and worked example; novice reviewer covers all K, preknowledge and Q01/Q02; teacher reviewer covers all K against authorized private evidence; rights reviewer covers rights_reuse, privacy_scan, exam_rights; adversarial reviewer covers filler, contradictions and unsupported_claims. Lesson edits invalidate reports. Private review report must remain outside every Git worktree. Valid metadata is not proof of real delegation or legal clearance.
+所有真实审阅报告应在公开 Git 仓库和课程输出目录**之外**的受控位置保存；项目代码检测 Git worktree 目录边界。若无法完成真实委派，输出 \`REVIEW_PENDING\` 和审阅清单，而不是伪造七个 PASS。
+
+## 发布仍需要独立版权关卡
+
+\`ready\` PASS 仅表示课程内容可进一步交付质量审核，不代表讲义可以公开。公开发布要有独立的权利、隐私和许可证审批；即使权利元数据声明通过，也不能承诺法律意义上的零侵权风险。详见 [版权规范](copyright-gate.md)。
