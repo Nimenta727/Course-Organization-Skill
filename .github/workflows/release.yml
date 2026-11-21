@@ -1,9 +1,9 @@
-name: Publish v0.2.4 Preview
+name: Publish v0.2.5 Preview
 on:
   push:
     branches: [main]
     paths:
-      - "docs/releases/v0.2.4.md"
+      - "docs/releases/v0.2.5.md"
   workflow_dispatch:
     inputs:
       approval:
@@ -13,14 +13,14 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: preview-release-v0.2.4
+  group: preview-release-v0.2.5
   cancel-in-progress: false
 jobs:
   publish:
     if: ${{ github.event_name == 'push' || inputs.approval == 'RELEASE' }}
     runs-on: ubuntu-latest
     env:
-      VERSION: v0.2.4
+      VERSION: v0.2.5
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

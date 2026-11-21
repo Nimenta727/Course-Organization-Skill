@@ -1,8 +1,8 @@
 # 路线图 / Roadmap
 
-> **v0.2.4 Preview 是当前发布目标。** 此页面只维护当前能力、未解决事项和后续版本；早期独立版本草案由 Git 历史与 CHANGELOG 保存，不在当前目录堆放重复过时文档。
+> **v0.2.5 Preview 是当前发布目标。** 此页面只维护当前能力、未解决事项和后续版本；早期独立版本草案由 Git 历史与 CHANGELOG 保存，不在当前目录堆放重复过时文档。
 
-## 已实现：v0.2.4
+## 已实现：v0.2.5
 
 - **可移植 Skill：** SKILL.md + 渐进加载参考文档、学科 profiles、课程模板和完全原创的编程示例。
 - **教师证据优先：** 实际课堂知识顺序、板书、错误示范及跳步推理的私有映射协议与元数据校验。
@@ -45,4 +45,4 @@
 
 **边界：** 不承诺零版权风险、无授权的第三方模型数据处理、真实子智能体自动执行，也不把还在规划的解析/生成能力标成已实现。
 
-**English:** v0.2.4 ships a substantial Agent Skill, synthetic sample, offline validators, review checklists, bilingual documentation and release packaging. Real document ingestion, authenticated subagents, automatic content generation and publication approval workflows remain next steps.
+**English:** v0.2.5 ships a substantial Agent Skill, synthetic sample, offline validators, review checklists, bilingual documentation and release packaging. Real document ingestion, authenticated subagents, automatic content generation and publication approval workflows remain next steps.

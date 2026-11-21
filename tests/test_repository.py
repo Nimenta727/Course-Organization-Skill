@@ -70,11 +70,24 @@ class RepositoryConsistencyTests(unittest.TestCase):
 
     def test_only_current_release_notes(self):
         notes = sorted(p.name for p in (ROOT / "docs/releases").glob("*.md"))
-        self.assertEqual(notes, ["v0.2.4.md"])
+        self.assertEqual(notes, ["v0.2.5.md"])
 
     def test_skill_packager_and_docs_index_exist(self):
         self.assertTrue((ROOT / "scripts/package_skill.py").is_file())
         self.assertTrue((ROOT / "docs/INDEX.md").is_file())
+
+    def test_no_escaped_inline_code_in_active_docs(self):
+        """Prevent a malformed inline-code delimiter from reaching release."""
+        escaped_tick = chr(92) + chr(96)
+        targets = [
+            ROOT / "README.md", ROOT / "README_EN.md",
+            ROOT / "AGENTS.md", ROOT / "CHANGELOG.md",
+            *(ROOT / "docs").glob("*.md"),
+            *(ROOT / "references").rglob("*.md"),
+        ]
+        for doc in targets:
+            with self.subTest(file=str(doc.relative_to(ROOT))):
+                self.assertNotIn(escaped_tick, doc.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

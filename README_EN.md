@@ -1,12 +1,12 @@
 # Course Organization Skill
 
-[![Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Preview](https://img.shields.io/badge/release-v0.2.4%20Preview-orange)
+[![Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Preview](https://img.shields.io/badge/release-v0.2.5%20Preview-orange)
 
 **Teacher-led, student-first course organization. One complete, substantial lesson chapter for both first-time learning and revision.**
 
-[中文](README.md) · [Docs hub](docs/INDEX.md) · [Quick start](docs/QUICKSTART.md) · [Install](docs/INSTALLATION.md) · [Guide](docs/USAGE.md) · [Release notes](docs/releases/v0.2.4.md)
+[中文](README.md) · [Docs hub](docs/INDEX.md) · [Quick start](docs/QUICKSTART.md) · [Install](docs/INSTALLATION.md) · [Guide](docs/USAGE.md) · [Release notes](docs/releases/v0.2.5.md)
 
-**Current: v0.2.4 Preview.** This is a portable Agent Skill, plus an optional *offline* Python 3.10+ metadata/quality CLI. It is **not** a standalone PPT/PDF parser, autonomous course-writing server, browser, copyright-certification service, or subagent executor.
+**Current: v0.2.5 Preview.** This is a portable Agent Skill, plus an optional *offline* Python 3.10+ metadata/quality CLI. It is **not** a standalone PPT/PDF parser, autonomous course-writing server, browser, copyright-certification service, or subagent executor.
 
 ## Why lesson-first?
 
@@ -34,7 +34,7 @@ Subject-specific profiles cover **computing, mathematics, natural sciences, huma
 
 ## Actual capabilities
 
-| Capability | v0.2.4 |
+| Capability | v0.2.5 |
 | --- | --- |
 | Full Agent Skill and selectively loaded pedagogy references | Included |
 | Private teacher-evidence workflow and rights rules | Documented; structural metadata validation available |
@@ -43,13 +43,13 @@ Subject-specific profiles cover **computing, mathematics, natural sciences, huma
 | Seven-role independent-review plan | Offline role-specific K/Q checklist; **does NOT run reviewers** |
 | Reviewer report validation and hash staleness checks | Included; cannot attest reviewer identity or work actually done |
 | Private-first publication metadata audit | Included; not legal clearance |
-| Curriculum and authoritative source search query plan | Included; \`NOT_SEARCHED\`, no internet access |
+| Curriculum and authoritative source search query plan | Included; `NOT_SEARCHED`, no internet access |
 | Full PDF/PPTX/DOCX parsing, actual web research, full course generation | Require external authorized agent tools or future platform implementation |
 | Built-in real subagent orchestration | Not implemented |
 
 ## Install: complete Skill versus CLI
 
-**Agent Skill package:** Download the full \`course-organization-skill-v0.2.4.zip\` from [GitHub Releases](https://github.com/Nimenta727/Course-Organization-Skill/releases) if published, or clone the repository. The ZIP contains \`SKILL.md\`, \`references/\`, \`assets/\`, LICENSE and bilingual READMEs. Point a compatible agent to the extracted Skill directory.
+**Agent Skill package:** Download the full `course-organization-skill-v0.2.5.zip` from [GitHub Releases](https://github.com/Nimenta727/Course-Organization-Skill/releases) if published, or clone the repository. The ZIP contains `SKILL.md`, `references/`, `assets/`, LICENSE and bilingual READMEs. Point a compatible agent to the extracted Skill directory.
 
 **Optional Python CLI:** Install from the repository:
 
@@ -66,7 +66,7 @@ python -m unittest discover -s tests -v
 
 The wheel Release asset contains the CLI **only**, not the complete Skill. For installation paths and Windows setup see [INSTALLATION.md](docs/INSTALLATION.md).
 
-\`research-plan\` does not browse; \`review-plan\` does not execute child agents. The fictional example intentionally fails the public-release audit and cannot pass a real independent-review gate without authentic reviewers.
+`research-plan` does not browse; `review-plan` does not execute child agents. The fictional example intentionally fails the public-release audit and cannot pass a real independent-review gate without authentic reviewers.
 
 ## Suggested agent prompt
 

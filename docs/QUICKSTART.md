@@ -14,13 +14,13 @@ course-org research-plan examples/sample-course
 course-org review-plan examples/sample-course
 ~~~
 
-预计 \`validate\`、\`student-check\` 返回 PASS。后两条输出 JSON 计划，不联网也不启动智能体。你的 GitHub Release 如果附有 \`course-organization-skill-v0.2.4.zip\`，可直接解压作为 Agent Skill；只装 Python wheel 得到的则是离线 CLI。
+预计 `validate`、`student-check` 返回 PASS。后两条输出 JSON 计划，不联网也不启动智能体。你的 GitHub Release 如果附有 `course-organization-skill-v0.2.5.zip`，可直接解压作为 Agent Skill；只装 Python wheel 得到的则是离线 CLI。
 
 ## 2. 在 Agent 中使用
 
-将完整仓库或 Skill ZIP 解压目录提供给支持文件读取的 Agent，要求读取 \`SKILL.md\`。建议直接发送：
+将完整仓库或 Skill ZIP 解压目录提供给支持文件读取的 Agent，要求读取 `SKILL.md`。建议直接发送：
 
-> 使用 Course Organization Skill。在授权范围内先分析课程文件，确认教师讲授顺序、板书、知识点和错误示范，生成私有证据映射和非破坏性计划。每节课只给学生一篇完整的 \`lesson.md\`，逐知识点充分解释动机、直觉、规则、推演和自检；附至少 2 基础 + 2 应用 + 1 挑战的完整原创作业以及逐题详细答案，适合新手阅读和考前速览。只在确有联网工具和资料使用权限时检索权威来源。写完执行学生质量检查，并由真实独立审阅者逐项审计；如果没有子智能体，请如实标记 REVIEW_PENDING。不要复制或公开教师原件。
+> 使用 Course Organization Skill。在授权范围内先分析课程文件，确认教师讲授顺序、板书、知识点和错误示范，生成私有证据映射和非破坏性计划。每节课只给学生一篇完整的 `lesson.md`，逐知识点充分解释动机、直觉、规则、推演和自检；附至少 2 基础 + 2 应用 + 1 挑战的完整原创作业以及逐题详细答案，适合新手阅读和考前速览。只在确有联网工具和资料使用权限时检索权威来源。写完执行学生质量检查，并由真实独立审阅者逐项审计；如果没有子智能体，请如实标记 REVIEW_PENDING。不要复制或公开教师原件。
 
 ## 3. 验收与边界
 

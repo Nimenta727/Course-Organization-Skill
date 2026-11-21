@@ -1,12 +1,12 @@
 # Course Organization Skill · 教师主线课程整理
 
-[![Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Release](https://img.shields.io/badge/release-v0.2.4%20Preview-orange)
+[![Unit tests and skill checks](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml/badge.svg)](https://github.com/Nimenta727/Course-Organization-Skill/actions/workflows/tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![Release](https://img.shields.io/badge/release-v0.2.5%20Preview-orange)
 
 **让教师的课程成为知识主线，让 AI 负责补全推理、深入讲解、设计作业和形成复习材料。最终交付给学生的不是资料分析报告，而是每节课一篇真正能读、能学、能练、能复习的完整讲义。**
 
-[English](README_EN.md) · [文档中心](docs/INDEX.md) · [快速开始](docs/QUICKSTART.md) · [安装](docs/INSTALLATION.md) · [使用指南](docs/USAGE.md) · [版本说明](docs/releases/v0.2.4.md)
+[English](README_EN.md) · [文档中心](docs/INDEX.md) · [快速开始](docs/QUICKSTART.md) · [安装](docs/INSTALLATION.md) · [使用指南](docs/USAGE.md) · [版本说明](docs/releases/v0.2.5.md)
 
-> **当前版本：v0.2.4 Preview（预览版）。** 这是可供具备文件访问能力的 AI Agent 使用的 Skill，另附可选 Python 离线 CLI。CLI **不会自行读取 PPT/PDF 全文、访问网络、调用大模型或启动子智能体**；这些能力取决于实际 Agent 工具与使用授权。详见下方功能状态。
+> **当前版本：v0.2.5 Preview（预览版）。** 这是可供具备文件访问能力的 AI Agent 使用的 Skill，另附可选 Python 离线 CLI。CLI **不会自行读取 PPT/PDF 全文、访问网络、调用大模型或启动子智能体**；这些能力取决于实际 Agent 工具与使用授权。详见下方功能状态。
 
 ## 为什么与普通资料整理不同
 
@@ -16,7 +16,7 @@
 
 ## 学生的一节课：完整而不碎片化
 
-一节课只要求学生阅读一篇 \`lessons/Lxx/lesson.md\`，按照以下九个层次展开：
+一节课只要求学生阅读一篇 `lessons/Lxx/lesson.md`，按照以下九个层次展开：
 
 | 内容 | 要达到的阅读效果 |
 | --- | --- |
@@ -42,10 +42,10 @@
 | 教师内容证据映射与课程保真工作流 | 已定义，元数据可检查；真实来源需 Agent/人工核对 |
 | 九段式完整学生讲义、强制知识讲解、作业与答案 | 规范、模板和静态检查已实现 |
 | 原创编程课示例 | 已提供；未基于任何真实教师课件 |
-| \`scan\` 本地哈希/文件名清单 | 已实现，不提取文档正文 |
-| \`validate\`、\`student-check\` 和 \`audit\` | 已实现确定性结构/声明门禁，不证明学术或法律正确 |
-| \`review-plan\` 七角色审阅清单、\`review-gate\` 和 \`ready\` | 已实现离线规划及报告字段/哈希检查；**不会执行子智能体** |
-| \`research-plan\` 权威资料检索计划 | 已实现离线查询，标记 \`NOT_SEARCHED\` |
+| `scan` 本地哈希/文件名清单 | 已实现，不提取文档正文 |
+| `validate`、`student-check` 和 `audit` | 已实现确定性结构/声明门禁，不证明学术或法律正确 |
+| `review-plan` 七角色审阅清单、`review-gate` 和 `ready` | 已实现离线规划及报告字段/哈希检查；**不会执行子智能体** |
+| `research-plan` 权威资料检索计划 | 已实现离线查询，标记 `NOT_SEARCHED` |
 | 实际在线检索、课程文档解析、生成课件内容 | 依赖宿主 Agent 的工具与授权；独立 CLI 尚不支持 |
 | 真正的子智能体调度、实时 OCR/解析、全课程自动生成平台 | 尚未实现，见[路线图](docs/roadmap.md) |
 
@@ -53,14 +53,14 @@
 
 ### 获取完整 Skill（推荐）
 
-从 [Releases](https://github.com/Nimenta727/Course-Organization-Skill/releases) 获取带版本号的 \`course-organization-skill-v0.2.4.zip\`（如已发行），解压后得到具有 \`SKILL.md\`、\`references/\`、\`assets/\` 的完整 Skill 目录；也可以直接克隆：
+从 [Releases](https://github.com/Nimenta727/Course-Organization-Skill/releases) 获取带版本号的 `course-organization-skill-v0.2.5.zip`（如已发行），解压后得到具有 `SKILL.md`、`references/`、`assets/` 的完整 Skill 目录；也可以直接克隆：
 
 ~~~bash
 git clone https://github.com/Nimenta727/Course-Organization-Skill.git
 cd Course-Organization-Skill
 ~~~
 
-在支持 Agent Skills 的客户端中安装**完整目录**，或显式让 Agent 读取 \`SKILL.md\`。Codex、Claude Code、Windows 及一般文件型 Agent 的安装路径见[安装指南](docs/INSTALLATION.md)。
+在支持 Agent Skills 的客户端中安装**完整目录**，或显式让 Agent 读取 `SKILL.md`。Codex、Claude Code、Windows 及一般文件型 Agent 的安装路径见[安装指南](docs/INSTALLATION.md)。
 
 ### 可选：本地 Python 质量工具
 
@@ -75,7 +75,7 @@ course-org review-plan examples/sample-course
 python -m unittest discover -s tests -v
 ~~~
 
-\`research-plan\` 和 \`review-plan\` **只生成计划**，不会联网或实际调用七个子智能体。提供的虚构示例没有真实独立审阅记录，也未获公开审批，因此以下命令应当 **BLOCK**：
+`research-plan` 和 `review-plan` **只生成计划**，不会联网或实际调用七个子智能体。提供的虚构示例没有真实独立审阅记录，也未获公开审批，因此以下命令应当 **BLOCK**：
 
 ~~~bash
 course-org audit examples/sample-course
@@ -99,19 +99,19 @@ course/
 跨课实验、课程项目可以额外提供链接，但**学生不应为读懂一节课而跳十几个文件**。[阅读原创完整示例](examples/sample-course/lessons/L01/lesson.md)。
 
 本仓库发行两类制品：
-- **Agent Skill ZIP**：完整 \`SKILL.md\` + \`references/\` + \`assets/\` + 许可证/README，适合安装到 Agent；
-- **Python wheel**：仅包含可选的离线 \`course-org\` 工具，不包含整个 Skill。两者不能混淆。
+- **Agent Skill ZIP**：完整 `SKILL.md` + `references/` + `assets/` + 许可证/README，适合安装到 Agent；
+- **Python wheel**：仅包含可选的离线 `course-org` 工具，不包含整个 Skill。两者不能混淆。
 
 ## 七角色严格审阅，并不冒充实际执行
 
-\`review-plan\` 会为每节课生成独立审阅任务：教师覆盖、新手可读性、学科正确性、作业逐题盲解、复习有效性、版权隐私及对抗性检查。审核报告必须完整覆盖各 K 知识点、各 Q 练习和当前 SHA-256。**真正独立**的子智能体或人工审阅未完成时，不得声称课程已经通过严格审核。详见[独立审计规范](references/subagent-review.md)。
+`review-plan` 会为每节课生成独立审阅任务：教师覆盖、新手可读性、学科正确性、作业逐题盲解、复习有效性、版权隐私及对抗性检查。审核报告必须完整覆盖各 K 知识点、各 Q 练习和当前 SHA-256。**真正独立**的子智能体或人工审阅未完成时，不得声称课程已经通过严格审核。详见[独立审计规范](references/subagent-review.md)。
 
 ## 版权和数据安全
 
-查看老师 PPT/板书、官方已公开考试题或教育用途，并不自动授予上传第三方模型、改编或公开传播的权利。未知权限不公开；教师原件、课堂录音和学生个人资料置于私有环境。发布前要独立核查文字、图像、题目、引用许可和个人信息。自动 \`audit\` PASS **无法保证零侵权风险**。详见[版权规则](references/copyright-gate.md)与[安全政策](SECURITY.md)。
+查看老师 PPT/板书、官方已公开考试题或教育用途，并不自动授予上传第三方模型、改编或公开传播的权利。未知权限不公开；教师原件、课堂录音和学生个人资料置于私有环境。发布前要独立核查文字、图像、题目、引用许可和个人信息。自动 `audit` PASS **无法保证零侵权风险**。详见[版权规则](references/copyright-gate.md)与[安全政策](SECURITY.md)。
 
 ## 开发、文档和贡献
 
-[完整文档索引](docs/INDEX.md) · [CLI 使用指南](docs/USAGE.md) · [FAQ](docs/FAQ.md) · [开发指南](docs/DEVELOPMENT.md) · [项目架构](docs/architecture.md) · [发布说明](docs/releases/v0.2.4.md) · [发布流程](docs/RELEASE.md) · [贡献指南](CONTRIBUTING.md) · [更新记录](CHANGELOG.md)
+[完整文档索引](docs/INDEX.md) · [CLI 使用指南](docs/USAGE.md) · [FAQ](docs/FAQ.md) · [开发指南](docs/DEVELOPMENT.md) · [项目架构](docs/architecture.md) · [发布说明](docs/releases/v0.2.5.md) · [发布流程](docs/RELEASE.md) · [贡献指南](CONTRIBUTING.md) · [更新记录](CHANGELOG.md)
 
 仓库遵守 [MIT License](LICENSE)，仅对本仓库原创代码/文档生效，不覆盖教师或第三方教材。每次仓库代码修改都会在 [docs/routine/](docs/routine/) 留下时间、变更、验证、风险和下一步。旧版内容由 Git 历史保留，当前树不设冗余 legacy 目录。

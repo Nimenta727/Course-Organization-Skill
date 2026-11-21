@@ -2,7 +2,7 @@
 name: Course Organization Skill
 description: "Teacher-led AI Agent Skill for lesson-first course notes, original exercises, research enrichment, and copyright-aware review."
 homepage: "https://github.com/Nimenta727/Course-Organization-Skill"
-version: "v0.2.4"
+version: "v0.2.5"
 status: preview
 topics:
   - agent-skills

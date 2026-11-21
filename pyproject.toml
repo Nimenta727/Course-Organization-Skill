@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "course-organization-skill"
-version = "0.2.4"
+version = "0.2.5"
 description = "Teacher-led lesson-first Agent Skill and copyright-aware course metadata CLI"
 readme = "README.md"
 requires-python = ">=3.10"

@@ -1,11 +1,17 @@
 # Changelog / 更新记录
 
-本项目使用 \`0.x\` 预览版本号。旧的 README、未正式发布的版本说明草案、源文件的每次变更都可在 Git 历史中检索；完整开发审计轨迹保留在 [docs/routine/](docs/routine/)。
+本项目使用 `0.x` 预览版本号。旧的 README、未正式发布的版本说明草案、源文件的每次变更都可在 Git 历史中检索；完整开发审计轨迹保留在 [docs/routine/](docs/routine/)。
 
 ## [Unreleased]
 
 - Real-world pilot on permission-cleared teaching materials.
 - Secure optional document ingestion and actual independent agent/human review orchestration.
+
+## [0.2.5] — 2026-11-21 (Preview patch)
+
+- Corrected escaped Markdown inline-code markers throughout the active user and reference documentation, improving readability in GitHub and packaged Skill README files.
+- Added an automated formatting regression test to prevent escaped inline-code delimiters from reappearing in active docs.
+- Rebuilt the standalone complete Skill ZIP and independent Python CLI wheel as an immutable patch release, preserving v0.2.4 in its existing GitHub tag and Git history.
 
 ## [0.2.4] — 2026-11-21 (Preview)
 

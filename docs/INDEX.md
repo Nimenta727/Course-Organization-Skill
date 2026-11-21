@@ -1,6 +1,6 @@
 # 文档总览 / Documentation hub
 
-> **当前有效版本：v0.2.4 Preview。** 旧的未正式发行版本说明可通过 Git 提交历史查看；此目录只保留当前操作性文档。 `docs/routine/` 始终保留开发审计轨迹。
+> **当前有效版本：v0.2.5 Preview。** 旧的未正式发行版本说明可通过 Git 提交历史查看；此目录只保留当前操作性文档。 `docs/routine/` 始终保留开发审计轨迹。
 
 ## 给使用者
 
@@ -28,7 +28,7 @@
 
 ## 给开发和维护者
 
-[架构](architecture.md) · [开发与测试](DEVELOPMENT.md) · [路线图](roadmap.md) · [发行手册](RELEASE.md) · [GitHub 设置](GITHUB_METADATA.md) · [当前版本说明](releases/v0.2.4.md) · [维护记录](routine/) · [变更日志](../CHANGELOG.md)
+[架构](architecture.md) · [开发与测试](DEVELOPMENT.md) · [路线图](roadmap.md) · [发行手册](RELEASE.md) · [GitHub 设置](GITHUB_METADATA.md) · [当前版本说明](releases/v0.2.5.md) · [维护记录](routine/) · [变更日志](../CHANGELOG.md)
 
 ## 目录约定
 
@@ -44,4 +44,4 @@ tests/                        unittest 回归测试
 docs/                         当前文档；routine 为长期开发审计记录
 ```
 
-**English:** This is the canonical documentation index for v0.2.4 Preview. Historical drafts are preserved by Git history instead of a parallel legacy folder. The Skill creates reader-facing lessons; private source/provenance and review data remain separate. The offline CLI cannot browse, parse full PPT/PDF content or run subagents.
+**English:** This is the canonical documentation index for v0.2.5 Preview. Historical drafts are preserved by Git history instead of a parallel legacy folder. The Skill creates reader-facing lessons; private source/provenance and review data remain separate. The offline CLI cannot browse, parse full PPT/PDF content or run subagents.
